@@ -1,6 +1,7 @@
 Reverse engineering nsight compute
 
-nvcc test.cu -o test -arch=sm_86 -v -lcuda --keep -g
+use make to build sniffer and saxpy (target program)
+
 cp -r /opt/nvidia/nsight-compute/2024.3.2 ncu-local
 ncu-local/ncu ./test
 

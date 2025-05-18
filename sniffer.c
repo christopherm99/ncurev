@@ -10,6 +10,7 @@
 #include <linux/ioctl.h>
 #include <unistd.h>
 
+#include "nv.h"
 #include "uthash.h"
 
 struct fd_info {
@@ -83,7 +84,14 @@ void print_ioctl(int fd, unsigned long request, unsigned long arg) {
   type = _IOC_TYPE(request);
   nr = _IOC_NR(request);
   size = _IOC_SIZE(request);
-  printf("ioctl(%s, _IOC(%lx, %lx, %lx, %lx), %lx)\n", name ? name : "unknown", dir, type, nr, size, arg);
+  if (type == NV_IOCTL_MAGIC) {
+    printf("ioctl(%16s, _IOC(%5s, NV_IOCTL_MAGIC, %lx, %lx, 0x%lx)\n",
+      name ? name : "unknown",
+      (dir & _IOC_READ) && (dir & _IOC_WRITE) ? "_IORW" : (dir & _IOC_READ) ? "_IOR" : (dir & _IOC_WRITE) ? "_IOW" : "_IO",
+      nr, size, arg);
+  } else {
+    printf("ioctl(%16s, ...)\n", name ? name : "unknown");
+  }
 }
 
 int main(int argc, char **argv) {
