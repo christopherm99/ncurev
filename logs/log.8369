@@ -1,0 +1,10 @@
+rseq(0x7dcf2ac00fe0, 0x20, 0, 0x53053053) = 0
+set_robust_list(0x7dcf2ac009a0, 24)     = 0
+rt_sigprocmask(SIG_SETMASK, [], NULL, 8) = 0
+wait4(8368, [{WIFEXITED(s) && WEXITSTATUS(s) == 0}], WSTOPPED|WCONTINUED, NULL) = 8368
+futex(0x34daf648, FUTEX_WAKE_PRIVATE, 2147483647) = 0
+futex(0x34daf640, FUTEX_WAKE, 2147483647) = 0
+rt_sigprocmask(SIG_BLOCK, ~[RT_1], NULL, 8) = 0
+madvise(0x7dcf2a400000, 8368128, MADV_DONTNEED) = 0
+exit(0)                                 = ?
++++ exited with 0 +++

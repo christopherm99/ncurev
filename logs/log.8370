@@ -1,0 +1,288 @@
+rseq(0x7dcf2a200fe0, 0x20, 0, 0x53053053) = 0
+set_robust_list(0x7dcf2a2009a0, 24)     = 0
+rt_sigprocmask(SIG_SETMASK, [], NULL, 8) = 0
+epoll_wait(6, [{events=EPOLLIN, data={u32=886764112, u64=886764112}}], 32, 50) = 1
+mmap(NULL, 134217728, PROT_NONE, MAP_PRIVATE|MAP_ANONYMOUS, -1, 0) = 0x7dcf1c000000
+munmap(0x7dcf20000000, 67108864)        = 0
+mprotect(0x7dcf1c000000, 135168, PROT_READ|PROT_WRITE) = 0
+read(7, "\0\0\0\0\0\0\0\0\t\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\n\5\10\0\20\260A\22"..., 1024) = 33
+read(7, 0x7dcf1c000b91, 991)            = -1 EAGAIN (Resource temporarily unavailable)
+read(7, 0x7dcf1c000f80, 1024)           = -1 EAGAIN (Resource temporarily unavailable)
+getpid()                                = 8347
+mknodat(AT_FDCWD, "/tmp/NVIDIA-treetracker-BJv53O/pipe-1-ownerReadingStream", S_IFIFO|0666) = 0
+mknodat(AT_FDCWD, "/tmp/NVIDIA-treetracker-BJv53O/pipe-1-ownerWritingStream", S_IFIFO|0666) = 0
+openat(AT_FDCWD, "/tmp/NVIDIA-treetracker-BJv53O/pipe-1-ownerReadingStream", O_RDONLY|O_NONBLOCK) = 14
+openat(AT_FDCWD, "/tmp/NVIDIA-treetracker-BJv53O/pipe-1-ownerWritingStream", O_RDWR|O_NONBLOCK) = 15
+epoll_ctl(6, EPOLL_CTL_ADD, 14, {events=EPOLLIN|EPOLLET, data={u32=469767392, u64=138328481469664}}) = 0
+write(8, "\0\0\0\0\0\0\0\0)\0\0\0\0\0\0\0\1\0\0\0\0\0\0\0\n%/tmp/N"..., 65) = 65
+clock_gettime(CLOCK_REALTIME, {tv_sec=1746139940, tv_nsec=910836923}) = 0
+epoll_wait(6, [{events=EPOLLIN, data={u32=886764112, u64=886764112}}], 32, 50) = 1
+read(7, "\1\0\0\0\0\0\0\0\16\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\n\5\10\0\20\260AJ"..., 1024) = 38
+read(7, 0x7dcf1c000b96, 986)            = -1 EAGAIN (Resource temporarily unavailable)
+read(7, 0x7dcf1c000f80, 1024)           = -1 EAGAIN (Resource temporarily unavailable)
+getpid()                                = 8347
+getpid()                                = 8347
+clock_gettime(CLOCK_REALTIME, {tv_sec=1746139940, tv_nsec=911559971}) = 0
+epoll_wait(6, [], 32, 50)               = 0
+clock_gettime(CLOCK_REALTIME, {tv_sec=1746139940, tv_nsec=961699061}) = 0
+epoll_wait(6, [], 32, 50)               = 0
+clock_gettime(CLOCK_REALTIME, {tv_sec=1746139941, tv_nsec=11878566}) = 0
+epoll_wait(6, [], 32, 50)               = 0
+clock_gettime(CLOCK_REALTIME, {tv_sec=1746139941, tv_nsec=62027213}) = 0
+epoll_wait(6, [], 32, 50)               = 0
+clock_gettime(CLOCK_REALTIME, {tv_sec=1746139941, tv_nsec=112144852}) = 0
+epoll_wait(6, [], 32, 50)               = 0
+clock_gettime(CLOCK_REALTIME, {tv_sec=1746139941, tv_nsec=162267030}) = 0
+epoll_wait(6, [], 32, 50)               = 0
+clock_gettime(CLOCK_REALTIME, {tv_sec=1746139941, tv_nsec=212395029}) = 0
+epoll_wait(6, [], 32, 50)               = 0
+clock_gettime(CLOCK_REALTIME, {tv_sec=1746139941, tv_nsec=262511365}) = 0
+epoll_wait(6, [], 32, 50)               = 0
+clock_gettime(CLOCK_REALTIME, {tv_sec=1746139941, tv_nsec=312628584}) = 0
+epoll_wait(6, [], 32, 50)               = 0
+clock_gettime(CLOCK_REALTIME, {tv_sec=1746139941, tv_nsec=362744941}) = 0
+epoll_wait(6, [], 32, 50)               = 0
+clock_gettime(CLOCK_REALTIME, {tv_sec=1746139941, tv_nsec=412865335}) = 0
+epoll_wait(6, [], 32, 50)               = 0
+clock_gettime(CLOCK_REALTIME, {tv_sec=1746139941, tv_nsec=462990969}) = 0
+epoll_wait(6, [], 32, 50)               = 0
+clock_gettime(CLOCK_REALTIME, {tv_sec=1746139941, tv_nsec=513112195}) = 0
+epoll_wait(6, [], 32, 50)               = 0
+clock_gettime(CLOCK_REALTIME, {tv_sec=1746139941, tv_nsec=563236747}) = 0
+epoll_wait(6, [], 32, 50)               = 0
+clock_gettime(CLOCK_REALTIME, {tv_sec=1746139941, tv_nsec=613353064}) = 0
+epoll_wait(6, [], 32, 50)               = 0
+clock_gettime(CLOCK_REALTIME, {tv_sec=1746139941, tv_nsec=663473598}) = 0
+epoll_wait(6, [], 32, 50)               = 0
+clock_gettime(CLOCK_REALTIME, {tv_sec=1746139941, tv_nsec=713590326}) = 0
+epoll_wait(6, [], 32, 50)               = 0
+clock_gettime(CLOCK_REALTIME, {tv_sec=1746139941, tv_nsec=763709438}) = 0
+epoll_wait(6, [], 32, 50)               = 0
+clock_gettime(CLOCK_REALTIME, {tv_sec=1746139941, tv_nsec=813839550}) = 0
+epoll_wait(6, [], 32, 50)               = 0
+clock_gettime(CLOCK_REALTIME, {tv_sec=1746139941, tv_nsec=863965345}) = 0
+epoll_wait(6, [], 32, 50)               = 0
+clock_gettime(CLOCK_REALTIME, {tv_sec=1746139941, tv_nsec=914079648}) = 0
+epoll_wait(6, [], 32, 50)               = 0
+clock_gettime(CLOCK_REALTIME, {tv_sec=1746139941, tv_nsec=964201975}) = 0
+epoll_wait(6, [], 32, 50)               = 0
+clock_gettime(CLOCK_REALTIME, {tv_sec=1746139942, tv_nsec=14326538}) = 0
+epoll_wait(6, [], 32, 50)               = 0
+clock_gettime(CLOCK_REALTIME, {tv_sec=1746139942, tv_nsec=64442474}) = 0
+epoll_wait(6, [], 32, 50)               = 0
+clock_gettime(CLOCK_REALTIME, {tv_sec=1746139942, tv_nsec=114569641}) = 0
+epoll_wait(6, [], 32, 50)               = 0
+clock_gettime(CLOCK_REALTIME, {tv_sec=1746139942, tv_nsec=164687841}) = 0
+epoll_wait(6, [], 32, 50)               = 0
+clock_gettime(CLOCK_REALTIME, {tv_sec=1746139942, tv_nsec=214798527}) = 0
+epoll_wait(6, [], 32, 50)               = 0
+clock_gettime(CLOCK_REALTIME, {tv_sec=1746139942, tv_nsec=264923219}) = 0
+epoll_wait(6, [], 32, 50)               = 0
+clock_gettime(CLOCK_REALTIME, {tv_sec=1746139942, tv_nsec=315038935}) = 0
+epoll_wait(6, [], 32, 50)               = 0
+clock_gettime(CLOCK_REALTIME, {tv_sec=1746139942, tv_nsec=365161012}) = 0
+epoll_wait(6, [], 32, 50)               = 0
+clock_gettime(CLOCK_REALTIME, {tv_sec=1746139942, tv_nsec=415286686}) = 0
+epoll_wait(6, [], 32, 50)               = 0
+clock_gettime(CLOCK_REALTIME, {tv_sec=1746139942, tv_nsec=465409155}) = 0
+epoll_wait(6, [], 32, 50)               = 0
+clock_gettime(CLOCK_REALTIME, {tv_sec=1746139942, tv_nsec=515528657}) = 0
+epoll_wait(6, [], 32, 50)               = 0
+clock_gettime(CLOCK_REALTIME, {tv_sec=1746139942, tv_nsec=565650114}) = 0
+epoll_wait(6, [], 32, 50)               = 0
+clock_gettime(CLOCK_REALTIME, {tv_sec=1746139942, tv_nsec=615778814}) = 0
+epoll_wait(6, [], 32, 50)               = 0
+clock_gettime(CLOCK_REALTIME, {tv_sec=1746139942, tv_nsec=665897495}) = 0
+epoll_wait(6, [], 32, 50)               = 0
+clock_gettime(CLOCK_REALTIME, {tv_sec=1746139942, tv_nsec=716022047}) = 0
+epoll_wait(6, [], 32, 50)               = 0
+clock_gettime(CLOCK_REALTIME, {tv_sec=1746139942, tv_nsec=766145146}) = 0
+epoll_wait(6, [], 32, 50)               = 0
+clock_gettime(CLOCK_REALTIME, {tv_sec=1746139942, tv_nsec=816288724}) = 0
+epoll_wait(6, [], 32, 50)               = 0
+clock_gettime(CLOCK_REALTIME, {tv_sec=1746139942, tv_nsec=866440157}) = 0
+epoll_wait(6, [], 32, 50)               = 0
+clock_gettime(CLOCK_REALTIME, {tv_sec=1746139942, tv_nsec=916599394}) = 0
+epoll_wait(6, [], 32, 50)               = 0
+clock_gettime(CLOCK_REALTIME, {tv_sec=1746139942, tv_nsec=966737401}) = 0
+epoll_wait(6, [], 32, 50)               = 0
+clock_gettime(CLOCK_REALTIME, {tv_sec=1746139943, tv_nsec=16873104}) = 0
+epoll_wait(6, [], 32, 50)               = 0
+clock_gettime(CLOCK_REALTIME, {tv_sec=1746139943, tv_nsec=67025549}) = 0
+epoll_wait(6, [], 32, 50)               = 0
+clock_gettime(CLOCK_REALTIME, {tv_sec=1746139943, tv_nsec=117187782}) = 0
+epoll_wait(6, [], 32, 50)               = 0
+clock_gettime(CLOCK_REALTIME, {tv_sec=1746139943, tv_nsec=167350826}) = 0
+epoll_wait(6, [], 32, 50)               = 0
+clock_gettime(CLOCK_REALTIME, {tv_sec=1746139943, tv_nsec=217508581}) = 0
+epoll_wait(6, [], 32, 50)               = 0
+clock_gettime(CLOCK_REALTIME, {tv_sec=1746139943, tv_nsec=267663480}) = 0
+epoll_wait(6, [], 32, 50)               = 0
+clock_gettime(CLOCK_REALTIME, {tv_sec=1746139943, tv_nsec=317817778}) = 0
+epoll_wait(6, [], 32, 50)               = 0
+clock_gettime(CLOCK_REALTIME, {tv_sec=1746139943, tv_nsec=367995409}) = 0
+epoll_wait(6, [], 32, 50)               = 0
+clock_gettime(CLOCK_REALTIME, {tv_sec=1746139943, tv_nsec=418152523}) = 0
+epoll_wait(6, [], 32, 50)               = 0
+clock_gettime(CLOCK_REALTIME, {tv_sec=1746139943, tv_nsec=468685683}) = 0
+epoll_wait(6, [], 32, 50)               = 0
+clock_gettime(CLOCK_REALTIME, {tv_sec=1746139943, tv_nsec=518854097}) = 0
+epoll_wait(6, [], 32, 50)               = 0
+clock_gettime(CLOCK_REALTIME, {tv_sec=1746139943, tv_nsec=569010680}) = 0
+epoll_wait(6, [], 32, 50)               = 0
+clock_gettime(CLOCK_REALTIME, {tv_sec=1746139943, tv_nsec=619178483}) = 0
+epoll_wait(6, [], 32, 50)               = 0
+clock_gettime(CLOCK_REALTIME, {tv_sec=1746139943, tv_nsec=669337780}) = 0
+epoll_wait(6, [], 32, 50)               = 0
+clock_gettime(CLOCK_REALTIME, {tv_sec=1746139943, tv_nsec=719494713}) = 0
+epoll_wait(6, [], 32, 50)               = 0
+clock_gettime(CLOCK_REALTIME, {tv_sec=1746139943, tv_nsec=769659561}) = 0
+epoll_wait(6, [], 32, 50)               = 0
+clock_gettime(CLOCK_REALTIME, {tv_sec=1746139943, tv_nsec=819777170}) = 0
+epoll_wait(6, [], 32, 50)               = 0
+clock_gettime(CLOCK_REALTIME, {tv_sec=1746139943, tv_nsec=869887856}) = 0
+epoll_wait(6, [], 32, 50)               = 0
+clock_gettime(CLOCK_REALTIME, {tv_sec=1746139943, tv_nsec=920006056}) = 0
+epoll_wait(6, [], 32, 50)               = 0
+clock_gettime(CLOCK_REALTIME, {tv_sec=1746139943, tv_nsec=970116602}) = 0
+epoll_wait(6, [], 32, 50)               = 0
+clock_gettime(CLOCK_REALTIME, {tv_sec=1746139944, tv_nsec=20225996}) = 0
+epoll_wait(6, [], 32, 50)               = 0
+clock_gettime(CLOCK_REALTIME, {tv_sec=1746139944, tv_nsec=70335670}) = 0
+epoll_wait(6, [], 32, 50)               = 0
+clock_gettime(CLOCK_REALTIME, {tv_sec=1746139944, tv_nsec=120445474}) = 0
+epoll_wait(6, [], 32, 50)               = 0
+clock_gettime(CLOCK_REALTIME, {tv_sec=1746139944, tv_nsec=170556611}) = 0
+epoll_wait(6, [], 32, 50)               = 0
+clock_gettime(CLOCK_REALTIME, {tv_sec=1746139944, tv_nsec=220667337}) = 0
+epoll_wait(6, [], 32, 50)               = 0
+clock_gettime(CLOCK_REALTIME, {tv_sec=1746139944, tv_nsec=270779065}) = 0
+epoll_wait(6, [], 32, 50)               = 0
+clock_gettime(CLOCK_REALTIME, {tv_sec=1746139944, tv_nsec=320891975}) = 0
+epoll_wait(6, [], 32, 50)               = 0
+clock_gettime(CLOCK_REALTIME, {tv_sec=1746139944, tv_nsec=371002651}) = 0
+epoll_wait(6, [], 32, 50)               = 0
+clock_gettime(CLOCK_REALTIME, {tv_sec=1746139944, tv_nsec=421113778}) = 0
+epoll_wait(6, [], 32, 50)               = 0
+clock_gettime(CLOCK_REALTIME, {tv_sec=1746139944, tv_nsec=471224735}) = 0
+epoll_wait(6, [], 32, 50)               = 0
+clock_gettime(CLOCK_REALTIME, {tv_sec=1746139944, tv_nsec=521339358}) = 0
+epoll_wait(6, [], 32, 50)               = 0
+clock_gettime(CLOCK_REALTIME, {tv_sec=1746139944, tv_nsec=571452259}) = 0
+epoll_wait(6, [], 32, 50)               = 0
+clock_gettime(CLOCK_REALTIME, {tv_sec=1746139944, tv_nsec=621568585}) = 0
+epoll_wait(6, [], 32, 50)               = 0
+clock_gettime(CLOCK_REALTIME, {tv_sec=1746139944, tv_nsec=671683509}) = 0
+epoll_wait(6, [], 32, 50)               = 0
+clock_gettime(CLOCK_REALTIME, {tv_sec=1746139944, tv_nsec=721798012}) = 0
+epoll_wait(6, [], 32, 50)               = 0
+clock_gettime(CLOCK_REALTIME, {tv_sec=1746139944, tv_nsec=771909620}) = 0
+epoll_wait(6, [], 32, 50)               = 0
+clock_gettime(CLOCK_REALTIME, {tv_sec=1746139944, tv_nsec=822022280}) = 0
+epoll_wait(6, [], 32, 50)               = 0
+clock_gettime(CLOCK_REALTIME, {tv_sec=1746139944, tv_nsec=872132966}) = 0
+epoll_wait(6, [], 32, 50)               = 0
+clock_gettime(CLOCK_REALTIME, {tv_sec=1746139944, tv_nsec=922247529}) = 0
+epoll_wait(6, [], 32, 50)               = 0
+clock_gettime(CLOCK_REALTIME, {tv_sec=1746139944, tv_nsec=972361311}) = 0
+epoll_wait(6, [], 32, 50)               = 0
+clock_gettime(CLOCK_REALTIME, {tv_sec=1746139945, tv_nsec=22481645}) = 0
+epoll_wait(6, [], 32, 50)               = 0
+clock_gettime(CLOCK_REALTIME, {tv_sec=1746139945, tv_nsec=72596229}) = 0
+epoll_wait(6, [], 32, 50)               = 0
+clock_gettime(CLOCK_REALTIME, {tv_sec=1746139945, tv_nsec=122706975}) = 0
+epoll_wait(6, [], 32, 50)               = 0
+clock_gettime(CLOCK_REALTIME, {tv_sec=1746139945, tv_nsec=172817691}) = 0
+epoll_wait(6, [], 32, 50)               = 0
+clock_gettime(CLOCK_REALTIME, {tv_sec=1746139945, tv_nsec=222929870}) = 0
+epoll_wait(6, [], 32, 50)               = 0
+clock_gettime(CLOCK_REALTIME, {tv_sec=1746139945, tv_nsec=281579046}) = 0
+epoll_wait(6, [], 32, 50)               = 0
+clock_gettime(CLOCK_REALTIME, {tv_sec=1746139945, tv_nsec=331699811}) = 0
+epoll_wait(6, [], 32, 50)               = 0
+clock_gettime(CLOCK_REALTIME, {tv_sec=1746139945, tv_nsec=381816167}) = 0
+epoll_wait(6, [], 32, 50)               = 0
+clock_gettime(CLOCK_REALTIME, {tv_sec=1746139945, tv_nsec=431930029}) = 0
+epoll_wait(6, [], 32, 50)               = 0
+clock_gettime(CLOCK_REALTIME, {tv_sec=1746139945, tv_nsec=482046326}) = 0
+epoll_wait(6, [], 32, 50)               = 0
+clock_gettime(CLOCK_REALTIME, {tv_sec=1746139945, tv_nsec=532157884}) = 0
+epoll_wait(6, [], 32, 50)               = 0
+clock_gettime(CLOCK_REALTIME, {tv_sec=1746139945, tv_nsec=582267798}) = 0
+epoll_wait(6, [], 32, 50)               = 0
+clock_gettime(CLOCK_REALTIME, {tv_sec=1746139945, tv_nsec=632382151}) = 0
+epoll_wait(6, [], 32, 50)               = 0
+clock_gettime(CLOCK_REALTIME, {tv_sec=1746139945, tv_nsec=682553141}) = 0
+epoll_wait(6, [], 32, 50)               = 0
+clock_gettime(CLOCK_REALTIME, {tv_sec=1746139945, tv_nsec=732703531}) = 0
+epoll_wait(6, [], 32, 50)               = 0
+clock_gettime(CLOCK_REALTIME, {tv_sec=1746139945, tv_nsec=782820038}) = 0
+epoll_wait(6, [], 32, 50)               = 0
+clock_gettime(CLOCK_REALTIME, {tv_sec=1746139945, tv_nsec=832930494}) = 0
+epoll_wait(6, [], 32, 50)               = 0
+clock_gettime(CLOCK_REALTIME, {tv_sec=1746139945, tv_nsec=883042182}) = 0
+epoll_wait(6, [], 32, 50)               = 0
+clock_gettime(CLOCK_REALTIME, {tv_sec=1746139945, tv_nsec=933156124}) = 0
+epoll_wait(6, [], 32, 50)               = 0
+clock_gettime(CLOCK_REALTIME, {tv_sec=1746139945, tv_nsec=983265187}) = 0
+epoll_wait(6, [], 32, 50)               = 0
+clock_gettime(CLOCK_REALTIME, {tv_sec=1746139946, tv_nsec=33377616}) = 0
+epoll_wait(6, [], 32, 50)               = 0
+clock_gettime(CLOCK_REALTIME, {tv_sec=1746139946, tv_nsec=83484245}) = 0
+epoll_wait(6, [], 32, 50)               = 0
+clock_gettime(CLOCK_REALTIME, {tv_sec=1746139946, tv_nsec=133596123}) = 0
+epoll_wait(6, [], 32, 50)               = 0
+clock_gettime(CLOCK_REALTIME, {tv_sec=1746139946, tv_nsec=183705987}) = 0
+epoll_wait(6, [], 32, 50)               = 0
+clock_gettime(CLOCK_REALTIME, {tv_sec=1746139946, tv_nsec=233812034}) = 0
+epoll_wait(6, [], 32, 50)               = 0
+clock_gettime(CLOCK_REALTIME, {tv_sec=1746139946, tv_nsec=283919405}) = 0
+epoll_wait(6, [], 32, 50)               = 0
+clock_gettime(CLOCK_REALTIME, {tv_sec=1746139946, tv_nsec=334030561}) = 0
+epoll_wait(6, [], 32, 50)               = 0
+clock_gettime(CLOCK_REALTIME, {tv_sec=1746139946, tv_nsec=384142550}) = 0
+epoll_wait(6, [], 32, 50)               = 0
+clock_gettime(CLOCK_REALTIME, {tv_sec=1746139946, tv_nsec=434251953}) = 0
+epoll_wait(6, [], 32, 50)               = 0
+clock_gettime(CLOCK_REALTIME, {tv_sec=1746139946, tv_nsec=484363932}) = 0
+epoll_wait(6, [], 32, 50)               = 0
+clock_gettime(CLOCK_REALTIME, {tv_sec=1746139946, tv_nsec=534494054}) = 0
+epoll_wait(6, [], 32, 50)               = 0
+clock_gettime(CLOCK_REALTIME, {tv_sec=1746139946, tv_nsec=584635248}) = 0
+epoll_wait(6, [], 32, 50)               = 0
+clock_gettime(CLOCK_REALTIME, {tv_sec=1746139946, tv_nsec=634774417}) = 0
+epoll_wait(6, [], 32, 50)               = 0
+clock_gettime(CLOCK_REALTIME, {tv_sec=1746139946, tv_nsec=693542336}) = 0
+epoll_wait(6, [], 32, 50)               = 0
+clock_gettime(CLOCK_REALTIME, {tv_sec=1746139946, tv_nsec=743710060}) = 0
+epoll_wait(6, [], 32, 50)               = 0
+clock_gettime(CLOCK_REALTIME, {tv_sec=1746139946, tv_nsec=793825264}) = 0
+epoll_wait(6, [], 32, 50)               = 0
+clock_gettime(CLOCK_REALTIME, {tv_sec=1746139946, tv_nsec=843936461}) = 0
+epoll_wait(6, [], 32, 50)               = 0
+clock_gettime(CLOCK_REALTIME, {tv_sec=1746139946, tv_nsec=894052888}) = 0
+epoll_wait(6, [], 32, 50)               = 0
+clock_gettime(CLOCK_REALTIME, {tv_sec=1746139946, tv_nsec=944155378}) = 0
+epoll_wait(6, [], 32, 50)               = 0
+clock_gettime(CLOCK_REALTIME, {tv_sec=1746139946, tv_nsec=994251687}) = 0
+epoll_wait(6, [{events=EPOLLIN, data={u32=886764112, u64=886764112}}], 32, 50) = 1
+read(7, "\2\0\0\0\0\0\0\0\20\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\n\5\10\0\20\260Aj"..., 1024) = 40
+read(7, "\3\0\0\0\0\0\0\0\f\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\n\5\10\0\20\260Ar"..., 984) = 36
+read(7, 0x7dcf1c000bbc, 948)            = -1 EAGAIN (Resource temporarily unavailable)
+read(7, 0x7dcf1c000f80, 1024)           = -1 EAGAIN (Resource temporarily unavailable)
+getpid()                                = 8347
+getpid()                                = 8347
+epoll_ctl(6, EPOLL_CTL_DEL, 14, NULL)   = 0
+close(14)                               = 0
+close(15)                               = 0
+unlink("/tmp/NVIDIA-treetracker-BJv53O/pipe-1-ownerReadingStream") = 0
+unlink("/tmp/NVIDIA-treetracker-BJv53O/pipe-1-ownerWritingStream") = 0
+write(8, "\3\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\1\0\0\0\0\0\0\0", 24) = 24
+clock_gettime(CLOCK_REALTIME, {tv_sec=1746139947, tv_nsec=19865114}) = 0
+epoll_wait(6, [{events=EPOLLHUP, data={u32=886764112, u64=886764112}}], 32, 50) = 1
+read(7, "", 1024)                       = 0
+clock_gettime(CLOCK_REALTIME, {tv_sec=1746139947, tv_nsec=22851524}) = 0
+rt_sigprocmask(SIG_BLOCK, ~[RT_1], NULL, 8) = 0
+madvise(0x7dcf29a00000, 8368128, MADV_DONTNEED) = 0
+exit(0)                                 = ?
++++ exited with 0 +++

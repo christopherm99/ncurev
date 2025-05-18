@@ -1,0 +1,647 @@
+rseq(0x7a3129400920, 0x20, 0, 0x53053053) = 0
+set_robust_list(0x7a31294002e0, 24)     = 0
+rt_sigprocmask(SIG_SETMASK, [], NULL, 8) = 0
+mmap(NULL, 134217728, PROT_NONE, MAP_PRIVATE|MAP_ANONYMOUS, -1, 0) = 0x7a3120c00000
+munmap(0x7a3120c00000, 54525952)        = 0
+munmap(0x7a3128000000, 12582912)        = 0
+mprotect(0x7a3124000000, 135168, PROT_READ|PROT_WRITE) = 0
+eventfd2(0, EFD_CLOEXEC|EFD_NONBLOCK)   = 3
+epoll_create1(EPOLL_CLOEXEC)            = 4
+timerfd_create(CLOCK_MONOTONIC, TFD_CLOEXEC) = 5
+epoll_ctl(4, EPOLL_CTL_ADD, 3, {events=EPOLLIN|EPOLLERR|EPOLLET, data={u32=603983120, u64=134351475969296}}) = 0
+write(3, "\1\0\0\0\0\0\0\0", 8)         = 8
+epoll_ctl(4, EPOLL_CTL_ADD, 5, {events=EPOLLIN|EPOLLERR, data={u32=603983132, u64=134351475969308}}) = 0
+socket(AF_UNIX, SOCK_STREAM, 0)         = 6
+epoll_ctl(4, EPOLL_CTL_ADD, 6, {events=EPOLLIN|EPOLLPRI|EPOLLERR|EPOLLHUP|EPOLLET, data={u32=603983232, u64=134351475969408}}) = 0
+setsockopt(6, SOL_SOCKET, SO_REUSEADDR, [1], 4) = 0
+bind(6, {sa_family=AF_UNIX, sun_path=@"nv_target_process_8372"}, 25) = 0
+listen(6, 128)                          = 0
+ioctl(6, FIONBIO, [1])                  = 0
+accept(6, NULL, NULL)                   = -1 EAGAIN (Resource temporarily unavailable)
+epoll_wait(4, [{events=EPOLLIN, data={u32=603983120, u64=134351475969296}}], 128, -1) = 1
+epoll_wait(4, [{events=EPOLLIN, data={u32=603983232, u64=134351475969408}}], 128, -1) = 1
+accept(6, NULL, NULL)                   = 11
+epoll_ctl(4, EPOLL_CTL_ADD, 11, {events=EPOLLIN|EPOLLPRI|EPOLLERR|EPOLLHUP|EPOLLET, data={u32=603987200, u64=134351475973376}}) = 0
+ioctl(11, FIONBIO, [1])                 = 0
+recvfrom(11, 0x7a3124000efc, 8, 0, NULL, NULL) = -1 EAGAIN (Resource temporarily unavailable)
+accept(6, NULL, NULL)                   = -1 EAGAIN (Resource temporarily unavailable)
+epoll_wait(4, [{events=EPOLLIN, data={u32=603987200, u64=134351475973376}}], 128, -1) = 1
+recvfrom(11, "T\10\2\0\0\0\0\30", 8, 0, NULL, NULL) = 8
+recvfrom(11, "\0\0\0\0\0\0\0\1\0\0\0\0\0\0\0\0\0\0\0\0\3\2\0\1", 24, 0, NULL, NULL) = 24
+epoll_wait(4, [], 128, 0)               = 0
+getpid()                                = 8372
+readlink("/proc/self/exe", "/home/chris/fun/ncurev/test", 4096) = 27
+openat(AT_FDCWD, "/proc/self/cmdline", O_RDONLY) = 12
+read(12, "/home/chris/fun/ncurev/./test\0", 8191) = 30
+read(12, "", 8191)                      = 0
+close(12)                               = 0
+clock_gettime(CLOCK_REALTIME, {tv_sec=1746139941, tv_nsec=13678317}) = 0
+recvfrom(11, 0x7a3124000efc, 8, 0, NULL, NULL) = -1 EAGAIN (Resource temporarily unavailable)
+epoll_wait(4, [], 128, 0)               = 0
+epoll_wait(4, [], 128, 0)               = 0
+sendto(11, "T\10\2\0\0\0\0\205", 8, MSG_NOSIGNAL, NULL, 0) = 8
+epoll_wait(4, [], 128, 0)               = 0
+sendto(11, "\0\0\0\0\0\0\0\1\0\0\0\0\0\0\0\1\0\0\0m\3\3\0\0\10\264A\22\33/ho"..., 133, MSG_NOSIGNAL, NULL, 0) = 133
+epoll_wait(4, [], 128, 0)               = 0
+epoll_wait(4, [{events=EPOLLIN|EPOLLHUP, data={u32=603987200, u64=134351475973376}}], 128, -1) = 1
+recvfrom(11, "", 8, 0, NULL, NULL)      = 0
+epoll_wait(4, [{events=EPOLLIN|EPOLLHUP, data={u32=603987200, u64=134351475973376}}], 128, 0) = 1
+shutdown(11, SHUT_RDWR)                 = 0
+epoll_ctl(4, EPOLL_CTL_DEL, 11, 0x7a31293fd460) = 0
+close(11)                               = 0
+epoll_wait(4, [], 128, 0)               = 0
+epoll_wait(4, [], 128, 0)               = 0
+epoll_wait(4, [], 128, 0)               = 0
+epoll_wait(4, [], 128, 0)               = 0
+epoll_wait(4, [{events=EPOLLIN, data={u32=603983232, u64=134351475969408}}], 128, -1) = 1
+accept(6, NULL, NULL)                   = 11
+epoll_ctl(4, EPOLL_CTL_ADD, 11, {events=EPOLLIN|EPOLLPRI|EPOLLERR|EPOLLHUP|EPOLLET, data={u32=603987200, u64=134351475973376}}) = 0
+ioctl(11, FIONBIO, [1])                 = 0
+recvfrom(11, 0x7a31240052dc, 8, 0, NULL, NULL) = -1 EAGAIN (Resource temporarily unavailable)
+accept(6, NULL, NULL)                   = -1 EAGAIN (Resource temporarily unavailable)
+epoll_wait(4, [{events=EPOLLIN, data={u32=603987200, u64=134351475973376}}], 128, -1) = 1
+recvfrom(11, "T\10\5\0\0\0\0\32", 8, 0, NULL, NULL) = 8
+recvfrom(11, 0x7a3124005060, 26, 0, NULL, NULL) = -1 EAGAIN (Resource temporarily unavailable)
+epoll_wait(4, [{events=EPOLLIN, data={u32=603987200, u64=134351475973376}}], 128, -1) = 1
+recvfrom(11, "\0\0\0\0\0\0\0\1\0\0\0\0\0\0\0\0\0\0\0\2\1\10\0\1\10\0", 26, 0, NULL, NULL) = 26
+futex(0x64521dc85b38, FUTEX_WAKE_PRIVATE, 1) = 1
+recvfrom(11, 0x7a31240052dc, 8, 0, NULL, NULL) = -1 EAGAIN (Resource temporarily unavailable)
+epoll_wait(4, [{events=EPOLLIN, data={u32=603983120, u64=134351475969296}}], 128, -1) = 1
+futex(0x64521dc8bbb8, FUTEX_WAIT_PRIVATE, 2, NULL) = -1 EAGAIN (Resource temporarily unavailable)
+futex(0x64521dc8bbb8, FUTEX_WAKE_PRIVATE, 1) = 0
+epoll_wait(4, [], 128, 0)               = 0
+epoll_wait(4, [], 128, 0)               = 0
+sendto(11, "T\10\5\0\0\0\0\34", 8, MSG_NOSIGNAL, NULL, 0) = 8
+epoll_wait(4, [], 128, 0)               = 0
+sendto(11, "\0\0\0\0\0\0\0\1\0\0\0\0\0\0\0\1\0\0\0\4\1\t\0\0\10\1\20\1", 28, MSG_NOSIGNAL, NULL, 0) = 28
+epoll_wait(4, [], 128, 0)               = 0
+epoll_wait(4, [{events=EPOLLIN, data={u32=603987200, u64=134351475973376}}], 128, -1) = 1
+recvfrom(11, "T\10\4\0\0\0\0\32", 8, 0, NULL, NULL) = 8
+recvfrom(11, "\0\0\0\0\0\0\0\2\0\0\0\0\0\0\0\0\0\0\0\2\1\1\0\1\10\2", 26, 0, NULL, NULL) = 26
+epoll_wait(4, [], 128, 0)               = 0
+futex(0x64521dc85b3c, FUTEX_WAKE_PRIVATE, 1) = 1
+recvfrom(11, 0x7a31240052dc, 8, 0, NULL, NULL) = -1 EAGAIN (Resource temporarily unavailable)
+epoll_wait(4, [{events=EPOLLIN, data={u32=603983120, u64=134351475969296}}], 128, -1) = 1
+futex(0x64521dc8bbb8, FUTEX_WAIT_PRIVATE, 2, NULL) = -1 EAGAIN (Resource temporarily unavailable)
+futex(0x64521dc8bbb8, FUTEX_WAKE_PRIVATE, 1) = 0
+epoll_wait(4, [{events=EPOLLIN, data={u32=603987200, u64=134351475973376}}], 128, 0) = 1
+recvfrom(11, "T\10\6\0\0\0\0{", 8, 0, NULL, NULL) = 8
+recvfrom(11, 0x7a3124007240, 123, 0, NULL, NULL) = -1 EAGAIN (Resource temporarily unavailable)
+epoll_wait(4, [{events=EPOLLIN, data={u32=603987200, u64=134351475973376}}], 128, 0) = 1
+sendto(11, "T\10\4\0\0\0\0\32", 8, MSG_NOSIGNAL, NULL, 0) = 8
+recvfrom(11, "\0\0\0\0\0\0\0\3\0\0\0\0\0\0\0\0\0\0\0c\1\1\0\1\n\6\10\6\22\2\10\0"..., 123, 0, NULL, NULL) = 123
+recvfrom(11, "T\10\4\0\0\0\0\34", 8, 0, NULL, NULL) = 8
+epoll_wait(4, [{events=EPOLLIN, data={u32=603987200, u64=134351475973376}}], 128, 0) = 1
+sendto(11, "\0\0\0\0\0\0\0\2\0\0\0\0\0\0\0\2\0\0\0\2\1\2\0\0\10\0", 26, MSG_NOSIGNAL, NULL, 0) = 26
+recvfrom(11, "\0\0\0\0\0\0\0\4\0\0\0\0\0\0\0\0\0\0\0\4\1\1\0\1\10\6(\0", 28, 0, NULL, NULL) = 28
+epoll_wait(4, [], 128, 0)               = 0
+sendto(11, "T\10\6\0\0\0\0\30", 8, MSG_NOSIGNAL, NULL, 0) = 8
+futex(0x64521dc85b38, FUTEX_WAKE_PRIVATE, 1) = 1
+recvfrom(11, "T\10\4\0\0\0\0\32", 8, 0, NULL, NULL) = 8
+epoll_wait(4, [{events=EPOLLIN, data={u32=603987200, u64=134351475973376}}], 128, 0) = 1
+sendto(11, "\0\0\0\0\0\0\0\3\0\0\0\0\0\0\0\3\0\0\0\0\1\2\0\0", 24, MSG_NOSIGNAL, NULL, 0) = 24
+recvfrom(11, "\0\0\0\0\0\0\0\5\0\0\0\0\0\0\0\0\0\0\0\2\1\1\0\1\10\2", 26, 0, NULL, NULL) = 26
+epoll_wait(4, [], 128, 0)               = 0
+futex(0x64521dc85b3c, FUTEX_WAKE_PRIVATE, 1) = 1
+recvfrom(11, "T\10\4\0\0\0\0\34", 8, 0, NULL, NULL) = 8
+epoll_wait(4, [], 128, 0)               = 0
+recvfrom(11, 0x7a3124007360, 28, 0, NULL, NULL) = -1 EAGAIN (Resource temporarily unavailable)
+sendto(11, "T\10\4\0\0\0\0\32", 8, MSG_NOSIGNAL, NULL, 0) = 8
+epoll_wait(4, [{events=EPOLLIN, data={u32=603987200, u64=134351475973376}}], 128, 0) = 1
+sendto(11, "\0\0\0\0\0\0\0\4\0\0\0\0\0\0\0\4\0\0\0\2\1\2\0\0\10\0", 26, MSG_NOSIGNAL, NULL, 0) = 26
+recvfrom(11, "\0\0\0\0\0\0\0\6\0\0\0\0\0\0\0\0\0\0\0\4\1\v\0\1\10\1\20\0", 28, 0, NULL, NULL) = 28
+futex(0x64521dc85b38, FUTEX_WAKE_PRIVATE, 1) = 1
+recvfrom(11, "T\10\4\0\0\0\0\34", 8, 0, NULL, NULL) = 8
+epoll_wait(4, [], 128, 0)               = 0
+sendto(11, "T\10\4\0\0\0\0\32", 8, MSG_NOSIGNAL, NULL, 0) = 8
+recvfrom(11, "\0\0\0\0\0\0\0\7\0\0\0\0\0\0\0\0\0\0\0\4\1\v\0\1\10\0\20\0", 28, 0, NULL, NULL) = 28
+epoll_wait(4, [], 128, 0)               = 0
+sendto(11, "\0\0\0\0\0\0\0\5\0\0\0\0\0\0\0\5\0\0\0\2\1\2\0\0\10\0", 26, MSG_NOSIGNAL, NULL, 0) = 26
+futex(0x64521dc85b3c, FUTEX_WAKE_PRIVATE, 1) = 1
+recvfrom(11, "T\10\4\0\0\0\0\"", 8, 0, NULL, NULL) = 8
+epoll_wait(4, [{events=EPOLLIN, data={u32=603987200, u64=134351475973376}}], 128, 0) = 1
+recvfrom(11, "\0\0\0\0\0\0\0\10\0\0\0\0\0\0\0\0\0\0\0\n\1\1\0\1\10\3\22\6\22\4\10\0"..., 34, 0, NULL, NULL) = 34
+sendto(11, "T\10\4\0\0\0\0\32", 8, MSG_NOSIGNAL, NULL, 0) = 8
+epoll_wait(4, [{events=EPOLLIN, data={u32=603987200, u64=134351475973376}}], 128, 0) = 1
+futex(0x64521dc85b38, FUTEX_WAKE_PRIVATE, 1) = 1
+recvfrom(11, "T\10\4\0\0\0\0\32", 8, 0, NULL, NULL) = 8
+sendto(11, "\0\0\0\0\0\0\0\6\0\0\0\0\0\0\0\6\0\0\0\2\1\f\0\0\10\0", 26, MSG_NOSIGNAL, NULL, 0) = 26
+epoll_wait(4, [{events=EPOLLIN, data={u32=603987200, u64=134351475973376}}], 128, 0) = 1
+recvfrom(11, "\0\0\0\0\0\0\0\t\0\0\0\0\0\0\0\0\0\0\0\2\1\5\0\1\10\1", 26, 0, NULL, NULL) = 26
+sendto(11, "T\10\4\0\0\0\0\32", 8, MSG_NOSIGNAL, NULL, 0) = 8
+epoll_wait(4, [{events=EPOLLIN, data={u32=603987200, u64=134351475973376}}], 128, 0) = 1
+futex(0x64521dc85b3c, FUTEX_WAKE_PRIVATE, 1) = 1
+recvfrom(11, "T\10\5\0\0\0\0\30", 8, 0, NULL, NULL) = 8
+sendto(11, "\0\0\0\0\0\0\0\7\0\0\0\0\0\0\0\7\0\0\0\2\1\f\0\0\10\0", 26, MSG_NOSIGNAL, NULL, 0) = 26
+epoll_wait(4, [{events=EPOLLIN, data={u32=603987200, u64=134351475973376}}], 128, 0) = 1
+recvfrom(11, "\0\0\0\0\0\0\0\n\0\0\0\0\0\0\0\0\0\0\0\0\1\3\0\1", 24, 0, NULL, NULL) = 24
+sendto(11, "T\10\4\0\0\0\0\32", 8, MSG_NOSIGNAL, NULL, 0) = 8
+epoll_wait(4, [], 128, 0)               = 0
+futex(0x64521dc85b38, FUTEX_WAKE_PRIVATE, 1) = 1
+recvfrom(11, 0x7a31240052dc, 8, 0, NULL, NULL) = -1 EAGAIN (Resource temporarily unavailable)
+sendto(11, "\0\0\0\0\0\0\0\10\0\0\0\0\0\0\0\10\0\0\0\2\1\2\0\0\10\0", 26, MSG_NOSIGNAL, NULL, 0) = 26
+epoll_wait(4, [], 128, 0)               = 0
+sendto(11, "T\10\4\0\0\0\0\32", 8, MSG_NOSIGNAL, NULL, 0) = 8
+epoll_wait(4, [], 128, 0)               = 0
+sendto(11, "\0\0\0\0\0\0\0\t\0\0\0\0\0\0\0\t\0\0\0\2\1\6\0\0\10\0", 26, MSG_NOSIGNAL, NULL, 0) = 26
+epoll_wait(4, [], 128, 0)               = 0
+sendto(11, "T\10\5\0\0\0\0\32", 8, MSG_NOSIGNAL, NULL, 0) = 8
+epoll_wait(4, [], 128, 0)               = 0
+sendto(11, "\0\0\0\0\0\0\0\n\0\0\0\0\0\0\0\n\0\0\0\2\1\4\0\0\10\0", 26, MSG_NOSIGNAL, NULL, 0) = 26
+epoll_wait(4, [], 128, 0)               = 0
+epoll_wait(4, [{events=EPOLLIN, data={u32=603983120, u64=134351475969296}}], 128, -1) = 1
+mprotect(0x7a3124021000, 4096, PROT_READ|PROT_WRITE) = 0
+mprotect(0x7a3124022000, 4096, PROT_READ|PROT_WRITE) = 0
+mprotect(0x7a3124023000, 4096, PROT_READ|PROT_WRITE) = 0
+mprotect(0x7a3124024000, 20480, PROT_READ|PROT_WRITE) = 0
+mprotect(0x7a3124029000, 4096, PROT_READ|PROT_WRITE) = 0
+mprotect(0x7a312402a000, 4096, PROT_READ|PROT_WRITE) = 0
+mprotect(0x7a312402b000, 4096, PROT_READ|PROT_WRITE) = 0
+mprotect(0x7a312402c000, 4096, PROT_READ|PROT_WRITE) = 0
+mprotect(0x7a312402d000, 4096, PROT_READ|PROT_WRITE) = 0
+mprotect(0x7a312402e000, 4096, PROT_READ|PROT_WRITE) = 0
+mprotect(0x7a312402f000, 4096, PROT_READ|PROT_WRITE) = 0
+futex(0x7a31398fdcc4, FUTEX_WAKE_PRIVATE, 2147483647) = 0
+epoll_wait(4, [], 128, 0)               = 0
+epoll_wait(4, [], 128, 0)               = 0
+sendto(11, "T\10\4\0\0\0\0\277", 8, MSG_NOSIGNAL, NULL, 0) = 8
+epoll_wait(4, [], 128, 0)               = 0
+sendto(11, "\0\0\0\0\0\0\0\v\0\0\0\0\0\0\0\0\0\0\0\247\2\1\0\0\n\32\10\1\20\1\30\264"..., 191, MSG_NOSIGNAL, NULL, 0) = 191
+epoll_wait(4, [], 128, 0)               = 0
+epoll_wait(4, [{events=EPOLLIN, data={u32=603983120, u64=134351475969296}}], 128, -1) = 1
+mprotect(0x7a3124030000, 4096, PROT_READ|PROT_WRITE) = 0
+epoll_wait(4, [], 128, 0)               = 0
+mprotect(0x7a3124031000, 4096, PROT_READ|PROT_WRITE) = 0
+epoll_wait(4, [], 128, 0)               = 0
+sendto(11, "T\10\n\0\0\0\24H", 8, MSG_NOSIGNAL, NULL, 0) = 8
+epoll_wait(4, [], 128, 0)               = 0
+sendto(11, "\0\0\0\0\0\0\0\f\0\0\0\0\0\0\0\0\0\0\0240\1\6\0\0\10\0\20\1\32\f\n\2"..., 5192, MSG_NOSIGNAL, NULL, 0) = 5192
+epoll_wait(4, [], 128, 0)               = 0
+epoll_wait(4, [{events=EPOLLIN, data={u32=603983120, u64=134351475969296}}], 128, -1) = 1
+epoll_wait(4, [], 128, 0)               = 0
+epoll_wait(4, [], 128, 0)               = 0
+sendto(11, "T\10\n\0\0\0\2\217", 8, MSG_NOSIGNAL, NULL, 0) = 8
+epoll_wait(4, [], 128, 0)               = 0
+sendto(11, "\0\0\0\0\0\0\0\r\0\0\0\0\0\0\0\0\0\0\2w\1\6\0\0\10\0\20\2\"\360\4\n"..., 655, MSG_NOSIGNAL, NULL, 0) = 655
+epoll_wait(4, [], 128, 0)               = 0
+epoll_wait(4, [{events=EPOLLIN, data={u32=603983120, u64=134351475969296}}], 128, -1) = 1
+epoll_wait(4, [], 128, 0)               = 0
+epoll_wait(4, [], 128, 0)               = 0
+sendto(11, "T\10\n\0\0\0\2\217", 8, MSG_NOSIGNAL, NULL, 0) = 8
+epoll_wait(4, [], 128, 0)               = 0
+sendto(11, "\0\0\0\0\0\0\0\16\0\0\0\0\0\0\0\0\0\0\2w\1\6\0\0\10\0\20\3\"\360\4\n"..., 655, MSG_NOSIGNAL, NULL, 0) = 655
+epoll_wait(4, [], 128, 0)               = 0
+epoll_wait(4, [{events=EPOLLIN, data={u32=603983120, u64=134351475969296}}], 128, -1) = 1
+epoll_wait(4, [], 128, 0)               = 0
+epoll_wait(4, [], 128, 0)               = 0
+sendto(11, "T\10\n\0\0\0\2\217", 8, MSG_NOSIGNAL, NULL, 0) = 8
+epoll_wait(4, [], 128, 0)               = 0
+sendto(11, "\0\0\0\0\0\0\0\17\0\0\0\0\0\0\0\0\0\0\2w\1\6\0\0\10\0\20\4\"\360\4\n"..., 655, MSG_NOSIGNAL, NULL, 0) = 655
+epoll_wait(4, [], 128, 0)               = 0
+epoll_wait(4, [{events=EPOLLIN, data={u32=603983120, u64=134351475969296}}], 128, -1) = 1
+epoll_wait(4, [], 128, 0)               = 0
+epoll_wait(4, [], 128, 0)               = 0
+sendto(11, "T\10\n\0\0\0\1\213", 8, MSG_NOSIGNAL, NULL, 0) = 8
+epoll_wait(4, [], 128, 0)               = 0
+sendto(11, "\0\0\0\0\0\0\0\20\0\0\0\0\0\0\0\0\0\0\1s\1\6\0\0\10\3\20\1\32\f\n\2"..., 395, MSG_NOSIGNAL, NULL, 0) = 395
+epoll_wait(4, [], 128, 0)               = 0
+epoll_wait(4, [], 128, 0)               = 0
+sendto(11, "T\10\n\0\0\0\0\242", 8, MSG_NOSIGNAL, NULL, 0) = 8
+epoll_wait(4, [], 128, 0)               = 0
+sendto(11, "\0\0\0\0\0\0\0\21\0\0\0\0\0\0\0\0\0\0\0\212\1\6\0\0\10\3\20\2\"\203\1\n"..., 162, MSG_NOSIGNAL, NULL, 0) = 162
+epoll_wait(4, [], 128, 0)               = 0
+sendto(11, "T\10\n\0\0\0\0\242", 8, MSG_NOSIGNAL, NULL, 0) = 8
+epoll_wait(4, [], 128, 0)               = 0
+sendto(11, "\0\0\0\0\0\0\0\22\0\0\0\0\0\0\0\0\0\0\0\212\1\6\0\0\10\3\20\3\"\203\1\n"..., 162, MSG_NOSIGNAL, NULL, 0) = 162
+epoll_wait(4, [], 128, 0)               = 0
+sendto(11, "T\10\n\0\0\0\0\242", 8, MSG_NOSIGNAL, NULL, 0) = 8
+epoll_wait(4, [], 128, 0)               = 0
+sendto(11, "\0\0\0\0\0\0\0\23\0\0\0\0\0\0\0\0\0\0\0\212\1\6\0\0\10\3\20\4\"\203\1\n"..., 162, MSG_NOSIGNAL, NULL, 0) = 162
+epoll_wait(4, [], 128, 0)               = 0
+sendto(11, "T\10\n\0\0\0\0\242", 8, MSG_NOSIGNAL, NULL, 0) = 8
+epoll_wait(4, [], 128, 0)               = 0
+sendto(11, "\0\0\0\0\0\0\0\24\0\0\0\0\0\0\0\0\0\0\0\212\1\6\0\0\10\3\20\5\"\203\1\n"..., 162, MSG_NOSIGNAL, NULL, 0) = 162
+epoll_wait(4, [], 128, 0)               = 0
+sendto(11, "T\10\n\0\0\0\0\242", 8, MSG_NOSIGNAL, NULL, 0) = 8
+epoll_wait(4, [], 128, 0)               = 0
+sendto(11, "\0\0\0\0\0\0\0\25\0\0\0\0\0\0\0\0\0\0\0\212\1\6\0\0\10\3\20\6\"\203\1\n"..., 162, MSG_NOSIGNAL, NULL, 0) = 162
+epoll_wait(4, [], 128, 0)               = 0
+sendto(11, "T\10\n\0\0\0\0\242", 8, MSG_NOSIGNAL, NULL, 0) = 8
+epoll_wait(4, [], 128, 0)               = 0
+sendto(11, "\0\0\0\0\0\0\0\26\0\0\0\0\0\0\0\0\0\0\0\212\1\6\0\0\10\3\20\7\"\203\1\n"..., 162, MSG_NOSIGNAL, NULL, 0) = 162
+epoll_wait(4, [], 128, 0)               = 0
+sendto(11, "T\10\n\0\0\0\0\242", 8, MSG_NOSIGNAL, NULL, 0) = 8
+epoll_wait(4, [], 128, 0)               = 0
+sendto(11, "\0\0\0\0\0\0\0\27\0\0\0\0\0\0\0\0\0\0\0\212\1\6\0\0\10\3\20\10\"\203\1\n"..., 162, MSG_NOSIGNAL, NULL, 0) = 162
+epoll_wait(4, [], 128, 0)               = 0
+sendto(11, "T\10\n\0\0\0\0\242", 8, MSG_NOSIGNAL, NULL, 0) = 8
+epoll_wait(4, [], 128, 0)               = 0
+sendto(11, "\0\0\0\0\0\0\0\30\0\0\0\0\0\0\0\0\0\0\0\212\1\6\0\0\10\3\20\t\"\203\1\n"..., 162, MSG_NOSIGNAL, NULL, 0) = 162
+epoll_wait(4, [], 128, 0)               = 0
+sendto(11, "T\10\n\0\0\0\0\242", 8, MSG_NOSIGNAL, NULL, 0) = 8
+epoll_wait(4, [], 128, 0)               = 0
+sendto(11, "\0\0\0\0\0\0\0\31\0\0\0\0\0\0\0\0\0\0\0\212\1\6\0\0\10\3\20\n\"\203\1\n"..., 162, MSG_NOSIGNAL, NULL, 0) = 162
+epoll_wait(4, [], 128, 0)               = 0
+epoll_wait(4, [{events=EPOLLIN, data={u32=603983120, u64=134351475969296}}], 128, -1) = 1
+epoll_wait(4, [], 128, 0)               = 0
+epoll_wait(4, [], 128, 0)               = 0
+sendto(11, "T\10\n\0\0\0\0\307", 8, MSG_NOSIGNAL, NULL, 0) = 8
+epoll_wait(4, [], 128, 0)               = 0
+sendto(11, "\0\0\0\0\0\0\0\32\0\0\0\0\0\0\0\0\0\0\0\257\1\6\0\0\10\1\20\1\32\f\n\2"..., 199, MSG_NOSIGNAL, NULL, 0) = 199
+epoll_wait(4, [], 128, 0)               = 0
+epoll_wait(4, [{events=EPOLLIN, data={u32=603983120, u64=134351475969296}}], 128, -1) = 1
+epoll_wait(4, [], 128, 0)               = 0
+epoll_wait(4, [], 128, 0)               = 0
+sendto(11, "T\10\n\0\0\0\1t", 8, MSG_NOSIGNAL, NULL, 0) = 8
+epoll_wait(4, [], 128, 0)               = 0
+sendto(11, "\0\0\0\0\0\0\0\33\0\0\0\0\0\0\0\0\0\0\1\\\1\6\0\0\10\t\20\1\32\f\n\2"..., 372, MSG_NOSIGNAL, NULL, 0) = 372
+epoll_wait(4, [], 128, 0)               = 0
+epoll_wait(4, [{events=EPOLLIN, data={u32=603983120, u64=134351475969296}}], 128, -1) = 1
+epoll_wait(4, [], 128, 0)               = 0
+epoll_wait(4, [], 128, 0)               = 0
+sendto(11, "T\10\n\0\0\0\0n", 8, MSG_NOSIGNAL, NULL, 0) = 8
+epoll_wait(4, [], 128, 0)               = 0
+sendto(11, "\0\0\0\0\0\0\0\34\0\0\0\0\0\0\0\0\0\0\0V\1\6\0\0\10\t\20\2\"P\n\2"..., 110, MSG_NOSIGNAL, NULL, 0) = 110
+epoll_wait(4, [], 128, 0)               = 0
+epoll_wait(4, [{events=EPOLLIN, data={u32=603983120, u64=134351475969296}}], 128, -1) = 1
+epoll_wait(4, [], 128, 0)               = 0
+epoll_wait(4, [], 128, 0)               = 0
+sendto(11, "T\10\n\0\0\0\0n", 8, MSG_NOSIGNAL, NULL, 0) = 8
+epoll_wait(4, [], 128, 0)               = 0
+sendto(11, "\0\0\0\0\0\0\0\35\0\0\0\0\0\0\0\0\0\0\0V\1\6\0\0\10\t\20\3\"P\n\2"..., 110, MSG_NOSIGNAL, NULL, 0) = 110
+epoll_wait(4, [], 128, 0)               = 0
+epoll_wait(4, [{events=EPOLLIN, data={u32=603983120, u64=134351475969296}}], 128, -1) = 1
+epoll_wait(4, [], 128, 0)               = 0
+epoll_wait(4, [], 128, 0)               = 0
+sendto(11, "T\10\n\0\0\0\1\37", 8, MSG_NOSIGNAL, NULL, 0) = 8
+epoll_wait(4, [], 128, 0)               = 0
+sendto(11, "\0\0\0\0\0\0\0\36\0\0\0\0\0\0\0\0\0\0\1\7\1\6\0\0\10\6\20\1\32\f\n\2"..., 287, MSG_NOSIGNAL, NULL, 0) = 287
+epoll_wait(4, [], 128, 0)               = 0
+sendto(11, "T\10\n\0\0\0\0\200", 8, MSG_NOSIGNAL, NULL, 0) = 8
+epoll_wait(4, [], 128, 0)               = 0
+sendto(11, "\0\0\0\0\0\0\0\37\0\0\0\0\0\0\0\0\0\0\0h\1\6\0\0\10\4\20\1\32\f\n\2"..., 128, MSG_NOSIGNAL, NULL, 0) = 128
+epoll_wait(4, [], 128, 0)               = 0
+epoll_wait(4, [{events=EPOLLIN, data={u32=603983120, u64=134351475969296}}], 128, -1) = 1
+epoll_wait(4, [], 128, 0)               = 0
+epoll_wait(4, [], 128, 0)               = 0
+sendto(11, "T\10\n\0\0\0\1\36", 8, MSG_NOSIGNAL, NULL, 0) = 8
+epoll_wait(4, [], 128, 0)               = 0
+sendto(11, "\0\0\0\0\0\0\0 \0\0\0\0\0\0\0\0\0\0\1\6\1\6\0\0\10\5\20\1\32\f\n\2"..., 286, MSG_NOSIGNAL, NULL, 0) = 286
+epoll_wait(4, [], 128, 0)               = 0
+epoll_wait(4, [{events=EPOLLIN, data={u32=603983120, u64=134351475969296}}], 128, -1) = 1
+futex(0x64521dc8bbb8, FUTEX_WAIT_PRIVATE, 2, NULL) = -1 EAGAIN (Resource temporarily unavailable)
+futex(0x64521dc8bbb8, FUTEX_WAKE_PRIVATE, 1) = 0
+epoll_wait(4, [], 128, 0)               = 0
+epoll_wait(4, [], 128, 0)               = 0
+sendto(11, "T\10\n\0\0\0\4n", 8, MSG_NOSIGNAL, NULL, 0) = 8
+epoll_wait(4, [], 128, 0)               = 0
+sendto(11, "\0\0\0\0\0\0\0!\0\0\0\0\0\0\0\0\0\0\4V\1\6\0\0\10\7\20\1\32\f\n\2"..., 1134, MSG_NOSIGNAL, NULL, 0) = 1134
+epoll_wait(4, [], 128, 0)               = 0
+sendto(11, "T\10\n\0\0\0\1\37", 8, MSG_NOSIGNAL, NULL, 0) = 8
+epoll_wait(4, [], 128, 0)               = 0
+sendto(11, "\0\0\0\0\0\0\0\"\0\0\0\0\0\0\0\0\0\0\1\7\1\6\0\0\10\5\20\1\32\f\n\2"..., 287, MSG_NOSIGNAL, NULL, 0) = 287
+epoll_wait(4, [], 128, 0)               = 0
+epoll_wait(4, [{events=EPOLLIN, data={u32=603983120, u64=134351475969296}}], 128, -1) = 1
+futex(0x64521dc8bbb8, FUTEX_WAIT_PRIVATE, 2, NULL) = -1 EAGAIN (Resource temporarily unavailable)
+futex(0x64521dc8bbb8, FUTEX_WAKE_PRIVATE, 1) = 0
+epoll_wait(4, [], 128, 0)               = 0
+epoll_wait(4, [], 128, 0)               = 0
+sendto(11, "T\10\4\0\0\0\0\260", 8, MSG_NOSIGNAL, NULL, 0) = 8
+epoll_wait(4, [], 128, 0)               = 0
+sendto(11, "\0\0\0\0\0\0\0#\0\0\0\0\0\0\0\0\0\0\0\230\2\1\0\0\n\34\10\375\6\20\375\6"..., 176, MSG_NOSIGNAL, NULL, 0) = 176
+epoll_wait(4, [], 128, 0)               = 0
+epoll_wait(4, [], 128, 0)               = 0
+sendto(11, "T\10\4\0\0\0\0\260", 8, MSG_NOSIGNAL, NULL, 0) = 8
+epoll_wait(4, [], 128, 0)               = 0
+sendto(11, "\0\0\0\0\0\0\0$\0\0\0\0\0\0\0\0\0\0\0\230\2\1\0\0\n\34\10\375\6\20\375\6"..., 176, MSG_NOSIGNAL, NULL, 0) = 176
+epoll_wait(4, [], 128, 0)               = 0
+sendto(11, "T\10\5\0\0\0\0\37", 8, MSG_NOSIGNAL, NULL, 0) = 8
+epoll_wait(4, [], 128, 0)               = 0
+sendto(11, "\0\0\0\0\0\0\0%\0\0\0\0\0\0\0\0\0\0\0\7\1\7\0\0\n\3\10\264A\20\0", 31, MSG_NOSIGNAL, NULL, 0) = 31
+epoll_wait(4, [], 128, 0)               = 0
+epoll_wait(4, [{events=EPOLLIN, data={u32=603987200, u64=134351475973376}}], 128, -1) = 1
+recvfrom(11, "T\10\5\0\0\0\0\33", 8, 0, NULL, NULL) = 8
+recvfrom(11, 0x64521e72b2e0, 27, 0, NULL, NULL) = -1 EAGAIN (Resource temporarily unavailable)
+epoll_wait(4, [{events=EPOLLIN, data={u32=603987200, u64=134351475973376}}], 128, -1) = 1
+recvfrom(11, "\0\0\0\0\0\0\0\v\0\0\0\0\0\0\0\0\0\0\0\3\4\5\0\0\10\264A", 27, 0, NULL, NULL) = 27
+futex(0x64521dc85b38, FUTEX_WAKE_PRIVATE, 1) = 1
+recvfrom(11, 0x7a31240052dc, 8, 0, NULL, NULL) = -1 EAGAIN (Resource temporarily unavailable)
+epoll_wait(4, [{events=EPOLLIN, data={u32=603983120, u64=134351475969296}}], 128, -1) = 1
+futex(0x64521dc8bbb8, FUTEX_WAIT_PRIVATE, 2, NULL) = -1 EAGAIN (Resource temporarily unavailable)
+futex(0x64521dc8bbb8, FUTEX_WAKE_PRIVATE, 1) = 0
+epoll_wait(4, [{events=EPOLLIN, data={u32=603983120, u64=134351475969296}}], 128, -1) = 1
+epoll_wait(4, [], 128, 0)               = 0
+mprotect(0x7a3124032000, 8192, PROT_READ|PROT_WRITE) = 0
+epoll_wait(4, [], 128, 0)               = 0
+sendto(11, "T\10\6\0\0\0\34\"", 8, MSG_NOSIGNAL, NULL, 0) = 8
+epoll_wait(4, [], 128, 0)               = 0
+sendto(11, "\0\0\0\0\0\0\0&\0\0\0\0\0\0\0\0\0\0\34\n\3\4\0\0\10\264A\22\n550"..., 7202, MSG_NOSIGNAL, NULL, 0) = 7202
+epoll_wait(4, [], 128, 0)               = 0
+epoll_wait(4, [{events=EPOLLIN, data={u32=603987200, u64=134351475973376}}], 128, -1) = 1
+recvfrom(11, "T\10\2\0\0\0\0\30", 8, 0, NULL, NULL) = 8
+recvfrom(11, "\0\0\0\0\0\0\0\f\0\0\0\0\0\0\0\0\0\0\0\0\2\2\0\1", 24, 0, NULL, NULL) = 24
+epoll_wait(4, [], 128, 0)               = 0
+uname({sysname="Linux", nodename="temescal", ...}) = 0
+openat(AT_FDCWD, "/proc/cpuinfo", O_RDONLY) = 72
+fstat(72, {st_mode=S_IFREG|0444, st_size=0, ...}) = 0
+read(72, "processor\t: 0\nvendor_id\t: Authen"..., 1024) = 1024
+close(72)                               = 0
+socket(AF_NETLINK, SOCK_RAW|SOCK_CLOEXEC, NETLINK_ROUTE) = 72
+bind(72, {sa_family=AF_NETLINK, nl_pid=0, nl_groups=00000000}, 12) = 0
+getsockname(72, {sa_family=AF_NETLINK, nl_pid=8372, nl_groups=00000000}, [12]) = 0
+sendto(72, [{nlmsg_len=20, nlmsg_type=RTM_GETLINK, nlmsg_flags=NLM_F_REQUEST|NLM_F_DUMP, nlmsg_seq=1746139943, nlmsg_pid=0}, {ifi_family=AF_UNSPEC, ...}], 20, 0, {sa_family=AF_NETLINK, nl_pid=0, nl_groups=00000000}, 12) = 20
+recvmsg(72, {msg_name={sa_family=AF_NETLINK, nl_pid=0, nl_groups=00000000}, msg_namelen=12, msg_iov=[{iov_base=[[{nlmsg_len=1444, nlmsg_type=RTM_NEWLINK, nlmsg_flags=NLM_F_MULTI, nlmsg_seq=1746139943, nlmsg_pid=8372}, {ifi_family=AF_UNSPEC, ifi_type=ARPHRD_LOOPBACK, ifi_index=if_nametoindex("lo"), ifi_flags=IFF_UP|IFF_LOOPBACK|IFF_RUNNING|IFF_LOWER_UP, ifi_change=0}, [[{nla_len=7, nla_type=IFLA_IFNAME}, "lo"], [{nla_len=8, nla_type=IFLA_TXQLEN}, 1000], [{nla_len=5, nla_type=IFLA_OPERSTATE}, 0], [{nla_len=5, nla_type=IFLA_LINKMODE}, 0], [{nla_len=8, nla_type=IFLA_MTU}, 65536], [{nla_len=8, nla_type=IFLA_MIN_MTU}, 0], [{nla_len=8, nla_type=IFLA_MAX_MTU}, 0], [{nla_len=8, nla_type=IFLA_GROUP}, 0], [{nla_len=8, nla_type=IFLA_PROMISCUITY}, 0], [{nla_len=8, nla_type=IFLA_ALLMULTI}, 0], [{nla_len=8, nla_type=IFLA_NUM_TX_QUEUES}, 1], [{nla_len=8, nla_type=IFLA_GSO_MAX_SEGS}, 65535], [{nla_len=8, nla_type=IFLA_GSO_MAX_SIZE}, 65536], [{nla_len=8, nla_type=IFLA_GRO_MAX_SIZE}, 65536], [{nla_len=8, nla_type=IFLA_GSO_IPV4_MAX_SIZE}, 65536], [{nla_len=8, nla_type=IFLA_GRO_IPV4_MAX_SIZE}, 65536], [{nla_len=8, nla_type=IFLA_TSO_MAX_SIZE}, 524280], [{nla_len=8, nla_type=IFLA_TSO_MAX_SEGS}, 65535], [{nla_len=8, nla_type=IFLA_NUM_RX_QUEUES}, 1], [{nla_len=5, nla_type=IFLA_CARRIER}, 1], [{nla_len=12, nla_type=IFLA_QDISC}, "noqueue"], [{nla_len=8, nla_type=IFLA_CARRIER_CHANGES}, 0], [{nla_len=8, nla_type=IFLA_CARRIER_UP_COUNT}, 0], [{nla_len=8, nla_type=IFLA_CARRIER_DOWN_COUNT}, 0], [{nla_len=5, nla_type=IFLA_PROTO_DOWN}, 0], [{nla_len=36, nla_type=IFLA_MAP}, {mem_start=0, mem_end=0, base_addr=0, irq=0, dma=0, port=0}], [{nla_len=10, nla_type=IFLA_ADDRESS}, 00:00:00:00:00:00], [{nla_len=10, nla_type=IFLA_BROADCAST}, 00:00:00:00:00:00], [{nla_len=204, nla_type=IFLA_STATS64}, {rx_packets=94, tx_packets=94, rx_bytes=10196, tx_bytes=10196, rx_errors=0, tx_errors=0, rx_dropped=0, tx_dropped=0, multicast=0, collisions=0, rx_length_errors=0, rx_over_errors=0, rx_crc_errors=0, rx_frame_errors=0, rx_fifo_errors=0, rx_missed_errors=0, tx_aborted_errors=0, tx_carrier_errors=0, tx_fifo_errors=0, tx_heartbeat_errors=0, tx_window_errors=0, rx_compressed=0, tx_compressed=0, rx_nohandler=0, rx_otherhost_dropped=0}], [{nla_len=100, nla_type=IFLA_STATS}, {rx_packets=94, tx_packets=94, rx_bytes=10196, tx_bytes=10196, rx_errors=0, tx_errors=0, rx_dropped=0, tx_dropped=0, multicast=0, collisions=0, rx_length_errors=0, rx_over_errors=0, rx_crc_errors=0, rx_frame_errors=0, rx_fifo_errors=0, rx_missed_errors=0, tx_aborted_errors=0, tx_carrier_errors=0, tx_fifo_errors=0, tx_heartbeat_errors=0, tx_window_errors=0, rx_compressed=0, tx_compressed=0, rx_nohandler=0}], [{nla_len=12, nla_type=IFLA_XDP}, [{nla_len=5, nla_type=IFLA_XDP_ATTACHED}, XDP_ATTACHED_NONE]], [{nla_len=824, nla_type=IFLA_AF_SPEC}, [[{nla_len=12, nla_type=AF_MCTP}, [{nla_len=8, nla_type=IFLA_MCTP_NET}, 1]], [{nla_len=140, nla_type=AF_INET}, [{nla_len=136, nla_type=IFLA_INET_CONF}, [[IPV4_DEVCONF_FORWARDING-1]=1, [IPV4_DEVCONF_MC_FORWARDING-1]=0, [IPV4_DEVCONF_PROXY_ARP-1]=0, [IPV4_DEVCONF_ACCEPT_REDIRECTS-1]=1, [IPV4_DEVCONF_SECURE_REDIRECTS-1]=1, [IPV4_DEVCONF_SEND_REDIRECTS-1]=1, [IPV4_DEVCONF_SHARED_MEDIA-1]=1, [IPV4_DEVCONF_RP_FILTER-1]=0, [IPV4_DEVCONF_ACCEPT_SOURCE_ROUTE-1]=1, [IPV4_DEVCONF_BOOTP_RELAY-1]=0, [IPV4_DEVCONF_LOG_MARTIANS-1]=0, [IPV4_DEVCONF_TAG-1]=0, [IPV4_DEVCONF_ARPFILTER-1]=0, [IPV4_DEVCONF_MEDIUM_ID-1]=0, [IPV4_DEVCONF_NOXFRM-1]=1, [IPV4_DEVCONF_NOPOLICY-1]=1, [IPV4_DEVCONF_FORCE_IGMP_VERSION-1]=0, [IPV4_DEVCONF_ARP_ANNOUNCE-1]=0, [IPV4_DEVCONF_ARP_IGNORE-1]=0, [IPV4_DEVCONF_PROMOTE_SECONDARIES-1]=0, [IPV4_DEVCONF_ARP_ACCEPT-1]=0, [IPV4_DEVCONF_ARP_NOTIFY-1]=0, [IPV4_DEVCONF_ACCEPT_LOCAL-1]=0, [IPV4_DEVCONF_SRC_VMARK-1]=0, [IPV4_DEVCONF_PROXY_ARP_PVLAN-1]=0, [IPV4_DEVCONF_ROUTE_LOCALNET-1]=0, [IPV4_DEVCONF_IGMPV2_UNSOLICITED_REPORT_INTERVAL-1]=10000, [IPV4_DEVCONF_IGMPV3_UNSOLICITED_REPORT_INTERVAL-1]=1000, [IPV4_DEVCONF_IGNORE_ROUTES_WITH_LINKDOWN-1]=0, [IPV4_DEVCONF_DROP_UNICAST_IN_L2_MULTICAST-1]=0, [IPV4_DEVCONF_DROP_GRATUITOUS_ARP-1]=0, [IPV4_DEVCONF_BC_FORWARDING-1]=0, ...]]], [{nla_len=668, nla_type=AF_INET6}, [[{nla_len=8, nla_type=IFLA_INET6_FLAGS}, IF_READY], [{nla_len=20, nla_type=IFLA_INET6_CACHEINFO}, {max_reasm_len=65535, tstamp=429, reachable_time=29285, retrans_time=1000}], [{nla_len=240, nla_type=IFLA_INET6_CONF}, [[DEVCONF_FORWARDING]=1, [DEVCONF_HOPLIMIT]=64, [DEVCONF_MTU6]=65536, [DEVCONF_ACCEPT_RA]=1, [DEVCONF_ACCEPT_REDIRECTS]=1, [DEVCONF_AUTOCONF]=1, [DEVCONF_DAD_TRANSMITS]=1, [DEVCONF_RTR_SOLICITS]=-1, [DEVCONF_RTR_SOLICIT_INTERVAL]=4000, [DEVCONF_RTR_SOLICIT_DELAY]=1000, [DEVCONF_USE_TEMPADDR]=-1, [DEVCONF_TEMP_VALID_LFT]=604800, [DEVCONF_TEMP_PREFERED_LFT]=86400, [DEVCONF_REGEN_MAX_RETRY]=3, [DEVCONF_MAX_DESYNC_FACTOR]=600, [DEVCONF_MAX_ADDRESSES]=16, [DEVCONF_FORCE_MLD_VERSION]=0, [DEVCONF_ACCEPT_RA_DEFRTR]=1, [DEVCONF_ACCEPT_RA_PINFO]=1, [DEVCONF_ACCEPT_RA_RTR_PREF]=1, [DEVCONF_RTR_PROBE_INTERVAL]=60000, [DEVCONF_ACCEPT_RA_RT_INFO_MAX_PLEN]=0, [DEVCONF_PROXY_NDP]=0, [DEVCONF_OPTIMISTIC_DAD]=0, [DEVCONF_ACCEPT_SOURCE_ROUTE]=0, [DEVCONF_MC_FORWARDING]=0, [DEVCONF_DISABLE_IPV6]=0, [DEVCONF_ACCEPT_DAD]=-1, [DEVCONF_FORCE_TLLAO]=0, [DEVCONF_NDISC_NOTIFY]=0, [DEVCONF_MLDV1_UNSOLICITED_REPORT_INTERVAL]=10000, [DEVCONF_MLDV2_UNSOLICITED_REPORT_INTERVAL]=1000, ...]], [{nla_len=308, nla_type=IFLA_INET6_STATS}, [[IPSTATS_MIB_NUM]=38, [IPSTATS_MIB_INPKTS]=2, [IPSTATS_MIB_INOCTETS]=152, [IPSTATS_MIB_INDELIVERS]=2, [IPSTATS_MIB_OUTFORWDATAGRAMS]=0, [IPSTATS_MIB_OUTPKTS]=2, [IPSTATS_MIB_OUTOCTETS]=152, [IPSTATS_MIB_INHDRERRORS]=0, [IPSTATS_MIB_INTOOBIGERRORS]=0, [IPSTATS_MIB_INNOROUTES]=0, [IPSTATS_MIB_INADDRERRORS]=0, [IPSTATS_MIB_INUNKNOWNPROTOS]=0, [IPSTATS_MIB_INTRUNCATEDPKTS]=0, [IPSTATS_MIB_INDISCARDS]=0, [IPSTATS_MIB_OUTDISCARDS]=0, [IPSTATS_MIB_OUTNOROUTES]=0, [IPSTATS_MIB_REASMTIMEOUT]=0, [IPSTATS_MIB_REASMREQDS]=0, [IPSTATS_MIB_REASMOKS]=0, [IPSTATS_MIB_REASMFAILS]=0, [IPSTATS_MIB_FRAGOKS]=0, [IPSTATS_MIB_FRAGFAILS]=0, [IPSTATS_MIB_FRAGCREATES]=0, [IPSTATS_MIB_INMCASTPKTS]=0, [IPSTATS_MIB_OUTMCASTPKTS]=2, [IPSTATS_MIB_INBCASTPKTS]=0, [IPSTATS_MIB_OUTBCASTPKTS]=0, [IPSTATS_MIB_INMCASTOCTETS]=0, [IPSTATS_MIB_OUTMCASTOCTETS]=152, [IPSTATS_MIB_INBCASTOCTETS]=0, [IPSTATS_MIB_OUTBCASTOCTETS]=0, [IPSTATS_MIB_CSUMERRORS]=0, ...]], [{nla_len=60, nla_type=IFLA_INET6_ICMP6STATS}, [[ICMP6_MIB_NUM]=7, [ICMP6_MIB_INMSGS]=2, [ICMP6_MIB_INERRORS]=0, [ICMP6_MIB_OUTMSGS]=2, [ICMP6_MIB_OUTERRORS]=0, [ICMP6_MIB_CSUMERRORS]=0, [6 /* ICMP6_MIB_??? */]=0]], [{nla_len=20, nla_type=IFLA_INET6_TOKEN}, inet_pton(AF_INET6, "::")], [{nla_len=5, nla_type=IFLA_INET6_ADDR_GEN_MODE}, IN6_ADDR_GEN_MODE_EUI64]]]]], ...]], [{nlmsg_len=1472, nlmsg_type=RTM_NEWLINK, nlmsg_flags=NLM_F_MULTI, nlmsg_seq=1746139943, nlmsg_pid=8372}, {ifi_family=AF_UNSPEC, ifi_type=ARPHRD_ETHER, ifi_index=if_nametoindex("eth0"), ifi_flags=IFF_UP|IFF_BROADCAST|IFF_RUNNING|IFF_MULTICAST|IFF_LOWER_UP, ifi_change=0}, [[{nla_len=9, nla_type=IFLA_IFNAME}, "eth0"], [{nla_len=8, nla_type=IFLA_TXQLEN}, 1000], [{nla_len=5, nla_type=IFLA_OPERSTATE}, 6], [{nla_len=5, nla_type=IFLA_LINKMODE}, 0], [{nla_len=8, nla_type=IFLA_MTU}, 1500], [{nla_len=8, nla_type=IFLA_MIN_MTU}, 68], [{nla_len=8, nla_type=IFLA_MAX_MTU}, 16334], [{nla_len=8, nla_type=IFLA_GROUP}, 0], [{nla_len=8, nla_type=IFLA_PROMISCUITY}, 0], [{nla_len=8, nla_type=IFLA_ALLMULTI}, 0], [{nla_len=8, nla_type=IFLA_NUM_TX_QUEUES}, 32], [{nla_len=8, nla_type=IFLA_GSO_MAX_SEGS}, 65535], [{nla_len=8, nla_type=IFLA_GSO_MAX_SIZE}, 65536], [{nla_len=8, nla_type=IFLA_GRO_MAX_SIZE}, 65536], [{nla_len=8, nla_type=IFLA_GSO_IPV4_MAX_SIZE}, 65536], [{nla_len=8, nla_type=IFLA_GRO_IPV4_MAX_SIZE}, 65536], [{nla_len=8, nla_type=IFLA_TSO_MAX_SIZE}, 65536], [{nla_len=8, nla_type=IFLA_TSO_MAX_SEGS}, 65535], [{nla_len=8, nla_type=IFLA_NUM_RX_QUEUES}, 32], [{nla_len=5, nla_type=IFLA_CARRIER}, 1], [{nla_len=7, nla_type=IFLA_QDISC}, "mq"], [{nla_len=8, nla_type=IFLA_CARRIER_CHANGES}, 1], [{nla_len=8, nla_type=IFLA_CARRIER_UP_COUNT}, 1], [{nla_len=8, nla_type=IFLA_CARRIER_DOWN_COUNT}, 0], [{nla_len=5, nla_type=IFLA_PROTO_DOWN}, 0], [{nla_len=36, nla_type=IFLA_MAP}, {mem_start=0, mem_end=0, base_addr=0, irq=0, dma=0, port=0}], [{nla_len=10, nla_type=IFLA_ADDRESS}, 3c:ec:ef:e1:a0:30], [{nla_len=10, nla_type=IFLA_BROADCAST}, ff:ff:ff:ff:ff:ff], [{nla_len=204, nla_type=IFLA_STATS64}, {rx_packets=274869, tx_packets=142510, rx_bytes=104296385, tx_bytes=106080712, rx_errors=0, tx_errors=0, rx_dropped=1671, tx_dropped=0, multicast=74916, collisions=0, rx_length_errors=0, rx_over_errors=0, rx_crc_errors=0, rx_frame_errors=0, rx_fifo_errors=0, rx_missed_errors=0, tx_aborted_errors=0, tx_carrier_errors=0, tx_fifo_errors=0, tx_heartbeat_errors=0, tx_window_errors=0, rx_compressed=0, tx_compressed=0, rx_nohandler=0, rx_otherhost_dropped=0}], [{nla_len=100, nla_type=IFLA_STATS}, {rx_packets=274869, tx_packets=142510, rx_bytes=104296385, tx_bytes=106080712, rx_errors=0, tx_errors=0, rx_dropped=1671, tx_dropped=0, multicast=74916, collisions=0, rx_length_errors=0, rx_over_errors=0, rx_crc_errors=0, rx_frame_errors=0, rx_fifo_errors=0, rx_missed_errors=0, tx_aborted_errors=0, tx_carrier_errors=0, tx_fifo_errors=0, tx_heartbeat_errors=0, tx_window_errors=0, rx_compressed=0, tx_compressed=0, rx_nohandler=0}], [{nla_len=12, nla_type=IFLA_XDP}, [{nla_len=5, nla_type=IFLA_XDP_ATTACHED}, XDP_ATTACHED_NONE]], [{nla_len=10, nla_type=IFLA_PERM_ADDRESS}, 3c:ec:ef:e1:a0:30], ...]]], iov_len=8192}], msg_iovlen=1, msg_controllen=0, msg_flags=0}, 0) = 2916
+recvmsg(72, {msg_name={sa_family=AF_NETLINK, nl_pid=0, nl_groups=00000000}, msg_namelen=12, msg_iov=[{iov_base=[[{nlmsg_len=1496, nlmsg_type=RTM_NEWLINK, nlmsg_flags=NLM_F_MULTI, nlmsg_seq=1746139943, nlmsg_pid=8372}, {ifi_family=AF_UNSPEC, ifi_type=ARPHRD_ETHER, ifi_index=if_nametoindex("eno1"), ifi_flags=IFF_BROADCAST|IFF_MULTICAST, ifi_change=0}, [[{nla_len=9, nla_type=IFLA_IFNAME}, "eno1"], [{nla_len=8, nla_type=IFLA_TXQLEN}, 1000], [{nla_len=5, nla_type=IFLA_OPERSTATE}, 2], [{nla_len=5, nla_type=IFLA_LINKMODE}, 0], [{nla_len=8, nla_type=IFLA_MTU}, 1500], [{nla_len=8, nla_type=IFLA_MIN_MTU}, 68], [{nla_len=8, nla_type=IFLA_MAX_MTU}, 9216], [{nla_len=8, nla_type=IFLA_GROUP}, 0], [{nla_len=8, nla_type=IFLA_PROMISCUITY}, 0], [{nla_len=8, nla_type=IFLA_ALLMULTI}, 0], [{nla_len=8, nla_type=IFLA_NUM_TX_QUEUES}, 8], [{nla_len=8, nla_type=IFLA_GSO_MAX_SEGS}, 65535], [{nla_len=8, nla_type=IFLA_GSO_MAX_SIZE}, 65536], [{nla_len=8, nla_type=IFLA_GRO_MAX_SIZE}, 65536], [{nla_len=8, nla_type=IFLA_GSO_IPV4_MAX_SIZE}, 65536], [{nla_len=8, nla_type=IFLA_GRO_IPV4_MAX_SIZE}, 65536], [{nla_len=8, nla_type=IFLA_TSO_MAX_SIZE}, 65536], [{nla_len=8, nla_type=IFLA_TSO_MAX_SEGS}, 65535], [{nla_len=8, nla_type=IFLA_NUM_RX_QUEUES}, 8], [{nla_len=5, nla_type=IFLA_CARRIER}, 0], [{nla_len=9, nla_type=IFLA_QDISC}, "noop"], [{nla_len=8, nla_type=IFLA_CARRIER_CHANGES}, 1], [{nla_len=8, nla_type=IFLA_CARRIER_UP_COUNT}, 0], [{nla_len=8, nla_type=IFLA_CARRIER_DOWN_COUNT}, 1], [{nla_len=5, nla_type=IFLA_PROTO_DOWN}, 0], [{nla_len=36, nla_type=IFLA_MAP}, {mem_start=0xcdd00000, mem_end=0xcdd7ffff, base_addr=0, irq=0, dma=0, port=0}], [{nla_len=10, nla_type=IFLA_ADDRESS}, 3c:ec:ef:e1:9d:d2], [{nla_len=10, nla_type=IFLA_BROADCAST}, ff:ff:ff:ff:ff:ff], [{nla_len=204, nla_type=IFLA_STATS64}, {rx_packets=0, tx_packets=0, rx_bytes=0, tx_bytes=0, rx_errors=0, tx_errors=0, rx_dropped=0, tx_dropped=0, multicast=0, collisions=0, rx_length_errors=0, rx_over_errors=0, rx_crc_errors=0, rx_frame_errors=0, rx_fifo_errors=0, rx_missed_errors=0, tx_aborted_errors=0, tx_carrier_errors=0, tx_fifo_errors=0, tx_heartbeat_errors=0, tx_window_errors=0, rx_compressed=0, tx_compressed=0, rx_nohandler=0, rx_otherhost_dropped=0}], [{nla_len=100, nla_type=IFLA_STATS}, {rx_packets=0, tx_packets=0, rx_bytes=0, tx_bytes=0, rx_errors=0, tx_errors=0, rx_dropped=0, tx_dropped=0, multicast=0, collisions=0, rx_length_errors=0, rx_over_errors=0, rx_crc_errors=0, rx_frame_errors=0, rx_fifo_errors=0, rx_missed_errors=0, tx_aborted_errors=0, tx_carrier_errors=0, tx_fifo_errors=0, tx_heartbeat_errors=0, tx_window_errors=0, rx_compressed=0, tx_compressed=0, rx_nohandler=0}], [{nla_len=12, nla_type=IFLA_XDP}, [{nla_len=5, nla_type=IFLA_XDP_ATTACHED}, XDP_ATTACHED_NONE]], [{nla_len=10, nla_type=IFLA_PERM_ADDRESS}, 3c:ec:ef:e1:9d:d2], ...]], [{nlmsg_len=1480, nlmsg_type=RTM_NEWLINK, nlmsg_flags=NLM_F_MULTI, nlmsg_seq=1746139943, nlmsg_pid=8372}, {ifi_family=AF_UNSPEC, ifi_type=ARPHRD_ETHER, ifi_index=if_nametoindex("enxb03af2b6059f"), ifi_flags=IFF_BROADCAST|IFF_MULTICAST, ifi_change=0}, [[{nla_len=20, nla_type=IFLA_IFNAME}, "enxb03af2b6059f"], [{nla_len=8, nla_type=IFLA_TXQLEN}, 1000], [{nla_len=5, nla_type=IFLA_OPERSTATE}, 2], [{nla_len=5, nla_type=IFLA_LINKMODE}, 0], [{nla_len=8, nla_type=IFLA_MTU}, 1500], [{nla_len=8, nla_type=IFLA_MIN_MTU}, 0], [{nla_len=8, nla_type=IFLA_MAX_MTU}, 65535], [{nla_len=8, nla_type=IFLA_GROUP}, 0], [{nla_len=8, nla_type=IFLA_PROMISCUITY}, 0], [{nla_len=8, nla_type=IFLA_ALLMULTI}, 0], [{nla_len=8, nla_type=IFLA_NUM_TX_QUEUES}, 1], [{nla_len=8, nla_type=IFLA_GSO_MAX_SEGS}, 65535], [{nla_len=8, nla_type=IFLA_GSO_MAX_SIZE}, 65536], [{nla_len=8, nla_type=IFLA_GRO_MAX_SIZE}, 65536], [{nla_len=8, nla_type=IFLA_GSO_IPV4_MAX_SIZE}, 65536], [{nla_len=8, nla_type=IFLA_GRO_IPV4_MAX_SIZE}, 65536], [{nla_len=8, nla_type=IFLA_TSO_MAX_SIZE}, 65536], [{nla_len=8, nla_type=IFLA_TSO_MAX_SEGS}, 65535], [{nla_len=8, nla_type=IFLA_NUM_RX_QUEUES}, 1], [{nla_len=5, nla_type=IFLA_CARRIER}, 1], [{nla_len=9, nla_type=IFLA_QDISC}, "noop"], [{nla_len=8, nla_type=IFLA_CARRIER_CHANGES}, 0], [{nla_len=8, nla_type=IFLA_CARRIER_UP_COUNT}, 0], [{nla_len=8, nla_type=IFLA_CARRIER_DOWN_COUNT}, 0], [{nla_len=5, nla_type=IFLA_PROTO_DOWN}, 0], [{nla_len=36, nla_type=IFLA_MAP}, {mem_start=0, mem_end=0, base_addr=0, irq=0, dma=0, port=0}], [{nla_len=10, nla_type=IFLA_ADDRESS}, b0:3a:f2:b6:05:9f], [{nla_len=10, nla_type=IFLA_BROADCAST}, ff:ff:ff:ff:ff:ff], [{nla_len=204, nla_type=IFLA_STATS64}, {rx_packets=0, tx_packets=0, rx_bytes=0, tx_bytes=0, rx_errors=0, tx_errors=0, rx_dropped=0, tx_dropped=0, multicast=0, collisions=0, rx_length_errors=0, rx_over_errors=0, rx_crc_errors=0, rx_frame_errors=0, rx_fifo_errors=0, rx_missed_errors=0, tx_aborted_errors=0, tx_carrier_errors=0, tx_fifo_errors=0, tx_heartbeat_errors=0, tx_window_errors=0, rx_compressed=0, tx_compressed=0, rx_nohandler=0, rx_otherhost_dropped=0}], [{nla_len=100, nla_type=IFLA_STATS}, {rx_packets=0, tx_packets=0, rx_bytes=0, tx_bytes=0, rx_errors=0, tx_errors=0, rx_dropped=0, tx_dropped=0, multicast=0, collisions=0, rx_length_errors=0, rx_over_errors=0, rx_crc_errors=0, rx_frame_errors=0, rx_fifo_errors=0, rx_missed_errors=0, tx_aborted_errors=0, tx_carrier_errors=0, tx_fifo_errors=0, tx_heartbeat_errors=0, tx_window_errors=0, rx_compressed=0, tx_compressed=0, rx_nohandler=0}], [{nla_len=12, nla_type=IFLA_XDP}, [{nla_len=5, nla_type=IFLA_XDP_ATTACHED}, XDP_ATTACHED_NONE]], [{nla_len=10, nla_type=IFLA_PERM_ADDRESS}, b0:3a:f2:b6:05:9f], ...]], [{nlmsg_len=1548, nlmsg_type=RTM_NEWLINK, nlmsg_flags=NLM_F_MULTI, nlmsg_seq=1746139943, nlmsg_pid=8372}, {ifi_family=AF_UNSPEC, ifi_type=ARPHRD_ETHER, ifi_index=if_nametoindex("enp65s0f0np0"), ifi_flags=IFF_BROADCAST|IFF_MULTICAST, ifi_change=0}, [[{nla_len=17, nla_type=IFLA_IFNAME}, "enp65s0f0np0"], [{nla_len=8, nla_type=IFLA_TXQLEN}, 1000], [{nla_len=5, nla_type=IFLA_OPERSTATE}, 2], [{nla_len=5, nla_type=IFLA_LINKMODE}, 0], [{nla_len=8, nla_type=IFLA_MTU}, 1500], [{nla_len=8, nla_type=IFLA_MIN_MTU}, 68], [{nla_len=8, nla_type=IFLA_MAX_MTU}, 9978], [{nla_len=8, nla_type=IFLA_GROUP}, 0], [{nla_len=8, nla_type=IFLA_PROMISCUITY}, 0], [{nla_len=8, nla_type=IFLA_ALLMULTI}, 0], [{nla_len=8, nla_type=IFLA_NUM_TX_QUEUES}, 256], [{nla_len=8, nla_type=IFLA_GSO_MAX_SEGS}, 65535], [{nla_len=8, nla_type=IFLA_GSO_MAX_SIZE}, 65536], [{nla_len=8, nla_type=IFLA_GRO_MAX_SIZE}, 65536], [{nla_len=8, nla_type=IFLA_GSO_IPV4_MAX_SIZE}, 65536], [{nla_len=8, nla_type=IFLA_GRO_IPV4_MAX_SIZE}, 65536], [{nla_len=8, nla_type=IFLA_TSO_MAX_SIZE}, 524280], [{nla_len=8, nla_type=IFLA_TSO_MAX_SEGS}, 65535], [{nla_len=8, nla_type=IFLA_NUM_RX_QUEUES}, 32], [{nla_len=5, nla_type=IFLA_CARRIER}, 0], [{nla_len=9, nla_type=IFLA_QDISC}, "noop"], [{nla_len=8, nla_type=IFLA_CARRIER_CHANGES}, 0], [{nla_len=8, nla_type=IFLA_CARRIER_UP_COUNT}, 0], [{nla_len=8, nla_type=IFLA_CARRIER_DOWN_COUNT}, 0], [{nla_len=5, nla_type=IFLA_PROTO_DOWN}, 0], [{nla_len=36, nla_type=IFLA_MAP}, {mem_start=0, mem_end=0, base_addr=0, irq=0, dma=0, port=0}], [{nla_len=10, nla_type=IFLA_ADDRESS}, 00:01:ff:f5:dc:c0], [{nla_len=10, nla_type=IFLA_BROADCAST}, ff:ff:ff:ff:ff:ff], [{nla_len=7, nla_type=IFLA_PHYS_PORT_NAME}, "p0"], [{nla_len=12, nla_type=IFLA_PHYS_SWITCH_ID}, "\xc0\xdc\xf5\x05\x0b\xff\x01\x00"], [{nla_len=204, nla_type=IFLA_STATS64}, {rx_packets=0, tx_packets=0, rx_bytes=0, tx_bytes=0, rx_errors=0, tx_errors=0, rx_dropped=0, tx_dropped=0, multicast=0, collisions=0, rx_length_errors=0, rx_over_errors=0, rx_crc_errors=0, rx_frame_errors=0, rx_fifo_errors=0, rx_missed_errors=0, tx_aborted_errors=0, tx_carrier_errors=0, tx_fifo_errors=0, tx_heartbeat_errors=0, tx_window_errors=0, rx_compressed=0, tx_compressed=0, rx_nohandler=0, rx_otherhost_dropped=0}], [{nla_len=100, nla_type=IFLA_STATS}, {rx_packets=0, tx_packets=0, rx_bytes=0, tx_bytes=0, rx_errors=0, tx_errors=0, rx_dropped=0, tx_dropped=0, multicast=0, collisions=0, rx_length_errors=0, rx_over_errors=0, rx_crc_errors=0, rx_frame_errors=0, rx_fifo_errors=0, rx_missed_errors=0, tx_aborted_errors=0, tx_carrier_errors=0, tx_fifo_errors=0, tx_heartbeat_errors=0, tx_window_errors=0, rx_compressed=0, tx_compressed=0, rx_nohandler=0}], ...]], [{nlmsg_len=1548, nlmsg_type=RTM_NEWLINK, nlmsg_flags=NLM_F_MULTI, nlmsg_seq=1746139943, nlmsg_pid=8372}, {ifi_family=AF_UNSPEC, ifi_type=ARPHRD_ETHER, ifi_index=if_nametoindex("enp65s0f1np1"), ifi_flags=IFF_BROADCAST|IFF_MULTICAST, ifi_change=0}, [[{nla_len=17, nla_type=IFLA_IFNAME}, "enp65s0f1np1"], [{nla_len=8, nla_type=IFLA_TXQLEN}, 1000], [{nla_len=5, nla_type=IFLA_OPERSTATE}, 2], [{nla_len=5, nla_type=IFLA_LINKMODE}, 0], [{nla_len=8, nla_type=IFLA_MTU}, 1500], [{nla_len=8, nla_type=IFLA_MIN_MTU}, 68], [{nla_len=8, nla_type=IFLA_MAX_MTU}, 9978], [{nla_len=8, nla_type=IFLA_GROUP}, 0], [{nla_len=8, nla_type=IFLA_PROMISCUITY}, 0], [{nla_len=8, nla_type=IFLA_ALLMULTI}, 0], [{nla_len=8, nla_type=IFLA_NUM_TX_QUEUES}, 256], [{nla_len=8, nla_type=IFLA_GSO_MAX_SEGS}, 65535], [{nla_len=8, nla_type=IFLA_GSO_MAX_SIZE}, 65536], [{nla_len=8, nla_type=IFLA_GRO_MAX_SIZE}, 65536], [{nla_len=8, nla_type=IFLA_GSO_IPV4_MAX_SIZE}, 65536], [{nla_len=8, nla_type=IFLA_GRO_IPV4_MAX_SIZE}, 65536], [{nla_len=8, nla_type=IFLA_TSO_MAX_SIZE}, 524280], [{nla_len=8, nla_type=IFLA_TSO_MAX_SEGS}, 65535], [{nla_len=8, nla_type=IFLA_NUM_RX_QUEUES}, 32], [{nla_len=5, nla_type=IFLA_CARRIER}, 0], [{nla_len=9, nla_type=IFLA_QDISC}, "noop"], [{nla_len=8, nla_type=IFLA_CARRIER_CHANGES}, 0], [{nla_len=8, nla_type=IFLA_CARRIER_UP_COUNT}, 0], [{nla_len=8, nla_type=IFLA_CARRIER_DOWN_COUNT}, 0], [{nla_len=5, nla_type=IFLA_PROTO_DOWN}, 0], [{nla_len=36, nla_type=IFLA_MAP}, {mem_start=0, mem_end=0, base_addr=0, irq=0, dma=0, port=0}], [{nla_len=10, nla_type=IFLA_ADDRESS}, 00:01:ff:f5:dc:c1], [{nla_len=10, nla_type=IFLA_BROADCAST}, ff:ff:ff:ff:ff:ff], [{nla_len=7, nla_type=IFLA_PHYS_PORT_NAME}, "p1"], [{nla_len=12, nla_type=IFLA_PHYS_SWITCH_ID}, "\xc0\xdc\xf5\x05\x0b\xff\x01\x00"], [{nla_len=204, nla_type=IFLA_STATS64}, {rx_packets=0, tx_packets=0, rx_bytes=0, tx_bytes=0, rx_errors=0, tx_errors=0, rx_dropped=0, tx_dropped=0, multicast=0, collisions=0, rx_length_errors=0, rx_over_errors=0, rx_crc_errors=0, rx_frame_errors=0, rx_fifo_errors=0, rx_missed_errors=0, tx_aborted_errors=0, tx_carrier_errors=0, tx_fifo_errors=0, tx_heartbeat_errors=0, tx_window_errors=0, rx_compressed=0, tx_compressed=0, rx_nohandler=0, rx_otherhost_dropped=0}], [{nla_len=100, nla_type=IFLA_STATS}, {rx_packets=0, tx_packets=0, rx_bytes=0, tx_bytes=0, rx_errors=0, tx_errors=0, rx_dropped=0, tx_dropped=0, multicast=0, collisions=0, rx_length_errors=0, rx_over_errors=0, rx_crc_errors=0, rx_frame_errors=0, rx_fifo_errors=0, rx_missed_errors=0, tx_aborted_errors=0, tx_carrier_errors=0, tx_fifo_errors=0, tx_heartbeat_errors=0, tx_window_errors=0, rx_compressed=0, tx_compressed=0, rx_nohandler=0}], ...]]], iov_len=8192}], msg_iovlen=1, msg_controllen=0, msg_flags=0}, 0) = 6072
+mprotect(0x7a3124034000, 4096, PROT_READ|PROT_WRITE) = 0
+recvmsg(72, {msg_name={sa_family=AF_NETLINK, nl_pid=0, nl_groups=00000000}, msg_namelen=12, msg_iov=[{iov_base=[{nlmsg_len=20, nlmsg_type=NLMSG_DONE, nlmsg_flags=NLM_F_MULTI, nlmsg_seq=1746139943, nlmsg_pid=8372}, 0], iov_len=8192}], msg_iovlen=1, msg_controllen=0, msg_flags=0}, 0) = 20
+sendto(72, [{nlmsg_len=20, nlmsg_type=RTM_GETADDR, nlmsg_flags=NLM_F_REQUEST|NLM_F_DUMP, nlmsg_seq=1746139944, nlmsg_pid=0}, {ifa_family=AF_UNSPEC, ...}], 20, 0, {sa_family=AF_NETLINK, nl_pid=0, nl_groups=00000000}, 12) = 20
+recvmsg(72, {msg_name={sa_family=AF_NETLINK, nl_pid=0, nl_groups=00000000}, msg_namelen=12, msg_iov=[{iov_base=[[{nlmsg_len=76, nlmsg_type=RTM_NEWADDR, nlmsg_flags=NLM_F_MULTI, nlmsg_seq=1746139944, nlmsg_pid=8372}, {ifa_family=AF_INET, ifa_prefixlen=8, ifa_flags=IFA_F_PERMANENT, ifa_scope=RT_SCOPE_HOST, ifa_index=if_nametoindex("lo")}, [[{nla_len=8, nla_type=IFA_ADDRESS}, inet_addr("127.0.0.1")], [{nla_len=8, nla_type=IFA_LOCAL}, inet_addr("127.0.0.1")], [{nla_len=7, nla_type=IFA_LABEL}, "lo"], [{nla_len=8, nla_type=IFA_FLAGS}, IFA_F_PERMANENT], [{nla_len=20, nla_type=IFA_CACHEINFO}, {ifa_prefered=4294967295, ifa_valid=4294967295, cstamp=429, tstamp=429}]]], [{nlmsg_len=88, nlmsg_type=RTM_NEWADDR, nlmsg_flags=NLM_F_MULTI, nlmsg_seq=1746139944, nlmsg_pid=8372}, {ifa_family=AF_INET, ifa_prefixlen=24, ifa_flags=IFA_F_PERMANENT, ifa_scope=RT_SCOPE_UNIVERSE, ifa_index=if_nametoindex("eth0")}, [[{nla_len=8, nla_type=IFA_ADDRESS}, inet_addr("164.67.192.154")], [{nla_len=8, nla_type=IFA_LOCAL}, inet_addr("164.67.192.154")], [{nla_len=8, nla_type=IFA_BROADCAST}, inet_addr("164.67.192.255")], [{nla_len=9, nla_type=IFA_LABEL}, "eth0"], [{nla_len=8, nla_type=IFA_FLAGS}, IFA_F_PERMANENT], [{nla_len=20, nla_type=IFA_CACHEINFO}, {ifa_prefered=4294967295, ifa_valid=4294967295, cstamp=1462, tstamp=1462}]]]], iov_len=8192}], msg_iovlen=1, msg_controllen=0, msg_flags=0}, 0) = 164
+recvmsg(72, {msg_name={sa_family=AF_NETLINK, nl_pid=0, nl_groups=00000000}, msg_namelen=12, msg_iov=[{iov_base=[[{nlmsg_len=72, nlmsg_type=RTM_NEWADDR, nlmsg_flags=NLM_F_MULTI, nlmsg_seq=1746139944, nlmsg_pid=8372}, {ifa_family=AF_INET6, ifa_prefixlen=128, ifa_flags=IFA_F_PERMANENT, ifa_scope=RT_SCOPE_HOST, ifa_index=if_nametoindex("lo")}, [[{nla_len=20, nla_type=IFA_ADDRESS}, inet_pton(AF_INET6, "::1")], [{nla_len=20, nla_type=IFA_CACHEINFO}, {ifa_prefered=4294967295, ifa_valid=4294967295, cstamp=429, tstamp=429}], [{nla_len=8, nla_type=IFA_FLAGS}, IFA_F_PERMANENT|IFA_F_NOPREFIXROUTE]]], [{nlmsg_len=80, nlmsg_type=RTM_NEWADDR, nlmsg_flags=NLM_F_MULTI, nlmsg_seq=1746139944, nlmsg_pid=8372}, {ifa_family=AF_INET6, ifa_prefixlen=64, ifa_flags=IFA_F_PERMANENT, ifa_scope=RT_SCOPE_LINK, ifa_index=if_nametoindex("eth0")}, [[{nla_len=20, nla_type=IFA_ADDRESS}, inet_pton(AF_INET6, "fe80::3eec:efff:fee1:a030")], [{nla_len=20, nla_type=IFA_CACHEINFO}, {ifa_prefered=4294967295, ifa_valid=4294967295, cstamp=1462, tstamp=1462}], [{nla_len=8, nla_type=IFA_FLAGS}, IFA_F_PERMANENT], [{nla_len=5, nla_type=IFA_PROTO}, "\x03"]]]], iov_len=8192}], msg_iovlen=1, msg_controllen=0, msg_flags=0}, 0) = 152
+recvmsg(72, {msg_name={sa_family=AF_NETLINK, nl_pid=0, nl_groups=00000000}, msg_namelen=12, msg_iov=[{iov_base=[{nlmsg_len=20, nlmsg_type=NLMSG_DONE, nlmsg_flags=NLM_F_MULTI, nlmsg_seq=1746139944, nlmsg_pid=8372}, 0], iov_len=8192}], msg_iovlen=1, msg_controllen=0, msg_flags=0}, 0) = 20
+close(72)                               = 0
+socket(AF_UNIX, SOCK_DGRAM|SOCK_CLOEXEC, 0) = 72
+ioctl(72, SIOCGIFNAME, {ifr_ifindex=2, ifr_name="eth0"}) = 0
+close(72)                               = 0
+recvfrom(11, 0x7a31240052dc, 8, 0, NULL, NULL) = -1 EAGAIN (Resource temporarily unavailable)
+epoll_wait(4, [], 128, 0)               = 0
+epoll_wait(4, [], 128, 0)               = 0
+sendto(11, "T\10\2\0\0\0\0\327", 8, MSG_NOSIGNAL, NULL, 0) = 8
+epoll_wait(4, [], 128, 0)               = 0
+sendto(11, "\0\0\0\0\0\0\0'\0\0\0\0\0\0\0\f\0\0\0\277\2\3\0\0\n\274\1\10\2\22\5L"..., 215, MSG_NOSIGNAL, NULL, 0) = 215
+epoll_wait(4, [], 128, 0)               = 0
+epoll_wait(4, [{events=EPOLLIN, data={u32=603987200, u64=134351475973376}}], 128, -1) = 1
+recvfrom(11, "T\10\5\0\0\6\225l", 8, 0, NULL, NULL) = 8
+mprotect(0x7a3124035000, 417792, PROT_READ|PROT_WRITE) = 0
+recvfrom(11, "\0\0\0\0\0\0\0\r\0\0\0\0\0\0\0\0\0\6\225T\4\1\0\0\10\264A\32\0*\27d"..., 65536, 0, NULL, NULL) = 65536
+epoll_wait(4, [{events=EPOLLIN, data={u32=603987200, u64=134351475973376}}], 128, 0) = 1
+recvfrom(11, "\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\330$u\374\\\200:J\0"..., 65536, 0, NULL, NULL) = 65536
+epoll_wait(4, [{events=EPOLLIN, data={u32=603987200, u64=134351475973376}}], 128, 0) = 1
+recvfrom(11, "\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\207\227\270\360\242n\201\235\0"..., 65536, 0, NULL, NULL) = 65536
+epoll_wait(4, [], 128, 0)               = 0
+recvfrom(11, "\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\2\372#7hP\226\32\0"..., 65536, 0, NULL, NULL) = 65536
+epoll_wait(4, [{events=EPOLLIN, data={u32=603987200, u64=134351475973376}}], 128, 0) = 1
+recvfrom(11, "\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0w\246\331&\303\216\265%\0"..., 65536, 0, NULL, NULL) = 65536
+epoll_wait(4, [{events=EPOLLIN, data={u32=603987200, u64=134351475973376}}], 128, 0) = 1
+recvfrom(11, "\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\"\254\2\327\251,\234'\0"..., 65536, 0, NULL, NULL) = 65536
+epoll_wait(4, [], 128, 0)               = 0
+recvfrom(11, "\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0FY\306\22 \336\31\251\0"..., 38252, 0, NULL, NULL) = 38252
+epoll_wait(4, [], 128, 0)               = 0
+mprotect(0x7a312409b000, 4096, PROT_READ|PROT_WRITE) = 0
+mprotect(0x7a312409c000, 4096, PROT_READ|PROT_WRITE) = 0
+mprotect(0x7a312409d000, 16384, PROT_READ|PROT_WRITE) = 0
+mprotect(0x7a31240a1000, 372736, PROT_READ|PROT_WRITE) = 0
+mprotect(0x7a31240fc000, 4096, PROT_READ|PROT_WRITE) = 0
+mprotect(0x7a31240fd000, 4096, PROT_READ|PROT_WRITE) = 0
+mprotect(0x7a31240fe000, 4096, PROT_READ|PROT_WRITE) = 0
+mprotect(0x7a31240ff000, 4096, PROT_READ|PROT_WRITE) = 0
+mprotect(0x7a3124100000, 4096, PROT_READ|PROT_WRITE) = 0
+mprotect(0x7a3124101000, 4096, PROT_READ|PROT_WRITE) = 0
+mprotect(0x7a3124102000, 4096, PROT_READ|PROT_WRITE) = 0
+mprotect(0x7a3124103000, 4096, PROT_READ|PROT_WRITE) = 0
+mprotect(0x7a3124104000, 4096, PROT_READ|PROT_WRITE) = 0
+mprotect(0x7a3124105000, 4096, PROT_READ|PROT_WRITE) = 0
+mprotect(0x7a3124106000, 4096, PROT_READ|PROT_WRITE) = 0
+mprotect(0x7a3124107000, 4096, PROT_READ|PROT_WRITE) = 0
+mprotect(0x7a3124108000, 4096, PROT_READ|PROT_WRITE) = 0
+mprotect(0x7a3124109000, 4096, PROT_READ|PROT_WRITE) = 0
+mprotect(0x7a312410a000, 4096, PROT_READ|PROT_WRITE) = 0
+mprotect(0x7a312410b000, 4096, PROT_READ|PROT_WRITE) = 0
+mprotect(0x7a312410c000, 4096, PROT_READ|PROT_WRITE) = 0
+mprotect(0x7a312410d000, 4096, PROT_READ|PROT_WRITE) = 0
+mprotect(0x7a312410e000, 4096, PROT_READ|PROT_WRITE) = 0
+mprotect(0x7a312410f000, 4096, PROT_READ|PROT_WRITE) = 0
+mprotect(0x7a3124110000, 4096, PROT_READ|PROT_WRITE) = 0
+mprotect(0x7a3124111000, 4096, PROT_READ|PROT_WRITE) = 0
+mprotect(0x7a3124112000, 4096, PROT_READ|PROT_WRITE) = 0
+mprotect(0x7a3124113000, 4096, PROT_READ|PROT_WRITE) = 0
+mprotect(0x7a3124114000, 4096, PROT_READ|PROT_WRITE) = 0
+mprotect(0x7a3124115000, 8192, PROT_READ|PROT_WRITE) = 0
+mprotect(0x7a3124117000, 8192, PROT_READ|PROT_WRITE) = 0
+mprotect(0x7a3124119000, 8192, PROT_READ|PROT_WRITE) = 0
+mprotect(0x7a312411b000, 4096, PROT_READ|PROT_WRITE) = 0
+mprotect(0x7a312411c000, 4096, PROT_READ|PROT_WRITE) = 0
+mprotect(0x7a312411d000, 4096, PROT_READ|PROT_WRITE) = 0
+mprotect(0x7a312411e000, 4096, PROT_READ|PROT_WRITE) = 0
+mprotect(0x7a312411f000, 4096, PROT_READ|PROT_WRITE) = 0
+mprotect(0x7a3124120000, 4096, PROT_READ|PROT_WRITE) = 0
+mprotect(0x7a3124121000, 8192, PROT_READ|PROT_WRITE) = 0
+mprotect(0x7a3124123000, 4096, PROT_READ|PROT_WRITE) = 0
+mprotect(0x7a3124124000, 4096, PROT_READ|PROT_WRITE) = 0
+mprotect(0x7a3124125000, 8192, PROT_READ|PROT_WRITE) = 0
+mprotect(0x7a3124127000, 8192, PROT_READ|PROT_WRITE) = 0
+mprotect(0x7a3124129000, 4096, PROT_READ|PROT_WRITE) = 0
+mprotect(0x7a312412a000, 8192, PROT_READ|PROT_WRITE) = 0
+mprotect(0x7a312412c000, 8192, PROT_READ|PROT_WRITE) = 0
+mprotect(0x7a312412e000, 4096, PROT_READ|PROT_WRITE) = 0
+mprotect(0x7a312412f000, 8192, PROT_READ|PROT_WRITE) = 0
+mprotect(0x7a3124131000, 4096, PROT_READ|PROT_WRITE) = 0
+mprotect(0x7a3124132000, 8192, PROT_READ|PROT_WRITE) = 0
+mprotect(0x7a3124134000, 4096, PROT_READ|PROT_WRITE) = 0
+mprotect(0x7a3124135000, 20480, PROT_READ|PROT_WRITE) = 0
+mprotect(0x7a312413a000, 368640, PROT_READ|PROT_WRITE) = 0
+futex(0x64521dc85b3c, FUTEX_WAKE_PRIVATE, 1) = 1
+recvfrom(11, 0x7a31240052dc, 8, 0, NULL, NULL) = -1 EAGAIN (Resource temporarily unavailable)
+epoll_wait(4, [{events=EPOLLIN, data={u32=603983120, u64=134351475969296}}], 128, -1) = 1
+futex(0x64521dc8bbb8, FUTEX_WAIT_PRIVATE, 2, NULL) = -1 EAGAIN (Resource temporarily unavailable)
+futex(0x64521dc8bbb8, FUTEX_WAKE_PRIVATE, 1) = 0
+epoll_wait(4, [{events=EPOLLIN, data={u32=603983120, u64=134351475969296}}], 128, -1) = 1
+epoll_wait(4, [], 128, 0)               = 0
+epoll_wait(4, [], 128, 0)               = 0
+sendto(11, "T\10\6\0\0\0\0006", 8, MSG_NOSIGNAL, NULL, 0) = 8
+epoll_wait(4, [], 128, 0)               = 0
+sendto(11, "\0\0\0\0\0\0\0(\0\0\0\0\0\0\0\0\0\0\0\36\4\1\0\0\10\1\20\r\32\22Pr"..., 54, MSG_NOSIGNAL, NULL, 0) = 54
+epoll_wait(4, [], 128, 0)               = 0
+epoll_wait(4, [{events=EPOLLIN, data={u32=603983120, u64=134351475969296}}], 128, -1) = 1
+epoll_wait(4, [], 128, 0)               = 0
+epoll_wait(4, [], 128, 0)               = 0
+sendto(11, "T\10\6\0\0\0\0)", 8, MSG_NOSIGNAL, NULL, 0) = 8
+epoll_wait(4, [], 128, 0)               = 0
+sendto(11, "\0\0\0\0\0\0\0)\0\0\0\0\0\0\0\0\0\0\0\21\4\1\0\0\10\2\20\r\32\5Se"..., 41, MSG_NOSIGNAL, NULL, 0) = 41
+epoll_wait(4, [], 128, 0)               = 0
+epoll_wait(4, [{events=EPOLLIN, data={u32=603983120, u64=134351475969296}}], 128, -1) = 1
+epoll_wait(4, [], 128, 0)               = 0
+epoll_wait(4, [], 128, 0)               = 0
+sendto(11, "T\10\6\0\0\0\0#", 8, MSG_NOSIGNAL, NULL, 0) = 8
+epoll_wait(4, [], 128, 0)               = 0
+sendto(11, "\0\0\0\0\0\0\0*\0\0\0\0\0\0\0\0\0\0\0\v\4\3\0\0\n\t\10\0\20\0\"\3"..., 35, MSG_NOSIGNAL, NULL, 0) = 35
+epoll_wait(4, [], 128, 0)               = 0
+sendto(11, "T\10\6\0\0\0\0/", 8, MSG_NOSIGNAL, NULL, 0) = 8
+epoll_wait(4, [], 128, 0)               = 0
+sendto(11, "\0\0\0\0\0\0\0+\0\0\0\0\0\0\0\0\0\0\0\27\4\1\0\0\10\3\20\r\32\vSW"..., 47, MSG_NOSIGNAL, NULL, 0) = 47
+epoll_wait(4, [], 128, 0)               = 0
+epoll_wait(4, [{events=EPOLLIN, data={u32=603983120, u64=134351475969296}}], 128, -1) = 1
+epoll_wait(4, [], 128, 0)               = 0
+epoll_wait(4, [], 128, 0)               = 0
+sendto(11, "T\10\6\0\0\0\0000", 8, MSG_NOSIGNAL, NULL, 0) = 8
+epoll_wait(4, [], 128, 0)               = 0
+sendto(11, "\0\0\0\0\0\0\0,\0\0\0\0\0\0\0\0\0\0\0\30\4\1\0\0\10\4\20\r\32\fLO"..., 48, MSG_NOSIGNAL, NULL, 0) = 48
+epoll_wait(4, [], 128, 0)               = 0
+epoll_wait(4, [{events=EPOLLIN, data={u32=603983120, u64=134351475969296}}], 128, -1) = 1
+epoll_wait(4, [], 128, 0)               = 0
+epoll_wait(4, [], 128, 0)               = 0
+sendto(11, "T\10\6\0\0\0\0000", 8, MSG_NOSIGNAL, NULL, 0) = 8
+epoll_wait(4, [], 128, 0)               = 0
+sendto(11, "\0\0\0\0\0\0\0-\0\0\0\0\0\0\0\0\0\0\0\30\4\1\0\0\10\5\20\r\32\fLO"..., 48, MSG_NOSIGNAL, NULL, 0) = 48
+epoll_wait(4, [], 128, 0)               = 0
+epoll_wait(4, [{events=EPOLLIN, data={u32=603983120, u64=134351475969296}}], 128, -1) = 1
+epoll_wait(4, [], 128, 0)               = 0
+epoll_wait(4, [], 128, 0)               = 0
+sendto(11, "T\10\6\0\0\0\0000", 8, MSG_NOSIGNAL, NULL, 0) = 8
+epoll_wait(4, [], 128, 0)               = 0
+sendto(11, "\0\0\0\0\0\0\0.\0\0\0\0\0\0\0\0\0\0\0\30\4\1\0\0\10\6\20\r\32\fLO"..., 48, MSG_NOSIGNAL, NULL, 0) = 48
+epoll_wait(4, [], 128, 0)               = 0
+epoll_wait(4, [{events=EPOLLIN, data={u32=603983120, u64=134351475969296}}], 128, -1) = 1
+epoll_wait(4, [], 128, 0)               = 0
+epoll_wait(4, [], 128, 0)               = 0
+sendto(11, "T\10\6\0\0\0\0000", 8, MSG_NOSIGNAL, NULL, 0) = 8
+epoll_wait(4, [], 128, 0)               = 0
+sendto(11, "\0\0\0\0\0\0\0/\0\0\0\0\0\0\0\0\0\0\0\30\4\1\0\0\10\7\20\r\32\fLO"..., 48, MSG_NOSIGNAL, NULL, 0) = 48
+epoll_wait(4, [], 128, 0)               = 0
+epoll_wait(4, [{events=EPOLLIN, data={u32=603983120, u64=134351475969296}}], 128, -1) = 1
+epoll_wait(4, [], 128, 0)               = 0
+epoll_wait(4, [], 128, 0)               = 0
+sendto(11, "T\10\6\0\0\0\0000", 8, MSG_NOSIGNAL, NULL, 0) = 8
+epoll_wait(4, [], 128, 0)               = 0
+sendto(11, "\0\0\0\0\0\0\0000\0\0\0\0\0\0\0\0\0\0\0\30\4\1\0\0\10\10\20\r\32\fLO"..., 48, MSG_NOSIGNAL, NULL, 0) = 48
+epoll_wait(4, [], 128, 0)               = 0
+epoll_wait(4, [{events=EPOLLIN, data={u32=603983120, u64=134351475969296}}], 128, -1) = 1
+epoll_wait(4, [], 128, 0)               = 0
+epoll_wait(4, [], 128, 0)               = 0
+sendto(11, "T\10\6\0\0\0\0000", 8, MSG_NOSIGNAL, NULL, 0) = 8
+epoll_wait(4, [], 128, 0)               = 0
+sendto(11, "\0\0\0\0\0\0\0001\0\0\0\0\0\0\0\0\0\0\0\30\4\1\0\0\10\t\20\r\32\fLO"..., 48, MSG_NOSIGNAL, NULL, 0) = 48
+epoll_wait(4, [], 128, 0)               = 0
+epoll_wait(4, [{events=EPOLLIN, data={u32=603983120, u64=134351475969296}}], 128, -1) = 1
+epoll_wait(4, [], 128, 0)               = 0
+epoll_wait(4, [], 128, 0)               = 0
+sendto(11, "T\10\6\0\0\0\0000", 8, MSG_NOSIGNAL, NULL, 0) = 8
+epoll_wait(4, [], 128, 0)               = 0
+sendto(11, "\0\0\0\0\0\0\0002\0\0\0\0\0\0\0\0\0\0\0\30\4\1\0\0\10\n\20\r\32\fLO"..., 48, MSG_NOSIGNAL, NULL, 0) = 48
+epoll_wait(4, [], 128, 0)               = 0
+epoll_wait(4, [{events=EPOLLIN, data={u32=603983120, u64=134351475969296}}], 128, -1) = 1
+epoll_wait(4, [], 128, 0)               = 0
+epoll_wait(4, [], 128, 0)               = 0
+sendto(11, "T\10\6\0\0\0\0002", 8, MSG_NOSIGNAL, NULL, 0) = 8
+epoll_wait(4, [], 128, 0)               = 0
+sendto(11, "\0\0\0\0\0\0\0003\0\0\0\0\0\0\0\0\0\0\0\32\4\1\0\0\10\v\20\r\32\16Se"..., 50, MSG_NOSIGNAL, NULL, 0) = 50
+epoll_wait(4, [], 128, 0)               = 0
+epoll_wait(4, [{events=EPOLLIN, data={u32=603983120, u64=134351475969296}}], 128, -1) = 1
+futex(0x64521dc8bbb8, FUTEX_WAIT_PRIVATE, 2, NULL) = -1 EAGAIN (Resource temporarily unavailable)
+futex(0x64521dc8bbb8, FUTEX_WAKE_PRIVATE, 1) = 0
+epoll_wait(4, [], 128, 0)               = 0
+epoll_wait(4, [], 128, 0)               = 0
+sendto(11, "T\10\6\0\0\0\0#", 8, MSG_NOSIGNAL, NULL, 0) = 8
+epoll_wait(4, [], 128, 0)               = 0
+sendto(11, "\0\0\0\0\0\0\0004\0\0\0\0\0\0\0\0\0\0\0\v\4\3\0\0\n\t\10\0\20\1\"\3"..., 35, MSG_NOSIGNAL, NULL, 0) = 35
+epoll_wait(4, [], 128, 0)               = 0
+epoll_wait(4, [{events=EPOLLIN, data={u32=603983120, u64=134351475969296}}], 128, -1) = 1
+futex(0x64521dc8bbb8, FUTEX_WAIT_PRIVATE, 2, NULL) = -1 EAGAIN (Resource temporarily unavailable)
+futex(0x64521dc8bbb8, FUTEX_WAKE_PRIVATE, 1) = 0
+epoll_wait(4, [], 128, 0)               = 0
+epoll_wait(4, [], 128, 0)               = 0
+sendto(11, "T\10\6\0\0\0\17\364", 8, MSG_NOSIGNAL, NULL, 0) = 8
+epoll_wait(4, [], 128, 0)               = 0
+sendto(11, "\0\0\0\0\0\0\0005\0\0\0\0\0\0\0\0\0\0\17\334\3\1\0\0\n\331\37\10\201\200\200\200"..., 4084, MSG_NOSIGNAL, NULL, 0) = 4084
+epoll_wait(4, [], 128, 0)               = 0
+epoll_wait(4, [{events=EPOLLIN, data={u32=603983120, u64=134351475969296}}], 128, -1) = 1
+futex(0x7a31399bd9e4, FUTEX_WAKE_PRIVATE, 2147483647) = 0
+futex(0x7a31240c73e8, FUTEX_WAKE_PRIVATE, 2147483647) = 0
+futex(0x7a31240c73a8, FUTEX_WAKE_PRIVATE, 2147483647) = 0
+futex(0x7a31240c7418, FUTEX_WAKE_PRIVATE, 2147483647) = 0
+futex(0x7a31240c7448, FUTEX_WAKE_PRIVATE, 2147483647) = 0
+futex(0x7a31240c74b8, FUTEX_WAKE_PRIVATE, 2147483647) = 0
+epoll_wait(4, [], 128, 0)               = 0
+clock_gettime(CLOCK_MONOTONIC, {tv_sec=3360, tv_nsec=299399596}) = 0
+clock_gettime(CLOCK_MONOTONIC, {tv_sec=3360, tv_nsec=299440543}) = 0
+timerfd_settime(5, 0, {it_interval={tv_sec=0, tv_nsec=0}, it_value={tv_sec=299, tv_nsec=999959000}}, {it_interval={tv_sec=0, tv_nsec=0}, it_value={tv_sec=0, tv_nsec=0}}) = 0
+mprotect(0x7a3124194000, 417792, PROT_READ|PROT_WRITE) = 0
+epoll_wait(4, [], 128, 0)               = 0
+sendto(11, "T\10\6\0\0\6Y\17", 8, MSG_NOSIGNAL, NULL, 0) = 8
+epoll_wait(4, [], 128, 0)               = 0
+sendto(11, "\0\0\0\0\0\0\0006\0\0\0\0\0\0\0\0\0\6X\367\3\2\0\0\10\0\22\214\1\20\264A"..., 65536, MSG_NOSIGNAL, NULL, 0) = 65536
+epoll_wait(4, [{events=EPOLLIN, data={u32=603987200, u64=134351475973376}}], 128, 0) = 1
+sendto(11, "\0\0\0\0\1\0\0\0\0\0\0\0\27\233\322*\366\313\214\252\0\0\0\0\0\0\0\0\0\0\0\0"..., 65536, MSG_NOSIGNAL, NULL, 0) = 65536
+recvfrom(11, "T\10\5\0\0\0\0\30", 8, 0, NULL, NULL) = 8
+recvfrom(11, 0x64521ed32ce0, 24, 0, NULL, NULL) = -1 EAGAIN (Resource temporarily unavailable)
+epoll_wait(4, [], 128, 0)               = 0
+sendto(11, "\0\0\0\0\1\0\0\0\0\0\0\0~W\205\327\345J\272\310\0\0\0\0\0\0\0\0\0\0\0\0"..., 65536, MSG_NOSIGNAL, NULL, 0) = 65536
+epoll_wait(4, [], 128, 0)               = 0
+sendto(11, "\0\0\0\0\1\0\0\0\0\0\0\0;\25\373\347\256\360\0z\0\0\0\0\0\0\0\0\0\0\0\0"..., 65536, MSG_NOSIGNAL, NULL, 0) = 65536
+epoll_wait(4, [{events=EPOLLIN, data={u32=603987200, u64=134351475973376}}], 128, 0) = 1
+sendto(11, "\0\0\0\0\1\0\0\0\0\0\0\0\36\270\rU\244\226py\0\0\0\0\0\0\0\0\0\0\0\0"..., 65536, MSG_NOSIGNAL, NULL, 0) = 65536
+recvfrom(11, "\0\0\0\0\0\0\0\16\0\0\0\0\0\0\0\0\0\0\0\0\4\2\0\0", 24, 0, NULL, NULL) = 24
+recvfrom(11, 0x7a31240052dc, 8, 0, NULL, NULL) = -1 EAGAIN (Resource temporarily unavailable)
+epoll_wait(4, [], 128, 0)               = 0
+sendto(11, "\0\0\0\0\1\0\0\0\0\0\0\0\271\300\30\323u\324;y\0\0\0\0\0\0\0\0\0\0\0\0"..., 65536, MSG_NOSIGNAL, NULL, 0) = 65536
+epoll_wait(4, [], 128, 0)               = 0
+sendto(11, "\0\0\0\0\1\0\0\0\0\0\0\0\\\r\4.8\262\27u\0\0\0\0\0\0\0\0\0\0\0\0"..., 22799, MSG_NOSIGNAL, NULL, 0) = 22799
+epoll_wait(4, [], 128, 0)               = 0
+sendto(11, "T\10\6\0\0\0\0-", 8, MSG_NOSIGNAL, NULL, 0) = 8
+epoll_wait(4, [], 128, 0)               = 0
+sendto(11, "\0\0\0\0\0\0\0007\0\0\0\0\0\0\0\0\0\0\0\25\4\1\0\0\10\f\20\r\32\tCo"..., 45, MSG_NOSIGNAL, NULL, 0) = 45
+epoll_wait(4, [], 128, 0)               = 0
+epoll_wait(4, [{events=EPOLLIN, data={u32=603987200, u64=134351475973376}}], 128, -1) = 1
+recvfrom(11, "T\10\5\0\0\0\0\30", 8, 0, NULL, NULL) = 8
+recvfrom(11, "\0\0\0\0\0\0\0\17\0\0\0\0\0\0\0\0\0\0\0\0\4\2\0\0", 24, 0, NULL, NULL) = 24
+epoll_wait(4, [], 128, 0)               = 0
+recvfrom(11, 0x7a31240052dc, 8, 0, NULL, NULL) = -1 EAGAIN (Resource temporarily unavailable)
+epoll_wait(4, [], 128, 0)               = 0
+epoll_wait(4, [{events=EPOLLIN, data={u32=603983120, u64=134351475969296}}], 128, -1) = 1
+epoll_wait(4, [], 128, 0)               = 0
+epoll_wait(4, [], 128, 0)               = 0
+sendto(11, "T\10\6\0\0\0\0005", 8, MSG_NOSIGNAL, NULL, 0) = 8
+epoll_wait(4, [], 128, 0)               = 0
+sendto(11, "\0\0\0\0\0\0\08\0\0\0\0\0\0\0\0\0\0\0\35\4\1\0\0\10\r\20\r\32\21Pr"..., 53, MSG_NOSIGNAL, NULL, 0) = 53
+epoll_wait(4, [], 128, 0)               = 0
+epoll_wait(4, [{events=EPOLLIN, data={u32=603987200, u64=134351475973376}}], 128, -1) = 1
+recvfrom(11, "T\10\4\0\0\0\0\"", 8, 0, NULL, NULL) = 8
+recvfrom(11, 0x64521ed2bd90, 34, 0, NULL, NULL) = -1 EAGAIN (Resource temporarily unavailable)
+epoll_wait(4, [{events=EPOLLIN, data={u32=603987200, u64=134351475973376}}], 128, -1) = 1
+recvfrom(11, "\0\0\0\0\0\0\0\20\0\0\0\0\0\0\0\0\0\0\0\n\1\1\0\1\10\3\22\6\22\4\10\0"..., 34, 0, NULL, NULL) = 34
+futex(0x64521dc85b38, FUTEX_WAKE_PRIVATE, 1) = 1
+recvfrom(11, "T\10\4\0\0\0\0\32", 8, 0, NULL, NULL) = 8
+epoll_wait(4, [{events=EPOLLIN, data={u32=603987200, u64=134351475973376}}], 128, 0) = 1
+recvfrom(11, "\0\0\0\0\0\0\0\21\0\0\0\0\0\0\0\0\0\0\0\2\1\5\0\1\10\1", 26, 0, NULL, NULL) = 26
+epoll_wait(4, [{events=EPOLLIN, data={u32=603987200, u64=134351475973376}}], 128, 0) = 1
+futex(0x64521dc85b3c, FUTEX_WAKE_PRIVATE, 1) = 1
+recvfrom(11, "T\10\5\0\0\0\0\30", 8, 0, NULL, NULL) = 8
+epoll_wait(4, [{events=EPOLLIN, data={u32=603987200, u64=134351475973376}}], 128, 0) = 1
+recvfrom(11, "\0\0\0\0\0\0\0\22\0\0\0\0\0\0\0\0\0\0\0\0\1\3\0\1", 24, 0, NULL, NULL) = 24
+sendto(11, "T\10\4\0\0\0\0\32", 8, MSG_NOSIGNAL, NULL, 0) = 8
+epoll_wait(4, [], 128, 0)               = 0
+futex(0x64521dc85b38, FUTEX_WAKE_PRIVATE, 1) = 1
+recvfrom(11, 0x7a31240052dc, 8, 0, NULL, NULL) = -1 EAGAIN (Resource temporarily unavailable)
+sendto(11, "\0\0\0\0\0\0\09\0\0\0\0\0\0\0\20\0\0\0\2\1\2\0\0\10\0", 26, MSG_NOSIGNAL, NULL, 0) = 26
+epoll_wait(4, [], 128, 0)               = 0
+sendto(11, "T\10\4\0\0\0\0\32", 8, MSG_NOSIGNAL, NULL, 0) = 8
+epoll_wait(4, [], 128, 0)               = 0
+sendto(11, "\0\0\0\0\0\0\0:\0\0\0\0\0\0\0\21\0\0\0\2\1\6\0\0\10\0", 26, MSG_NOSIGNAL, NULL, 0) = 26
+epoll_wait(4, [], 128, 0)               = 0
+sendto(11, "T\10\5\0\0\0\0\32", 8, MSG_NOSIGNAL, NULL, 0) = 8
+epoll_wait(4, [], 128, 0)               = 0
+sendto(11, "\0\0\0\0\0\0\0;\0\0\0\0\0\0\0\22\0\0\0\2\1\4\0\0\10\0", 26, MSG_NOSIGNAL, NULL, 0) = 26
+epoll_wait(4, [], 128, 0)               = 0
+epoll_wait(4, [{events=EPOLLIN, data={u32=603983120, u64=134351475969296}}], 128, -1) = 1
+epoll_wait(4, [], 128, 0)               = 0
+epoll_wait(4, [], 128, 0)               = 0
+sendto(11, "T\10\5\0\0\0\0\30", 8, MSG_NOSIGNAL, NULL, 0) = 8
+epoll_wait(4, [], 128, 0)               = 0
+sendto(11, "\0\0\0\0\0\0\0<\0\0\0\0\0\0\0\0\0\0\0\0\1\r\0\0", 24, MSG_NOSIGNAL, NULL, 0) = 24
+epoll_wait(4, [], 128, 0)               = 0
+epoll_wait(4, [{events=EPOLLIN|EPOLLHUP, data={u32=603987200, u64=134351475973376}}], 128, -1) = 1
+recvfrom(11, "", 8, 0, NULL, NULL)      = 0
+epoll_wait(4, [{events=EPOLLIN|EPOLLHUP, data={u32=603987200, u64=134351475973376}}], 128, 0) = 1
+shutdown(11, SHUT_RDWR)                 = 0
+epoll_ctl(4, EPOLL_CTL_DEL, 11, 0x7a31293fd460) = 0
+close(11)                               = 0
+epoll_wait(4, [], 128, 0)               = 0
+epoll_wait(4, [], 128, 0)               = 0
+epoll_wait(4, [], 128, 0)               = 0
+epoll_wait(4, [], 128, 0)               = 0
+epoll_wait(4, [{events=EPOLLIN, data={u32=603983120, u64=134351475969296}}], 128, -1) = 1
+epoll_wait(4, [], 128, 0)               = 0
+close(6)                                = 0
+rt_sigprocmask(SIG_BLOCK, ~[RT_1], NULL, 8) = 0
+madvise(0x7a3128c00000, 8359936, MADV_DONTNEED) = 0
+exit(0)                                 = ?
++++ exited with 0 +++

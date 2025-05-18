@@ -1,0 +1,13 @@
+rseq(0x7a30f2a00920, 0x20, 0, 0x53053053) = 0
+set_robust_list(0x7a30f2a002e0, 24)     = 0
+rt_sigprocmask(SIG_SETMASK, [], NULL, 8) = 0
+clock_gettime(CLOCK_MONOTONIC, {tv_sec=3358, tv_nsec=701655185}) = 0
+clock_gettime(CLOCK_MONOTONIC, {tv_sec=3358, tv_nsec=701696372}) = 0
+clock_gettime(CLOCK_REALTIME, {tv_sec=1746139944, tv_nsec=991692857}) = 0
+futex(0x7ffcae09d968, FUTEX_WAIT_BITSET_PRIVATE|FUTEX_CLOCK_REALTIME, 0, {tv_sec=1746139947, tv_nsec=991651670}, FUTEX_BITSET_MATCH_ANY) = 0
+clock_gettime(CLOCK_REALTIME, {tv_sec=1746139945, tv_nsec=313975444}) = 0
+futex(0x7ffcae09d910, FUTEX_WAKE_PRIVATE, 1) = 0
+rt_sigprocmask(SIG_BLOCK, ~[RT_1], NULL, 8) = 0
+madvise(0x7a30f2200000, 8359936, MADV_DONTNEED) = 0
+exit(0)                                 = ?
++++ exited with 0 +++

@@ -1,0 +1,77 @@
+rseq(0x7a30fa400920, 0x20, 0, 0x53053053) = 0
+set_robust_list(0x7a30fa4002e0, 24)     = 0
+rt_sigprocmask(SIG_SETMASK, [], NULL, 8) = 0
+gettid()                                = 8389
+mmap(NULL, 134217728, PROT_NONE, MAP_PRIVATE|MAP_ANONYMOUS, -1, 0) = 0x7a30f1c00000
+munmap(0x7a30f1c00000, 37748736)        = 0
+munmap(0x7a30f8000000, 29360128)        = 0
+mprotect(0x7a30f4000000, 135168, PROT_READ|PROT_WRITE) = 0
+poll([{fd=37, events=POLLIN}], 1, 100)  = 1 ([{fd=37, revents=POLLIN}])
+read(37, "\1\0\0\0\0\0\0\0", 8)         = 8
+futex(0x7ffcae09e820, FUTEX_WAKE_PRIVATE, 1) = 1
+poll([{fd=37, events=POLLIN}, {fd=39, events=POLLIN}], 2, 38) = 1 ([{fd=37, revents=POLLIN}])
+read(37, "\1\0\0\0\0\0\0\0", 8)         = 8
+futex(0x7ffcae09e820, FUTEX_WAKE_PRIVATE, 1) = 1
+poll([{fd=37, events=POLLIN}, {fd=39, events=POLLIN}, {fd=41, events=POLLIN}], 3, 25) = 1 ([{fd=37, revents=POLLIN}])
+read(37, "\1\0\0\0\0\0\0\0", 8)         = 8
+futex(0x7ffcae09e820, FUTEX_WAKE_PRIVATE, 1) = 1
+poll([{fd=37, events=POLLIN}, {fd=39, events=POLLIN}, {fd=41, events=POLLIN}, {fd=43, events=POLLIN}], 4, 11) = 1 ([{fd=37, revents=POLLIN}])
+read(37, "\1\0\0\0\0\0\0\0", 8)         = 8
+futex(0x7ffcae09e8f0, FUTEX_WAKE_PRIVATE, 1) = 1
+poll([{fd=37, events=POLLIN}, {fd=39, events=POLLIN}, {fd=41, events=POLLIN}, {fd=43, events=POLLIN}, {fd=44, events=POLLIN}], 5, 11) = 0 (Timeout)
+poll([{fd=37, events=POLLIN}, {fd=39, events=POLLIN}, {fd=41, events=POLLIN}, {fd=43, events=POLLIN}, {fd=44, events=POLLIN}], 5, 100) = 1 ([{fd=37, revents=POLLIN}])
+read(37, "\1\0\0\0\0\0\0\0", 8)         = 8
+futex(0x7ffcae09e980, FUTEX_WAKE_PRIVATE, 1) = 1
+poll([{fd=37, events=POLLIN}, {fd=39, events=POLLIN}, {fd=41, events=POLLIN}, {fd=43, events=POLLIN}, {fd=44, events=POLLIN}, {fd=46, events=POLLIN}], 6, 86) = 1 ([{fd=37, revents=POLLIN}])
+read(37, "\1\0\0\0\0\0\0\0", 8)         = 8
+futex(0x7ffcae09e980, FUTEX_WAKE_PRIVATE, 1) = 1
+poll([{fd=37, events=POLLIN}, {fd=39, events=POLLIN}, {fd=41, events=POLLIN}, {fd=43, events=POLLIN}, {fd=44, events=POLLIN}, {fd=46, events=POLLIN}, {fd=48, events=POLLIN}], 7, 86) = 1 ([{fd=37, revents=POLLIN}])
+read(37, "\1\0\0\0\0\0\0\0", 8)         = 8
+futex(0x7ffcae09e980, FUTEX_WAKE_PRIVATE, 1) = 1
+poll([{fd=37, events=POLLIN}, {fd=39, events=POLLIN}, {fd=41, events=POLLIN}, {fd=43, events=POLLIN}, {fd=44, events=POLLIN}, {fd=46, events=POLLIN}, {fd=48, events=POLLIN}, {fd=50, events=POLLIN}], 8, 85) = 1 ([{fd=37, revents=POLLIN}])
+read(37, "\1\0\0\0\0\0\0\0", 8)         = 8
+futex(0x7ffcae09e980, FUTEX_WAKE_PRIVATE, 1) = 1
+poll([{fd=37, events=POLLIN}, {fd=39, events=POLLIN}, {fd=41, events=POLLIN}, {fd=43, events=POLLIN}, {fd=44, events=POLLIN}, {fd=46, events=POLLIN}, {fd=48, events=POLLIN}, {fd=50, events=POLLIN}, {fd=52, events=POLLIN}], 9, 84) = 1 ([{fd=37, revents=POLLIN}])
+read(37, "\1\0\0\0\0\0\0\0", 8)         = 8
+futex(0x7ffcae09ea00, FUTEX_WAKE_PRIVATE, 1) = 1
+poll([{fd=37, events=POLLIN}, {fd=39, events=POLLIN}, {fd=41, events=POLLIN}, {fd=43, events=POLLIN}, {fd=44, events=POLLIN}, {fd=46, events=POLLIN}, {fd=48, events=POLLIN}, {fd=50, events=POLLIN}, {fd=52, events=POLLIN}, {fd=53, events=POLLIN}], 10, 55) = 0 (Timeout)
+poll([{fd=37, events=POLLIN}, {fd=39, events=POLLIN}, {fd=41, events=POLLIN}, {fd=43, events=POLLIN}, {fd=44, events=POLLIN}, {fd=46, events=POLLIN}, {fd=48, events=POLLIN}, {fd=50, events=POLLIN}, {fd=52, events=POLLIN}, {fd=53, events=POLLIN}], 10, 100) = 0 (Timeout)
+poll([{fd=37, events=POLLIN}, {fd=39, events=POLLIN}, {fd=41, events=POLLIN}, {fd=43, events=POLLIN}, {fd=44, events=POLLIN}, {fd=46, events=POLLIN}, {fd=48, events=POLLIN}, {fd=50, events=POLLIN}, {fd=52, events=POLLIN}, {fd=53, events=POLLIN}], 10, 100) = 0 (Timeout)
+poll([{fd=37, events=POLLIN}, {fd=39, events=POLLIN}, {fd=41, events=POLLIN}, {fd=43, events=POLLIN}, {fd=44, events=POLLIN}, {fd=46, events=POLLIN}, {fd=48, events=POLLIN}, {fd=50, events=POLLIN}, {fd=52, events=POLLIN}, {fd=53, events=POLLIN}], 10, 100) = 0 (Timeout)
+poll([{fd=37, events=POLLIN}, {fd=39, events=POLLIN}, {fd=41, events=POLLIN}, {fd=43, events=POLLIN}, {fd=44, events=POLLIN}, {fd=46, events=POLLIN}, {fd=48, events=POLLIN}, {fd=50, events=POLLIN}, {fd=52, events=POLLIN}, {fd=53, events=POLLIN}], 10, 100) = 0 (Timeout)
+poll([{fd=37, events=POLLIN}, {fd=39, events=POLLIN}, {fd=41, events=POLLIN}, {fd=43, events=POLLIN}, {fd=44, events=POLLIN}, {fd=46, events=POLLIN}, {fd=48, events=POLLIN}, {fd=50, events=POLLIN}, {fd=52, events=POLLIN}, {fd=53, events=POLLIN}], 10, 100) = 0 (Timeout)
+poll([{fd=37, events=POLLIN}, {fd=39, events=POLLIN}, {fd=41, events=POLLIN}, {fd=43, events=POLLIN}, {fd=44, events=POLLIN}, {fd=46, events=POLLIN}, {fd=48, events=POLLIN}, {fd=50, events=POLLIN}, {fd=52, events=POLLIN}, {fd=53, events=POLLIN}], 10, 100) = 0 (Timeout)
+poll([{fd=37, events=POLLIN}, {fd=39, events=POLLIN}, {fd=41, events=POLLIN}, {fd=43, events=POLLIN}, {fd=44, events=POLLIN}, {fd=46, events=POLLIN}, {fd=48, events=POLLIN}, {fd=50, events=POLLIN}, {fd=52, events=POLLIN}, {fd=53, events=POLLIN}], 10, 100) = 0 (Timeout)
+poll([{fd=37, events=POLLIN}, {fd=39, events=POLLIN}, {fd=41, events=POLLIN}, {fd=43, events=POLLIN}, {fd=44, events=POLLIN}, {fd=46, events=POLLIN}, {fd=48, events=POLLIN}, {fd=50, events=POLLIN}, {fd=52, events=POLLIN}, {fd=53, events=POLLIN}], 10, 100) = 0 (Timeout)
+poll([{fd=37, events=POLLIN}, {fd=39, events=POLLIN}, {fd=41, events=POLLIN}, {fd=43, events=POLLIN}, {fd=44, events=POLLIN}, {fd=46, events=POLLIN}, {fd=48, events=POLLIN}, {fd=50, events=POLLIN}, {fd=52, events=POLLIN}, {fd=53, events=POLLIN}], 10, 100) = 0 (Timeout)
+poll([{fd=37, events=POLLIN}, {fd=39, events=POLLIN}, {fd=41, events=POLLIN}, {fd=43, events=POLLIN}, {fd=44, events=POLLIN}, {fd=46, events=POLLIN}, {fd=48, events=POLLIN}, {fd=50, events=POLLIN}, {fd=52, events=POLLIN}, {fd=53, events=POLLIN}], 10, 100) = 0 (Timeout)
+poll([{fd=37, events=POLLIN}, {fd=39, events=POLLIN}, {fd=41, events=POLLIN}, {fd=43, events=POLLIN}, {fd=44, events=POLLIN}, {fd=46, events=POLLIN}, {fd=48, events=POLLIN}, {fd=50, events=POLLIN}, {fd=52, events=POLLIN}, {fd=53, events=POLLIN}], 10, 100) = 0 (Timeout)
+poll([{fd=37, events=POLLIN}, {fd=39, events=POLLIN}, {fd=41, events=POLLIN}, {fd=43, events=POLLIN}, {fd=44, events=POLLIN}, {fd=46, events=POLLIN}, {fd=48, events=POLLIN}, {fd=50, events=POLLIN}, {fd=52, events=POLLIN}, {fd=53, events=POLLIN}], 10, 100) = 0 (Timeout)
+poll([{fd=37, events=POLLIN}, {fd=39, events=POLLIN}, {fd=41, events=POLLIN}, {fd=43, events=POLLIN}, {fd=44, events=POLLIN}, {fd=46, events=POLLIN}, {fd=48, events=POLLIN}, {fd=50, events=POLLIN}, {fd=52, events=POLLIN}, {fd=53, events=POLLIN}], 10, 100) = 0 (Timeout)
+poll([{fd=37, events=POLLIN}, {fd=39, events=POLLIN}, {fd=41, events=POLLIN}, {fd=43, events=POLLIN}, {fd=44, events=POLLIN}, {fd=46, events=POLLIN}, {fd=48, events=POLLIN}, {fd=50, events=POLLIN}, {fd=52, events=POLLIN}, {fd=53, events=POLLIN}], 10, 100) = 0 (Timeout)
+poll([{fd=37, events=POLLIN}, {fd=39, events=POLLIN}, {fd=41, events=POLLIN}, {fd=43, events=POLLIN}, {fd=44, events=POLLIN}, {fd=46, events=POLLIN}, {fd=48, events=POLLIN}, {fd=50, events=POLLIN}, {fd=52, events=POLLIN}, {fd=53, events=POLLIN}], 10, 100) = 0 (Timeout)
+poll([{fd=37, events=POLLIN}, {fd=39, events=POLLIN}, {fd=41, events=POLLIN}, {fd=43, events=POLLIN}, {fd=44, events=POLLIN}, {fd=46, events=POLLIN}, {fd=48, events=POLLIN}, {fd=50, events=POLLIN}, {fd=52, events=POLLIN}, {fd=53, events=POLLIN}], 10, 100) = 0 (Timeout)
+poll([{fd=37, events=POLLIN}, {fd=39, events=POLLIN}, {fd=41, events=POLLIN}, {fd=43, events=POLLIN}, {fd=44, events=POLLIN}, {fd=46, events=POLLIN}, {fd=48, events=POLLIN}, {fd=50, events=POLLIN}, {fd=52, events=POLLIN}, {fd=53, events=POLLIN}], 10, 100) = 0 (Timeout)
+poll([{fd=37, events=POLLIN}, {fd=39, events=POLLIN}, {fd=41, events=POLLIN}, {fd=43, events=POLLIN}, {fd=44, events=POLLIN}, {fd=46, events=POLLIN}, {fd=48, events=POLLIN}, {fd=50, events=POLLIN}, {fd=52, events=POLLIN}, {fd=53, events=POLLIN}], 10, 100) = 0 (Timeout)
+poll([{fd=37, events=POLLIN}, {fd=39, events=POLLIN}, {fd=41, events=POLLIN}, {fd=43, events=POLLIN}, {fd=44, events=POLLIN}, {fd=46, events=POLLIN}, {fd=48, events=POLLIN}, {fd=50, events=POLLIN}, {fd=52, events=POLLIN}, {fd=53, events=POLLIN}], 10, 100) = 0 (Timeout)
+poll([{fd=37, events=POLLIN}, {fd=39, events=POLLIN}, {fd=41, events=POLLIN}, {fd=43, events=POLLIN}, {fd=44, events=POLLIN}, {fd=46, events=POLLIN}, {fd=48, events=POLLIN}, {fd=50, events=POLLIN}, {fd=52, events=POLLIN}, {fd=53, events=POLLIN}], 10, 100) = 0 (Timeout)
+poll([{fd=37, events=POLLIN}, {fd=39, events=POLLIN}, {fd=41, events=POLLIN}, {fd=43, events=POLLIN}, {fd=44, events=POLLIN}, {fd=46, events=POLLIN}, {fd=48, events=POLLIN}, {fd=50, events=POLLIN}, {fd=52, events=POLLIN}, {fd=53, events=POLLIN}], 10, 100) = 0 (Timeout)
+poll([{fd=37, events=POLLIN}, {fd=39, events=POLLIN}, {fd=41, events=POLLIN}, {fd=43, events=POLLIN}, {fd=44, events=POLLIN}, {fd=46, events=POLLIN}, {fd=48, events=POLLIN}, {fd=50, events=POLLIN}, {fd=52, events=POLLIN}, {fd=53, events=POLLIN}], 10, 100) = 0 (Timeout)
+poll([{fd=37, events=POLLIN}, {fd=39, events=POLLIN}, {fd=41, events=POLLIN}, {fd=43, events=POLLIN}, {fd=44, events=POLLIN}, {fd=46, events=POLLIN}, {fd=48, events=POLLIN}, {fd=50, events=POLLIN}, {fd=52, events=POLLIN}, {fd=53, events=POLLIN}], 10, 100) = 0 (Timeout)
+poll([{fd=37, events=POLLIN}, {fd=39, events=POLLIN}, {fd=41, events=POLLIN}, {fd=43, events=POLLIN}, {fd=44, events=POLLIN}, {fd=46, events=POLLIN}, {fd=48, events=POLLIN}, {fd=50, events=POLLIN}, {fd=52, events=POLLIN}, {fd=53, events=POLLIN}], 10, 100) = 0 (Timeout)
+poll([{fd=37, events=POLLIN}, {fd=39, events=POLLIN}, {fd=41, events=POLLIN}, {fd=43, events=POLLIN}, {fd=44, events=POLLIN}, {fd=46, events=POLLIN}, {fd=48, events=POLLIN}, {fd=50, events=POLLIN}, {fd=52, events=POLLIN}, {fd=53, events=POLLIN}], 10, 100) = 0 (Timeout)
+poll([{fd=37, events=POLLIN}, {fd=39, events=POLLIN}, {fd=41, events=POLLIN}, {fd=43, events=POLLIN}, {fd=44, events=POLLIN}, {fd=46, events=POLLIN}, {fd=48, events=POLLIN}, {fd=50, events=POLLIN}, {fd=52, events=POLLIN}, {fd=53, events=POLLIN}], 10, 100) = 0 (Timeout)
+poll([{fd=37, events=POLLIN}, {fd=39, events=POLLIN}, {fd=41, events=POLLIN}, {fd=43, events=POLLIN}, {fd=44, events=POLLIN}, {fd=46, events=POLLIN}, {fd=48, events=POLLIN}, {fd=50, events=POLLIN}, {fd=52, events=POLLIN}, {fd=53, events=POLLIN}], 10, 100) = 0 (Timeout)
+poll([{fd=37, events=POLLIN}, {fd=39, events=POLLIN}, {fd=41, events=POLLIN}, {fd=43, events=POLLIN}, {fd=44, events=POLLIN}, {fd=46, events=POLLIN}, {fd=48, events=POLLIN}, {fd=50, events=POLLIN}, {fd=52, events=POLLIN}, {fd=53, events=POLLIN}], 10, 100) = 0 (Timeout)
+poll([{fd=37, events=POLLIN}, {fd=39, events=POLLIN}, {fd=41, events=POLLIN}, {fd=43, events=POLLIN}, {fd=44, events=POLLIN}, {fd=46, events=POLLIN}, {fd=48, events=POLLIN}, {fd=50, events=POLLIN}, {fd=52, events=POLLIN}, {fd=53, events=POLLIN}], 10, 100) = 0 (Timeout)
+poll([{fd=37, events=POLLIN}, {fd=39, events=POLLIN}, {fd=41, events=POLLIN}, {fd=43, events=POLLIN}, {fd=44, events=POLLIN}, {fd=46, events=POLLIN}, {fd=48, events=POLLIN}, {fd=50, events=POLLIN}, {fd=52, events=POLLIN}, {fd=53, events=POLLIN}], 10, 100) = 0 (Timeout)
+poll([{fd=37, events=POLLIN}, {fd=39, events=POLLIN}, {fd=41, events=POLLIN}, {fd=43, events=POLLIN}, {fd=44, events=POLLIN}, {fd=46, events=POLLIN}, {fd=48, events=POLLIN}, {fd=50, events=POLLIN}, {fd=52, events=POLLIN}, {fd=53, events=POLLIN}], 10, 100) = 0 (Timeout)
+poll([{fd=37, events=POLLIN}, {fd=39, events=POLLIN}, {fd=41, events=POLLIN}, {fd=43, events=POLLIN}, {fd=44, events=POLLIN}, {fd=46, events=POLLIN}, {fd=48, events=POLLIN}, {fd=50, events=POLLIN}, {fd=52, events=POLLIN}, {fd=53, events=POLLIN}], 10, 100) = 0 (Timeout)
+poll([{fd=37, events=POLLIN}, {fd=39, events=POLLIN}, {fd=41, events=POLLIN}, {fd=43, events=POLLIN}, {fd=44, events=POLLIN}, {fd=46, events=POLLIN}, {fd=48, events=POLLIN}, {fd=50, events=POLLIN}, {fd=52, events=POLLIN}, {fd=53, events=POLLIN}], 10, 100) = 0 (Timeout)
+poll([{fd=37, events=POLLIN}, {fd=39, events=POLLIN}, {fd=41, events=POLLIN}, {fd=43, events=POLLIN}, {fd=44, events=POLLIN}, {fd=46, events=POLLIN}, {fd=48, events=POLLIN}, {fd=50, events=POLLIN}, {fd=52, events=POLLIN}, {fd=53, events=POLLIN}], 10, 100) = 0 (Timeout)
+poll([{fd=37, events=POLLIN}, {fd=39, events=POLLIN}, {fd=41, events=POLLIN}, {fd=43, events=POLLIN}, {fd=44, events=POLLIN}, {fd=46, events=POLLIN}, {fd=48, events=POLLIN}, {fd=50, events=POLLIN}, {fd=52, events=POLLIN}, {fd=53, events=POLLIN}], 10, 100) = 0 (Timeout)
+poll([{fd=37, events=POLLIN}, {fd=39, events=POLLIN}, {fd=41, events=POLLIN}, {fd=43, events=POLLIN}, {fd=44, events=POLLIN}, {fd=46, events=POLLIN}, {fd=48, events=POLLIN}, {fd=50, events=POLLIN}, {fd=52, events=POLLIN}, {fd=53, events=POLLIN}], 10, 100) = 0 (Timeout)
+poll([{fd=37, events=POLLIN}, {fd=39, events=POLLIN}, {fd=41, events=POLLIN}, {fd=43, events=POLLIN}, {fd=44, events=POLLIN}, {fd=46, events=POLLIN}, {fd=48, events=POLLIN}, {fd=50, events=POLLIN}, {fd=52, events=POLLIN}, {fd=53, events=POLLIN}], 10, 100) = 0 (Timeout)
+poll([{fd=37, events=POLLIN}, {fd=39, events=POLLIN}, {fd=41, events=POLLIN}, {fd=43, events=POLLIN}, {fd=44, events=POLLIN}, {fd=46, events=POLLIN}, {fd=48, events=POLLIN}, {fd=50, events=POLLIN}, {fd=52, events=POLLIN}, {fd=53, events=POLLIN}], 10, 100) = 0 (Timeout)
+poll([{fd=37, events=POLLIN}, {fd=39, events=POLLIN}, {fd=41, events=POLLIN}, {fd=43, events=POLLIN}, {fd=44, events=POLLIN}, {fd=46, events=POLLIN}, {fd=48, events=POLLIN}, {fd=50, events=POLLIN}, {fd=52, events=POLLIN}, {fd=53, events=POLLIN}], 10, 100 <unfinished ...>) = ?
++++ exited with 0 +++
