@@ -1,0 +1,169 @@
+#include <stdio.h>
+#include <stdlib.h>
+#include <fcntl.h>
+#include <sys/ptrace.h>
+#include <sys/wait.h>
+#include <sys/types.h>
+#include <sys/user.h>
+#include <sys/syscall.h>
+#include <linux/limits.h>
+#include <linux/ioctl.h>
+#include <unistd.h>
+
+#include "uthash.h"
+
+struct fd_info {
+  int fd;
+  char name[PATH_MAX];
+  UT_hash_handle hh;
+};
+
+struct fd_info *fd_map = NULL;
+
+void add_fd(int fd, const char *name) {
+  struct fd_info *info;
+
+  HASH_FIND_INT(fd_map, &fd, info);
+  if (info == NULL) {
+    info = malloc(sizeof(struct fd_info));
+    info->fd = fd;
+    HASH_ADD_INT(fd_map, fd, info);
+  }
+  strcpy(info->name, name);
+}
+
+char *get_fd_name(int fd) {
+  struct fd_info *info;
+
+  HASH_FIND_INT(fd_map, &fd, info);
+  if (info != NULL) {
+    return info->name;
+  }
+  return NULL;
+}
+
+char *copy_string(int mem_fd, unsigned long addr) {
+  size_t cap = 32;
+  size_t off = 0;
+  char *buf;
+
+  buf = malloc(cap);
+
+  lseek(mem_fd, addr, SEEK_SET);
+
+  while (1) {
+    for (; off < cap; off++) {
+      if (read(mem_fd, buf + off, 1) != 1) {
+        perror("read mem");
+        exit(-1);
+      }
+      if (*(buf + off) == '\0') return buf;
+    }
+    cap *= 2;
+    buf = realloc(buf, cap);
+  }
+  return NULL;
+}
+
+void *copy_mem(int mem_fd, unsigned long addr, size_t size) {
+  char *buf = malloc(size);
+  lseek(mem_fd, addr, SEEK_SET);
+  if (read(mem_fd, buf, size) != size) {
+    perror("read mem");
+    exit(-1);
+  }
+  return buf;
+}
+
+void print_ioctl(int fd, unsigned long request, unsigned long arg) {
+  char *name = get_fd_name(fd);
+  unsigned long dir, type, nr, size;
+
+  dir = _IOC_DIR(request);
+  type = _IOC_TYPE(request);
+  nr = _IOC_NR(request);
+  size = _IOC_SIZE(request);
+  printf("ioctl(%s, _IOC(%lx, %lx, %lx, %lx), %lx)\n", name ? name : "unknown", dir, type, nr, size, arg);
+}
+
+int main(int argc, char **argv) {
+  pid_t pid;
+  char mem_path[PATH_MAX];
+  int mem_fd;
+
+  if (argc != 2) {
+    printf("Usage: %s <pid>\n", argv[0]);
+    return -1;
+  }
+
+  pid = atoi(argv[1]);
+
+  printf("Attaching to process %d...\n", pid);
+
+  if (ptrace(PTRACE_ATTACH, pid, NULL, NULL) == -1) {
+    perror("ptrace attach");
+    return -1;
+  }
+
+  waitpid(pid, NULL, 0);
+
+  snprintf(mem_path, sizeof(mem_path), "/proc/%d/mem", pid);
+  mem_fd = open(mem_path, O_RDWR);
+
+  if (ptrace(PTRACE_SETOPTIONS, pid, NULL, PTRACE_O_TRACESYSGOOD) == -1) {
+    perror("ptrace setoptions");
+    return -1;
+  }
+
+  while (1) {
+    int status;
+
+    if (ptrace(PTRACE_SYSCALL, pid, NULL, NULL) == -1) {
+      perror("ptrace syscall");
+      break;
+    }
+
+    waitpid(pid, &status, 0);
+
+    if (WIFEXITED(status)) {
+      printf("Process %d exited\n", pid);
+      break;
+    }
+
+    if (WIFSIGNALED(status)) {
+      printf("Process %d killed by signal %d\n", pid, WTERMSIG(status));
+      break;
+    }
+
+    if (WIFSTOPPED(status) && WSTOPSIG(status) == (SIGTRAP | 0x80)) {
+      struct user_regs_struct regs;
+      static int in = 1;
+
+      if (ptrace(PTRACE_GETREGS, pid, NULL, &regs) == -1) {
+        perror("ptrace getregs");
+        break;
+      }
+
+      if (in) {
+        in = 0;
+      } else {
+        switch (regs.orig_rax) {
+        case SYS_open:
+          add_fd((int)regs.rax, copy_string(mem_fd, regs.rdi));
+          break;
+        case SYS_openat:
+          add_fd((int)regs.rax, copy_string(mem_fd, regs.rsi));
+          break;
+        case SYS_ioctl:
+          print_ioctl((int)regs.rdi, regs.rsi, regs.rdx);
+          break;
+        }
+        in = 1;
+      }
+    }
+  }
+
+  ptrace(PTRACE_DETACH, pid, NULL, NULL);
+  return 0;
+}
+

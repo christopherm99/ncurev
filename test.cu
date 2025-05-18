@@ -1,6 +1,8 @@
 #include <cuda.h>
 #include <stdio.h>
 #include <assert.h>
+#include <unistd.h>
+#include <signal.h>
 
 #define N 4096
 
@@ -14,6 +16,9 @@ extern "C" __global__ void saxpy(float a, float *x, float *y) {
 }
 
 int main(void) {
+  printf("PID: %d — waiting for ptrace attach...\n", getpid());
+  raise(SIGSTOP);
+
   float *x, *y, *d_x, *d_y;
 
   x = (float *)malloc(N * sizeof(float));
