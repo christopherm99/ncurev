@@ -16,6 +16,9 @@
 #include "nv_escape.h"
 #include "nvos.h"
 #include "nv-unix-nvos-params-wrappers.h"
+#include "ctrl/ctrl0000/ctrl0000gpu.h"
+
+#include "params.h"
 
 struct fd_info {
   int fd;
@@ -114,8 +117,12 @@ void print_ioctl(int fd, unsigned long request, unsigned long arg) {
     case NV_ESC_RM_CONTROL: {
       NVOS54_PARAMETERS *p = (NVOS54_PARAMETERS *)data;
       printf("NV_ESC_RM_CONTROL ");
-      #define cmd(name) case name: printf(#name); break;
+      #define cmd(name) case name: printf(#name); break
+      #define params(name) case name: params_##name(copy_mem((unsigned long)p->params, p->paramsSize)); break
       switch (p->cmd) {
+        cmd(NV0000_CTRL_CMD_SYSTEM_GET_BUILD_VERSION);
+        cmd(NV0000_CTRL_CMD_SYSTEM_GET_FABRIC_STATUS);
+        params(NV0000_CTRL_CMD_GPU_ATTACH_IDS);
         default: printf("unknown command %x", p->cmd); break;
       }
       #undef cmd

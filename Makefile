@@ -5,8 +5,11 @@ CFLAGS=-Iopen-gpu-kernel-modules/kernel-open/common/inc \
 
 all: sniffer saxpy
 
-sniffer.o: sniffer.c
-	$(CC) -c $(CFLAGS) $^ -o $@
+params.h: params.py stub.c
+	./$<
+
+sniffer.o: sniffer.c params.h
+	$(CC) -c $(CFLAGS) $< -o $@
 
 sniffer: sniffer.o
 	$(CC) -o $@ $^
@@ -15,6 +18,6 @@ saxpy: saxpy.cu
 	nvcc -o $@ $^ -arch=sm_86 -lcuda -g
 
 clean:
-	rm -f sniffer sniffer.o saxpy
+	rm -f sniffer sniffer.o saxpy params.h
 
 .PHONY: all clean
