@@ -1,5 +1,7 @@
 CC=clang
-CFLAGS=-Iopen-gpu-kernel-modules/kernel-open/common/inc
+CFLAGS=-Iopen-gpu-kernel-modules/kernel-open/common/inc \
+       -Iopen-gpu-kernel-modules/src/nvidia/arch/nvalloc/unix/include \
+       -Iopen-gpu-kernel-modules/src/common/sdk/nvidia/inc
 
 all: sniffer saxpy
 

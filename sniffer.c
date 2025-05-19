@@ -10,8 +10,12 @@
 #include <linux/ioctl.h>
 #include <unistd.h>
 
-#include "nv.h"
 #include "uthash.h"
+
+#include "nv-ioctl-numbers.h"
+#include "nv_escape.h"
+#include "nvos.h"
+#include "nv-unix-nvos-params-wrappers.h"
 
 struct fd_info {
   int fd;
@@ -20,6 +24,7 @@ struct fd_info {
 };
 
 struct fd_info *fd_map = NULL;
+int mem_fd;
 
 void add_fd(int fd, const char *name) {
   struct fd_info *info;
@@ -43,7 +48,7 @@ char *get_fd_name(int fd) {
   return NULL;
 }
 
-char *copy_string(int mem_fd, unsigned long addr) {
+char *copy_string(unsigned long addr) {
   size_t cap = 32;
   size_t off = 0;
   char *buf;
@@ -66,7 +71,7 @@ char *copy_string(int mem_fd, unsigned long addr) {
   return NULL;
 }
 
-void *copy_mem(int mem_fd, unsigned long addr, size_t size) {
+void *copy_mem(unsigned long addr, size_t size) {
   char *buf = malloc(size);
   lseek(mem_fd, addr, SEEK_SET);
   if (read(mem_fd, buf, size) != size) {
@@ -84,20 +89,57 @@ void print_ioctl(int fd, unsigned long request, unsigned long arg) {
   type = _IOC_TYPE(request);
   nr = _IOC_NR(request);
   size = _IOC_SIZE(request);
+  printf("ioctl %16s %5s ", name ? name : "unknown", (dir & _IOC_READ) && (dir & _IOC_WRITE) ? "_IORW" : (dir & _IOC_READ) ? "_IOR" : (dir & _IOC_WRITE) ? "_IOW" : "_IO");
   if (type == NV_IOCTL_MAGIC) {
-    printf("ioctl(%16s, _IOC(%5s, NV_IOCTL_MAGIC, %lx, %lx, 0x%lx)\n",
-      name ? name : "unknown",
-      (dir & _IOC_READ) && (dir & _IOC_WRITE) ? "_IORW" : (dir & _IOC_READ) ? "_IOR" : (dir & _IOC_WRITE) ? "_IOW" : "_IO",
-      nr, size, arg);
+    void *data = copy_mem(arg, size);
+    printf("NV_IOCTL_MAGIC ");
+    switch (nr) {
+    case NV_ESC_CARD_INFO: puts("NV_ESC_CARD_INFO"); break;
+    case NV_ESC_REGISTER_FD: puts("NV_ESC_REGISTER_FD"); break;
+    case NV_ESC_ALLOC_OS_EVENT: puts("NV_ESC_ALLOC_OS_EVENT"); break;
+    case NV_ESC_FREE_OS_EVENT: puts("NV_ESC_FREE_OS_EVENT"); break;
+    case NV_ESC_STATUS_CODE: puts("NV_ESC_STATUS_CODE"); break;
+    case NV_ESC_CHECK_VERSION_STR: puts("NV_ESC_CHECK_VERSION_STR"); break;
+    case NV_ESC_IOCTL_XFER_CMD: puts("NV_ESC_IOCTL_XFER_CMD"); break;
+    case NV_ESC_ATTACH_GPUS_TO_FD: puts("NV_ESC_ATTACH_GPUS_TO_FD"); break;
+    case NV_ESC_QUERY_DEVICE_INTR: puts("NV_ESC_QUERY_DEVICE_INTR"); break;
+    case NV_ESC_SYS_PARAMS: puts("NV_ESC_SYS_PARAMS"); break;
+    case NV_ESC_EXPORT_TO_DMABUF_FD: puts("NV_ESC_EXPORT_TO_DMABUF_FD"); break;
+    case NV_ESC_WAIT_OPEN_COMPLETE: puts("NV_ESC_WAIT_OPEN_COMPLETE"); break;
+    case NV_ESC_RM_ALLOC_MEMORY: {
+      NVOS02_PARAMETERS *p = (NVOS02_PARAMETERS *)data;
+      printf("NV_ESC_RM_ALLOC hRoot: %x pMemory: %p limit: %llx\n", p->hRoot, p->pMemory, p->limit);
+    } break;
+    case NV_ESC_RM_FREE: puts("NV_ESC_RM_FREE"); break;
+    case NV_ESC_RM_CONTROL: {
+      NVOS54_PARAMETERS *p = (NVOS54_PARAMETERS *)data;
+      printf("NV_ESC_RM_CONTROL ");
+      #define cmd(name) case name: printf(#name); break;
+      switch (p->cmd) {
+        default: printf("unknown command %x", p->cmd); break;
+      }
+      #undef cmd
+      printf(" client: %x object: %x params: %p flags: %x status 0x%x\n", p->hClient, p->hObject, p->params, p->flags, p->status);
+    } break;
+    case NV_ESC_RM_ALLOC: puts("NV_ESC_RM_ALLOC"); break;
+    case NV_ESC_RM_MAP_MEMORY: {
+      nv_ioctl_nvos33_parameters_with_fd *pfd = (nv_ioctl_nvos33_parameters_with_fd *)data;
+      NVOS33_PARAMETERS *p = (NVOS33_PARAMETERS *)data;
+      printf("NV_ESC_RM_MAP_MEMORY hClient: %x hDevice: %x hMemory: %x pLinearAddress: %p offset: %llx length: %llx status %x flags %x file: %s (fd=%d)\n",
+        p->hClient, p->hDevice, p->hMemory, p->pLinearAddress, p->offset, p->length, p->status, p->flags,
+        get_fd_name(pfd->fd), pfd->fd);
+    } break;
+    case NV_ESC_RM_UPDATE_DEVICE_MAPPING_INFO: puts("NV_ESC_RM_UPDATE_DEVICE_MAPPING_INFO"); break;
+    default: printf("unknown ioctl 0x%lx\n", nr); break;
+    }
   } else {
-    printf("ioctl(%16s, ...)\n", name ? name : "unknown");
+    puts("...");
   }
 }
 
 int main(int argc, char **argv) {
   pid_t pid;
   char mem_path[PATH_MAX];
-  int mem_fd;
 
   if (argc != 2) {
     printf("Usage: %s <pid>\n", argv[0]);
@@ -113,6 +155,7 @@ int main(int argc, char **argv) {
     return -1;
   }
 
+  kill(pid, SIGCONT);
   waitpid(pid, NULL, 0);
 
   snprintf(mem_path, sizeof(mem_path), "/proc/%d/mem", pid);
@@ -157,10 +200,10 @@ int main(int argc, char **argv) {
       } else {
         switch (regs.orig_rax) {
         case SYS_open:
-          add_fd((int)regs.rax, copy_string(mem_fd, regs.rdi));
+          add_fd((int)regs.rax, copy_string(regs.rdi));
           break;
         case SYS_openat:
-          add_fd((int)regs.rax, copy_string(mem_fd, regs.rsi));
+          add_fd((int)regs.rax, copy_string(regs.rsi));
           break;
         case SYS_ioctl:
           print_ioctl((int)regs.rdi, regs.rsi, regs.rdx);

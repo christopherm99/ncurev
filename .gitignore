@@ -2,3 +2,5 @@ __pycache__/
 a.out
 *.ncu-rep
 ncu-local/
+.cache/
+compile_commands.json
