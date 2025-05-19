@@ -1,14 +1,17 @@
 Reverse engineering nsight compute
 
+essentially a ptrace version of https://github.com/geohot/cuda_ioctl_sniffer
+
 use make to build sniffer and saxpy (target program)
 
 cp -r /opt/nvidia/nsight-compute/2024.3.2 ncu-local
-ncu-local/ncu ./test
+ncu-local/ncu ./saxpy
+./sniffer <pid>
 
 /usr/local/cuda-12.6/bin/ncu -- bash script
  \-> exec /opt/nvidia/nsight-compute/2024.3.2/target/linux-desktop-glibc_2_11_3-x64/ncu
      \-> clone/exec /opt/nvidia/nsight-compute/2024.3.2/target/linux-desktop-glibc_2_11_3-x64/./TreeLauncherSubreaper
-         \-> clone/exec ncu target (ie. ./test)
+         \-> clone/exec ncu target (ie. ./saxpy)
 
 TreeLauncherSubreaper called with envs:
 NV_CUDA_START_SUSPENDED=1
