@@ -17,6 +17,11 @@
 #include "nvos.h"
 #include "nv-unix-nvos-params-wrappers.h"
 #include "ctrl/ctrl0000/ctrl0000gpu.h"
+#include "ctrl/ctrl0000/ctrl0000client.h"
+#include "ctrl/ctrl2080.h"
+#include "ctrl/ctrl0080.h"
+#include "ctrl/ctrlc36f.h"
+#include "ctrl/ctrla06c.h"
 
 #include "params.h"
 
@@ -122,11 +127,58 @@ void print_ioctl(int fd, unsigned long request, unsigned long arg) {
       switch (p->cmd) {
         cmd(NV0000_CTRL_CMD_SYSTEM_GET_BUILD_VERSION);
         cmd(NV0000_CTRL_CMD_SYSTEM_GET_FABRIC_STATUS);
+        // TODO: these should show status values
+        cmd(NV2080_CTRL_CMD_RC_SOFT_DISABLE_WATCHDOG);
+        cmd(NV2080_CTRL_CMD_RC_RELEASE_WATCHDOG_REQUESTS);
+        cmd(NV2080_CTRL_CMD_GPU_QUERY_ECC_STATUS);
         params(NV0000_CTRL_CMD_GPU_ATTACH_IDS);
-        default: printf("unknown command %x", p->cmd); break;
+        params(NV0000_CTRL_CMD_GPU_GET_ID_INFO);
+        params(NV0000_CTRL_CMD_GPU_GET_ATTACHED_IDS);
+        params(NV0000_CTRL_CMD_GPU_GET_ID_INFO_V2);
+        params(NV0000_CTRL_CMD_GPU_GET_UUID_FROM_GPU_ID);
+        params(NV0000_CTRL_CMD_GPU_GET_PROBED_IDS);
+        params(NV0000_CTRL_CMD_GPU_GET_MEMOP_ENABLE);
+        params(NV0000_CTRL_CMD_CLIENT_GET_ADDR_SPACE_TYPE);
+        params(NV0000_CTRL_CMD_CLIENT_SET_INHERITED_SHARE_POLICY);
+        params(NV2080_CTRL_CMD_GR_GET_TPC_MASK);
+        params(NV2080_CTRL_CMD_FB_GET_INFO_V2);
+        params(NV2080_CTRL_CMD_NVLINK_GET_NVLINK_STATUS);
+        params(NV2080_CTRL_CMD_BUS_GET_INFO_V2);
+        params(NV2080_CTRL_CMD_MC_GET_ARCH_INFO);
+        params(NV2080_CTRL_CMD_GR_GET_CTX_BUFFER_SIZE);
+        params(NV2080_CTRL_CMD_GPU_GET_GID_INFO);
+        params(NV2080_CTRL_CMD_GSP_GET_FEATURES);
+        params(NV2080_CTRL_CMD_CE_GET_ALL_CAPS);
+        params(NV2080_CTRL_CMD_BUS_GET_C2C_INFO);
+        params(NV2080_CTRL_CMD_BUS_GET_PCIE_SUPPORTED_GPU_ATOMICS);
+        params(NV2080_CTRL_CMD_BUS_GET_PCI_BAR_INFO);
+        params(NV2080_CTRL_CMD_BUS_GET_PCI_INFO);
+        params(NV2080_CTRL_CMD_GR_GET_GPC_MASK);
+        params(NV2080_CTRL_CMD_GR_GET_CAPS_V2);
+        params(NV2080_CTRL_CMD_GR_GET_GLOBAL_SM_ORDER);
+        params(NV2080_CTRL_CMD_GR_GET_INFO);
+        params(NV2080_CTRL_CMD_GPU_GET_ACTIVE_PARTITION_IDS);
+        params(NV2080_CTRL_CMD_GPU_GET_ENGINES_V2);
+        params(NV2080_CTRL_CMD_GPU_QUERY_COMPUTE_MODE_RULES);
+        params(NV2080_CTRL_CMD_GPU_GET_SIMULATION_INFO);
+        params(NV2080_CTRL_CMD_GPU_GET_SHORT_NAME_STRING);
+        params(NV2080_CTRL_CMD_GPU_GET_NAME_STRING);
+        params(NV2080_CTRL_CMD_GPU_GET_INFO_V2);
+        params(NV2080_CTRL_CMD_PERF_BOOST);
+        params(NV2080_CTRL_CMD_GR_SET_CTXSW_PREEMPTION_MODE);
+        params(NV0080_CTRL_CMD_FIFO_GET_CHANNELLIST);
+        params(NV0080_CTRL_CMD_HOST_GET_CAPS_V2);
+        params(NV0080_CTRL_CMD_FB_GET_CAPS_V2);
+        params(NV0080_CTRL_CMD_GPU_GET_CLASSLIST_V2);
+        params(NV0080_CTRL_CMD_GPU_GET_VIRTUALIZATION_MODE);
+        params(NV0080_CTRL_CMD_GPU_GET_NUM_SUBDEVICES);
+        params(NVC36F_CTRL_GET_CLASS_ENGINEID);
+        params(NVC36F_CTRL_CMD_GPFIFO_GET_WORK_SUBMIT_TOKEN);
+        params(NVA06C_CTRL_CMD_GPFIFO_SCHEDULE);
+        params(NVA06C_CTRL_CMD_SET_TIMESLICE);
+        default: printf("unknown command %x\n", p->cmd); break;
       }
       #undef cmd
-      printf(" client: %x object: %x params: %p flags: %x status 0x%x\n", p->hClient, p->hObject, p->params, p->flags, p->status);
     } break;
     case NV_ESC_RM_ALLOC: puts("NV_ESC_RM_ALLOC"); break;
     case NV_ESC_RM_MAP_MEMORY: {
