@@ -18,9 +18,13 @@
 #include "nv-unix-nvos-params-wrappers.h"
 #include "ctrl/ctrl0000/ctrl0000gpu.h"
 #include "ctrl/ctrl0000/ctrl0000client.h"
+#include "ctrl/ctrl0000/ctrl0000syncgpuboost.h"
+#include "ctrl/ctrl0000/ctrl0000system.h"
 #include "ctrl/ctrl2080.h"
 #include "ctrl/ctrl0080.h"
+#include "ctrl/ctrl83de.h"
 #include "ctrl/ctrlc36f.h"
+#include "ctrl/ctrlcb33.h"
 #include "ctrl/ctrla06c.h"
 
 #include "params.h"
@@ -140,6 +144,9 @@ void print_ioctl(int fd, unsigned long request, unsigned long arg) {
         params(NV0000_CTRL_CMD_GPU_GET_MEMOP_ENABLE);
         params(NV0000_CTRL_CMD_CLIENT_GET_ADDR_SPACE_TYPE);
         params(NV0000_CTRL_CMD_CLIENT_SET_INHERITED_SHARE_POLICY);
+        params(NV0000_CTRL_CMD_SYNC_GPU_BOOST_GROUP_INFO);
+        params(NV0000_CTRL_CMD_SYSTEM_GET_FEATURES);
+        params(NV0000_CTRL_CMD_SYSTEM_GET_P2P_CAPS_MATRIX);
         params(NV2080_CTRL_CMD_GR_GET_TPC_MASK);
         params(NV2080_CTRL_CMD_FB_GET_INFO_V2);
         params(NV2080_CTRL_CMD_NVLINK_GET_NVLINK_STATUS);
@@ -172,8 +179,11 @@ void print_ioctl(int fd, unsigned long request, unsigned long arg) {
         params(NV0080_CTRL_CMD_GPU_GET_CLASSLIST_V2);
         params(NV0080_CTRL_CMD_GPU_GET_VIRTUALIZATION_MODE);
         params(NV0080_CTRL_CMD_GPU_GET_NUM_SUBDEVICES);
+        params(NV0080_CTRL_CMD_PERF_CUDA_LIMIT_SET_CONTROL);
+        params(NV83DE_CTRL_CMD_DEBUG_SET_EXCEPTION_MASK);
         params(NVC36F_CTRL_GET_CLASS_ENGINEID);
         params(NVC36F_CTRL_CMD_GPFIFO_GET_WORK_SUBMIT_TOKEN);
+        params(NV_CONF_COMPUTE_CTRL_CMD_SYSTEM_GET_CAPABILITIES);
         params(NVA06C_CTRL_CMD_GPFIFO_SCHEDULE);
         params(NVA06C_CTRL_CMD_SET_TIMESLICE);
         default: printf("unknown command %x\n", p->cmd); break;
