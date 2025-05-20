@@ -88,10 +88,10 @@ if __name__ == "__main__":
   index = ci.Index.create()
   tu = index.parse("stub.c", args=args)
   walk(tu.cursor)
-  with open("params.h", "w") as f:
+  with open("pprint.h", "w") as f:
     f.write("#pragma once\n\n")
     for n, t in support:
-      f.write(f"static void params_{n}(void *_p) {{\n")
+      f.write(f"static void pprint_{n}(void *_p) {{\n")
       f.write(f"  {t} *p = ({t} *)_p;\n")
       f.write(f"  printf(\"{n}\\n\");\n")
       for x in list(lookup[t].get_children())[0].get_children():

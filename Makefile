@@ -4,10 +4,10 @@ CFLAGS=-Iopen-gpu-kernel-modules/src/nvidia/arch/nvalloc/unix/include \
 
 all: sniffer saxpy
 
-params.h: params.py stub.c
+pprint.h: pprint.py stub.c
 	./$<
 
-sniffer.o: sniffer.c params.h
+sniffer.o: sniffer.c pprint.h
 	$(CC) -c $(CFLAGS) $< -o $@
 
 sniffer: sniffer.o
@@ -17,6 +17,6 @@ saxpy: saxpy.cu
 	nvcc -o $@ $^ -arch=sm_86 -lcuda -g
 
 clean:
-	rm -f sniffer sniffer.o saxpy params.h
+	rm -f sniffer sniffer.o saxpy pprint.h
 
 .PHONY: all clean
