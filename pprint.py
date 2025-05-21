@@ -54,7 +54,36 @@ support = [
   ("NV_CONF_COMPUTE_CTRL_CMD_SYSTEM_GET_CAPABILITIES", "NV_CONF_COMPUTE_CTRL_CMD_SYSTEM_GET_CAPABILITIES_PARAMS"),
   ("NVA06C_CTRL_CMD_GPFIFO_SCHEDULE", "NVA06C_CTRL_GPFIFO_SCHEDULE_PARAMS"),
   ("NVA06C_CTRL_CMD_SET_TIMESLICE", "NVA06C_CTRL_TIMESLICE_PARAMS"),
+  # *** NCU related ***
+  ("NV2080_CTRL_GPU_REG_OP", "NV2080_CTRL_GPU_REG_OP"),
+  ("NVB0CC_CTRL_CMD_PMA_STREAM_UPDATE_GET_PUT", "NVB0CC_CTRL_PMA_STREAM_UPDATE_GET_PUT_PARAMS"),
+  ("NVB0CC_CTRL_PMA_STREAM_HS_CREDITS_STATUS", "NVB0CC_CTRL_PMA_STREAM_HS_CREDITS_STATUS"),
+  ("NVB0CC_CTRL_PMA_STREAM_HS_CREDITS_INFO", "NVB0CC_CTRL_PMA_STREAM_HS_CREDITS_INFO"),
+  ("NVB0CC_CTRL_CMD_POWER_REQUEST_FEATURES", "NVB0CC_CTRL_POWER_REQUEST_FEATURES_PARAMS"),
+  ("NVB0CC_CTRL_CMD_POWER_RELEASE_FEATURES", "NVB0CC_CTRL_POWER_REQUEST_FEATURES_PARAMS"),
+  ("NVB0CC_CTRL_CMD_ALLOC_PMA_STREAM", "NVB0CC_CTRL_ALLOC_PMA_STREAM_PARAMS"),
+  ("NVB0CC_CTRL_CMD_FREE_PMA_STREAM", "NVB0CC_CTRL_FREE_PMA_STREAM_PARAMS"),
+  ("NVB0CC_CTRL_CMD_RESERVE_PM_AREA_SMPC", "NVB0CC_CTRL_RESERVE_PM_AREA_SMPC_PARAMS"),
+  ("NVB0CC_CTRL_CMD_RESERVE_HWPM_LEGACY", "NVB0CC_CTRL_RESERVE_HWPM_LEGACY_PARAMS"),
+  ("NVB0CC_CTRL_CMD_GET_TOTAL_HS_CREDITS", "NVB0CC_CTRL_GET_TOTAL_HS_CREDITS_PARAMS"),
 ]
+
+enums = {
+  ("NV2080_CTRL_GPU_REG_OP", "regOp"): { 0: "READ_32", 1: "WRITE_32", 2: "READ_64", 3: "WRITE_64", 4: "READ_08", 5: "WRITE_08" },
+  ("NV2080_CTRL_GPU_REG_OP", "regType"): { 0x00: "GLOBAL", 0x01: "GR_CTX", 0x02: "GR_CTX_TPC", 0x04: "GR_CTX_SM", 0x08: "GR_CTX_CROP", 0x10: "GR_CTX_ZROP", 0x20: "FB", 0x40: "GR_CTX_QUAD", 0x80: "DEVICE" },
+  ("NVB0CC_CTRL_PMA_STREAM_HS_CREDITS_STATUS", "status"): { 0: "OK", 1: "INVALID_CREDITS", 2: "INVALID_CHIPLET" },
+  ("NVB0CC_CTRL_PMA_STREAM_HS_CREDITS_INFO", "chipletType"): { 0: "INVALID", 1: "FBP", 2: "GPC", 3: "SYS" },
+}
+
+flags = {
+  ("NV2080_CTRL_GPU_REG_OP", "regStatus"): { 0x00: "SUCCESS", 0x01: "INVALID_OP", 0x02: "INVALID_TYPE", 0x04: "INVALID_OFFSET", 0x08: "UNSUPPORTED_OP", 0x10: "INVALID_MASK", 0x20: "NOACCESS" },
+}
+
+fmt_strs = {
+  "NvHandle": "%x",
+  "NvU32": "0x%x",
+  "NvBool": "%d",
+}
 
 args = [
   "-Iopen-gpu-kernel-modules/src/common/sdk/nvidia/inc",
@@ -65,12 +94,23 @@ def walk(node):
   if node.kind == ci.CursorKind.TYPEDEF_DECL: lookup[node.spelling] = node
   for n in node.get_children(): walk(n)
 
-fmt_strs = {
-  "NvHandle": "%x",
-  "NvU32": "0x%x",
-}
+def write_enum(s, f, ll, field):
+  def enum2str(x, opts):
+    items = list(opts.items())
+    if len(items) == 0: return '"<unknown>"'
+    (k, v), t = items[0], dict(items[1:])
+    return f'({x} == {k}) ? "{v}" : ({enum2str(x, t)})'
+  f.write(f'  printf("%{ll}s: %s\\n", "{field}", {enum2str(f"p->{field}", enums[s, field])});\n')
 
-def write_field(f, field):
+
+def write_flag(s, f, ll, field):
+  f.write(f'  printf("%{ll}s: ", "{field}");\n')
+  f.write(f'  if (p->{field} == 0) puts("{flags[s, field][0]}");\n  else {{\n')
+  for k,v in flags[s, field].items():
+    if k != 0: f.write(f'    if (p->{field} & {k}) printf("{v} ");\n')
+  f.write('    puts("");\n  }\n')
+
+def write_field(s, f, field):
   ll = 30
   match field.kind:
     case ci.CursorKind.UNION_DECL: f.write(f'  printf("%{ll}s: <union>\\n", "{field.spelling}");\n')
@@ -80,6 +120,8 @@ def write_field(f, field):
         if n.kind == ci.CursorKind.TYPE_REF: typeref = n.spelling
         if n.kind == ci.CursorKind.INTEGER_LITERAL: is_array = True
       if is_array: f.write(f'  printf("%{ll}s: <{typeref} is array>\\n", "{field.spelling}");\n')
+      elif (s, field.spelling) in enums: write_enum(s, f, ll, field.spelling)
+      elif (s, field.spelling) in flags: write_flag(s, f, ll, field.spelling)
       elif typeref in fmt_strs: f.write(f'  printf("%{ll}s: {fmt_strs[typeref]}\\n", "{field.spelling}", p->{field.spelling});\n')
       else: f.write(f'  printf("%{ll}s: <{typeref} not parsed>\\n", "{field.spelling}");\n')
 
@@ -94,7 +136,6 @@ if __name__ == "__main__":
       f.write(f"static void pprint_{n}(void *_p) {{\n")
       f.write(f"  {t} *p = ({t} *)_p;\n")
       f.write(f"  printf(\"{n}\\n\");\n")
-      for x in list(lookup[t].get_children())[0].get_children():
-        write_field(f, x)
+      for x in list(lookup[t].get_children())[0].get_children(): write_field(t, f, x)
       f.write("}\n\n")
 

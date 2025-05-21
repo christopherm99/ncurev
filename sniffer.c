@@ -10,8 +10,6 @@
 #include <sys/wait.h>
 #include <unistd.h>
 
-#include "pprint.h"
-#include "uthash.h"
 
 #include "ctrl/ctrl0000/ctrl0000gpu.h"
 #include "ctrl/ctrl0000/ctrl0000client.h"
@@ -28,6 +26,9 @@
 #include "nv_escape.h"
 #include "nv-ioctl-numbers.h"
 #include "nv-unix-nvos-params-wrappers.h"
+
+#include "pprint.h"
+#include "uthash.h"
 
 struct fd_info {
   int fd;
@@ -96,12 +97,13 @@ void *copy_mem(unsigned long addr, size_t size) {
 void print_ioctl(int fd, unsigned long request, unsigned long arg) {
   char *name = get_fd_name(fd);
   unsigned long dir, type, nr, size;
+  static int idx = 0;
 
   dir = _IOC_DIR(request);
   type = _IOC_TYPE(request);
   nr = _IOC_NR(request);
   size = _IOC_SIZE(request);
-  printf("ioctl %16s %5s ", name ? name : "unknown", (dir & _IOC_READ) && (dir & _IOC_WRITE) ? "_IORW" : (dir & _IOC_READ) ? "_IOR" : (dir & _IOC_WRITE) ? "_IOW" : "_IO");
+  printf("ioctl %5d %16s %5s ", idx++, name ? name : "unknown", (dir & _IOC_READ) && (dir & _IOC_WRITE) ? "_IORW" : (dir & _IOC_READ) ? "_IOR" : (dir & _IOC_WRITE) ? "_IOW" : "_IO");
   if (type == NV_IOCTL_MAGIC) {
     void *data = copy_mem(arg, size);
     printf("NV_IOCTL_MAGIC ");
@@ -126,8 +128,9 @@ void print_ioctl(int fd, unsigned long request, unsigned long arg) {
     case NV_ESC_RM_CONTROL: {
       NVOS54_PARAMETERS *p = (NVOS54_PARAMETERS *)data;
       printf("NV_ESC_RM_CONTROL ");
-      #define cmd(name) case name: printf(#name); break
-      #define pprint(name) case name: pprint_##name(copy_mem((unsigned long)p->params, p->paramsSize)); break
+      #define cmd(name) case name: puts(#name); break
+      #define pprint(name, val) pprint_##name(val);
+      #define ppprint(name) case name: pprint_##name(copy_mem((unsigned long)p->params, p->paramsSize)); break
       switch (p->cmd) {
         cmd(NV0000_CTRL_CMD_SYSTEM_GET_BUILD_VERSION);
         cmd(NV0000_CTRL_CMD_SYSTEM_GET_FABRIC_STATUS);
@@ -135,60 +138,97 @@ void print_ioctl(int fd, unsigned long request, unsigned long arg) {
         cmd(NV2080_CTRL_CMD_RC_SOFT_DISABLE_WATCHDOG);
         cmd(NV2080_CTRL_CMD_RC_RELEASE_WATCHDOG_REQUESTS);
         cmd(NV2080_CTRL_CMD_GPU_QUERY_ECC_STATUS);
-        pprint(NV0000_CTRL_CMD_GPU_ATTACH_IDS);
-        pprint(NV0000_CTRL_CMD_GPU_GET_ID_INFO);
-        pprint(NV0000_CTRL_CMD_GPU_GET_ATTACHED_IDS);
-        pprint(NV0000_CTRL_CMD_GPU_GET_ID_INFO_V2);
-        pprint(NV0000_CTRL_CMD_GPU_GET_UUID_FROM_GPU_ID);
-        pprint(NV0000_CTRL_CMD_GPU_GET_PROBED_IDS);
-        pprint(NV0000_CTRL_CMD_GPU_GET_MEMOP_ENABLE);
-        pprint(NV0000_CTRL_CMD_CLIENT_GET_ADDR_SPACE_TYPE);
-        pprint(NV0000_CTRL_CMD_CLIENT_SET_INHERITED_SHARE_POLICY);
-        pprint(NV0000_CTRL_CMD_SYNC_GPU_BOOST_GROUP_INFO);
-        pprint(NV0000_CTRL_CMD_SYSTEM_GET_FEATURES);
-        pprint(NV0000_CTRL_CMD_SYSTEM_GET_P2P_CAPS_MATRIX);
-        pprint(NV2080_CTRL_CMD_GR_GET_TPC_MASK);
-        pprint(NV2080_CTRL_CMD_FB_GET_INFO_V2);
-        pprint(NV2080_CTRL_CMD_NVLINK_GET_NVLINK_STATUS);
-        pprint(NV2080_CTRL_CMD_BUS_GET_INFO_V2);
-        pprint(NV2080_CTRL_CMD_MC_GET_ARCH_INFO);
-        pprint(NV2080_CTRL_CMD_GR_GET_CTX_BUFFER_SIZE);
-        pprint(NV2080_CTRL_CMD_GPU_GET_GID_INFO);
-        pprint(NV2080_CTRL_CMD_GSP_GET_FEATURES);
-        pprint(NV2080_CTRL_CMD_CE_GET_ALL_CAPS);
-        pprint(NV2080_CTRL_CMD_BUS_GET_C2C_INFO);
-        pprint(NV2080_CTRL_CMD_BUS_GET_PCIE_SUPPORTED_GPU_ATOMICS);
-        pprint(NV2080_CTRL_CMD_BUS_GET_PCI_BAR_INFO);
-        pprint(NV2080_CTRL_CMD_BUS_GET_PCI_INFO);
-        pprint(NV2080_CTRL_CMD_GR_GET_GPC_MASK);
-        pprint(NV2080_CTRL_CMD_GR_GET_CAPS_V2);
-        pprint(NV2080_CTRL_CMD_GR_GET_GLOBAL_SM_ORDER);
-        pprint(NV2080_CTRL_CMD_GR_GET_INFO);
-        pprint(NV2080_CTRL_CMD_GPU_GET_ACTIVE_PARTITION_IDS);
-        pprint(NV2080_CTRL_CMD_GPU_GET_ENGINES_V2);
-        pprint(NV2080_CTRL_CMD_GPU_QUERY_COMPUTE_MODE_RULES);
-        pprint(NV2080_CTRL_CMD_GPU_GET_SIMULATION_INFO);
-        pprint(NV2080_CTRL_CMD_GPU_GET_SHORT_NAME_STRING);
-        pprint(NV2080_CTRL_CMD_GPU_GET_NAME_STRING);
-        pprint(NV2080_CTRL_CMD_GPU_GET_INFO_V2);
-        pprint(NV2080_CTRL_CMD_PERF_BOOST);
-        pprint(NV2080_CTRL_CMD_GR_SET_CTXSW_PREEMPTION_MODE);
-        pprint(NV0080_CTRL_CMD_FIFO_GET_CHANNELLIST);
-        pprint(NV0080_CTRL_CMD_HOST_GET_CAPS_V2);
-        pprint(NV0080_CTRL_CMD_FB_GET_CAPS_V2);
-        pprint(NV0080_CTRL_CMD_GPU_GET_CLASSLIST_V2);
-        pprint(NV0080_CTRL_CMD_GPU_GET_VIRTUALIZATION_MODE);
-        pprint(NV0080_CTRL_CMD_GPU_GET_NUM_SUBDEVICES);
-        pprint(NV0080_CTRL_CMD_PERF_CUDA_LIMIT_SET_CONTROL);
-        pprint(NV83DE_CTRL_CMD_DEBUG_SET_EXCEPTION_MASK);
-        pprint(NVC36F_CTRL_GET_CLASS_ENGINEID);
-        pprint(NVC36F_CTRL_CMD_GPFIFO_GET_WORK_SUBMIT_TOKEN);
-        pprint(NV_CONF_COMPUTE_CTRL_CMD_SYSTEM_GET_CAPABILITIES);
-        pprint(NVA06C_CTRL_CMD_GPFIFO_SCHEDULE);
-        pprint(NVA06C_CTRL_CMD_SET_TIMESLICE);
+        ppprint(NV0000_CTRL_CMD_GPU_ATTACH_IDS);
+        ppprint(NV0000_CTRL_CMD_GPU_GET_ID_INFO);
+        ppprint(NV0000_CTRL_CMD_GPU_GET_ATTACHED_IDS);
+        ppprint(NV0000_CTRL_CMD_GPU_GET_ID_INFO_V2);
+        ppprint(NV0000_CTRL_CMD_GPU_GET_UUID_FROM_GPU_ID);
+        ppprint(NV0000_CTRL_CMD_GPU_GET_PROBED_IDS);
+        ppprint(NV0000_CTRL_CMD_GPU_GET_MEMOP_ENABLE);
+        ppprint(NV0000_CTRL_CMD_CLIENT_GET_ADDR_SPACE_TYPE);
+        ppprint(NV0000_CTRL_CMD_CLIENT_SET_INHERITED_SHARE_POLICY);
+        ppprint(NV0000_CTRL_CMD_SYNC_GPU_BOOST_GROUP_INFO);
+        ppprint(NV0000_CTRL_CMD_SYSTEM_GET_FEATURES);
+        ppprint(NV0000_CTRL_CMD_SYSTEM_GET_P2P_CAPS_MATRIX);
+        ppprint(NV2080_CTRL_CMD_GR_GET_TPC_MASK);
+        ppprint(NV2080_CTRL_CMD_FB_GET_INFO_V2);
+        ppprint(NV2080_CTRL_CMD_NVLINK_GET_NVLINK_STATUS);
+        ppprint(NV2080_CTRL_CMD_BUS_GET_INFO_V2);
+        ppprint(NV2080_CTRL_CMD_MC_GET_ARCH_INFO);
+        ppprint(NV2080_CTRL_CMD_GR_GET_CTX_BUFFER_SIZE);
+        ppprint(NV2080_CTRL_CMD_GPU_GET_GID_INFO);
+        ppprint(NV2080_CTRL_CMD_GSP_GET_FEATURES);
+        ppprint(NV2080_CTRL_CMD_CE_GET_ALL_CAPS);
+        ppprint(NV2080_CTRL_CMD_BUS_GET_C2C_INFO);
+        ppprint(NV2080_CTRL_CMD_BUS_GET_PCIE_SUPPORTED_GPU_ATOMICS);
+        ppprint(NV2080_CTRL_CMD_BUS_GET_PCI_BAR_INFO);
+        ppprint(NV2080_CTRL_CMD_BUS_GET_PCI_INFO);
+        ppprint(NV2080_CTRL_CMD_GR_GET_GPC_MASK);
+        ppprint(NV2080_CTRL_CMD_GR_GET_CAPS_V2);
+        ppprint(NV2080_CTRL_CMD_GR_GET_GLOBAL_SM_ORDER);
+        ppprint(NV2080_CTRL_CMD_GR_GET_INFO);
+        ppprint(NV2080_CTRL_CMD_GPU_GET_ACTIVE_PARTITION_IDS);
+        ppprint(NV2080_CTRL_CMD_GPU_GET_ENGINES_V2);
+        ppprint(NV2080_CTRL_CMD_GPU_QUERY_COMPUTE_MODE_RULES);
+        ppprint(NV2080_CTRL_CMD_GPU_GET_SIMULATION_INFO);
+        ppprint(NV2080_CTRL_CMD_GPU_GET_SHORT_NAME_STRING);
+        ppprint(NV2080_CTRL_CMD_GPU_GET_NAME_STRING);
+        ppprint(NV2080_CTRL_CMD_GPU_GET_INFO_V2);
+        ppprint(NV2080_CTRL_CMD_PERF_BOOST);
+        ppprint(NV2080_CTRL_CMD_GR_SET_CTXSW_PREEMPTION_MODE);
+        ppprint(NV0080_CTRL_CMD_FIFO_GET_CHANNELLIST);
+        ppprint(NV0080_CTRL_CMD_HOST_GET_CAPS_V2);
+        ppprint(NV0080_CTRL_CMD_FB_GET_CAPS_V2);
+        ppprint(NV0080_CTRL_CMD_GPU_GET_CLASSLIST_V2);
+        ppprint(NV0080_CTRL_CMD_GPU_GET_VIRTUALIZATION_MODE);
+        ppprint(NV0080_CTRL_CMD_GPU_GET_NUM_SUBDEVICES);
+        ppprint(NV0080_CTRL_CMD_PERF_CUDA_LIMIT_SET_CONTROL);
+        ppprint(NV83DE_CTRL_CMD_DEBUG_SET_EXCEPTION_MASK);
+        ppprint(NVC36F_CTRL_GET_CLASS_ENGINEID);
+        ppprint(NVC36F_CTRL_CMD_GPFIFO_GET_WORK_SUBMIT_TOKEN);
+        ppprint(NV_CONF_COMPUTE_CTRL_CMD_SYSTEM_GET_CAPABILITIES);
+        ppprint(NVA06C_CTRL_CMD_GPFIFO_SCHEDULE);
+        ppprint(NVA06C_CTRL_CMD_SET_TIMESLICE);
+        // *** NCU-related ***
+        cmd(NVB0CC_CTRL_CMD_BIND_PM_RESOURCES);
+        ppprint(NVB0CC_CTRL_CMD_PMA_STREAM_UPDATE_GET_PUT);
+        ppprint(NVB0CC_CTRL_CMD_POWER_REQUEST_FEATURES);
+        ppprint(NVB0CC_CTRL_CMD_POWER_RELEASE_FEATURES);
+        ppprint(NVB0CC_CTRL_CMD_ALLOC_PMA_STREAM);
+        ppprint(NVB0CC_CTRL_CMD_FREE_PMA_STREAM);
+        ppprint(NVB0CC_CTRL_CMD_RESERVE_PM_AREA_SMPC);
+        ppprint(NVB0CC_CTRL_CMD_RESERVE_HWPM_LEGACY);
+        ppprint(NVB0CC_CTRL_CMD_GET_TOTAL_HS_CREDITS);
+        case NV2080_CTRL_CMD_GPU_EXEC_REG_OPS: {
+          NV2080_CTRL_GPU_EXEC_REG_OPS_PARAMS *params = (NV2080_CTRL_GPU_EXEC_REG_OPS_PARAMS *)copy_mem((unsigned long)p->params, p->paramsSize);
+          NV2080_CTRL_GPU_REG_OP *ops = (NV2080_CTRL_GPU_REG_OP *)copy_mem((unsigned long)params->regOps, params->regOpCount * sizeof(NV2080_CTRL_GPU_REG_OP));
+          printf("NV2080_CTRL_CMD_GPU_EXEC_REG_OPS regOpCount: %d\n", params->regOpCount);
+          for (int i = 0; i < params->regOpCount; i++) {
+            printf("  %d: ", i);
+            pprint(NV2080_CTRL_GPU_REG_OP, ops + i);
+          }
+        } break;
+        case NVB0CC_CTRL_CMD_EXEC_REG_OPS: {
+          NVB0CC_CTRL_EXEC_REG_OPS_PARAMS *params = (NVB0CC_CTRL_EXEC_REG_OPS_PARAMS *)copy_mem((unsigned long)p->params, p->paramsSize);
+          printf("NVB0CC_CTRL_CMD_EXEC_REG_OPS regOpCount: %d\n", params->regOpCount);
+          for (int i = 0; i < params->regOpCount; i++) {
+            printf("  %d: ", i);
+            pprint(NV2080_CTRL_GPU_REG_OP, &params->regOps[i]);
+          }
+        } break;
+        case NVB0CC_CTRL_CMD_SET_HS_CREDITS: {
+          NVB0CC_CTRL_HS_CREDITS_PARAMS *params = (NVB0CC_CTRL_HS_CREDITS_PARAMS *)copy_mem((unsigned long)p->params, p->paramsSize);
+          pprint(NVB0CC_CTRL_PMA_STREAM_HS_CREDITS_STATUS, &params->statusInfo);
+          for (int i = 0; i < params->numEntries; i++) {
+            printf("  %d: ", i);
+            pprint(NVB0CC_CTRL_PMA_STREAM_HS_CREDITS_INFO, &params->creditInfo[i]);
+          }
+        } break;
         default: printf("unknown command %x\n", p->cmd); break;
       }
       #undef cmd
+      #undef pprint
+      #undef ppprint
     } break;
     case NV_ESC_RM_ALLOC: puts("NV_ESC_RM_ALLOC"); break;
     case NV_ESC_RM_MAP_MEMORY: {
